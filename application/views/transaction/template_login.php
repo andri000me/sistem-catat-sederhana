@@ -27,7 +27,7 @@
   </style>
 </head>
 
-<body>
+<body style="background: black">
   <?php $this->load->view($main_view);?>
   <!-- container-scroller -->
   <!-- plugins:js -->
