@@ -46,6 +46,7 @@
        get_day();
        get_location();
        data_produk();
+       data_penjualan();
        $("#nama_produk").focus();
        $("#img_produk").focus();
     });
@@ -104,6 +105,7 @@
           $("#text_berhasil").text('Delete produk berhasil');
             $("#berhasil").slideDown('slow').css('text-align','center');
             setTimeout(function(){$("#berhasil").slideUp('slow', function(){
+              data_produk();
           });},2000);
         },
         error:function(error){
@@ -150,6 +152,76 @@
                     '</tr>';
             }
           $("#data_produk").html(html);
+        }
+      });
+    }
+
+    function data_penjualan() {
+      $.ajax({
+        type:"POST",
+        url:"<?php echo base_url();?>admin/get_penjualan",
+        dataType:"json",
+        success:function(data){
+          html = '';
+          stat = '';
+          var i = 0;
+          for(i=0; i<data.length; i++){
+            if(data[i].status == "Lunas"){
+              stat+='<div class="btn btn-success">'+data[i].status+'</div>';
+            }else{
+              stat+='<div class="btn btn-danger">'+data[i].status+'</div>';
+            }
+
+             html += '<tr>'+
+                        '<td>'+data[i].kode_penjualan+'</td>'+
+                        '<td>'+data[i].tanggal_penjualan+'</td>'+
+                        '<td>'+data[i].nama_pembeli+'</td>'+
+                        '<td>'+data[i].alamat_pembeli+'</td>'+
+                        '<td>'+data[i].nomor_telepon+'</td>'+
+                        '<td>'+data[i].total+'</td>'+
+                        '<td>'+stat+'</td>'+
+                        '<td>'+
+                          '<div class="row">'+
+                              '<div class="col-md-3 col-sm-3">'+
+                                  '<div class="dropdown show">'+
+                                      '<a class="btn btn-primary dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>'+
+                                        '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">'+
+                                        '<a class="dropdown-item" href="'+base_url+'admin/cetak_nota/'+data[i].id_penjualan+'">Cetak Nota</a>'+
+                                        '<a class="dropdown-item" href="#">Detail Penjualan</a>'+
+                                        '<a class="dropdown-item" href="#">Edit Penjualan</a>'+
+                                        '<a class="dropdown-item text-danger" href="#" onclick="delete_penjualan('+data[i].id_penjualan+')">Delete</a>'+
+                                      '</div>'+
+                                  '</div>'+
+                                '</div>'+
+                            '</div>'+
+                        '</td>'+
+                    '</tr>';
+                  }
+          $("#data_penjualan").html(html);
+        }
+      });
+    }
+
+    function delete_penjualan(id_penjualan) {
+      $.ajax({
+        type:"POST",
+        url:"<?php echo base_url();?>admin/delete_penjualan/"+id_penjualan,
+        dataType:"json",
+        success:function(data){
+          data_penjualan();
+          $("html, body").animate({scrollTop: 0}, 1000);
+          $("#text_berhasil").text('Delete penjualan berhasil');
+            $("#berhasil").slideDown('slow').css('text-align','center');
+            setTimeout(function(){$("#berhasil").slideUp('slow', function(){
+              data_penjualan();
+          });},2000);
+        },
+        error:function(error){
+          $("html, body").animate({scrollTop: 0}, 1000);
+          $("#text_gagal").text('Delete penjualan gagal');
+            $("#gagal").slideDown('slow').css('text-align','center');
+            setTimeout(function(){$("#gagal").slideUp('slow', function(){
+          });},2000);
         }
       });
     }

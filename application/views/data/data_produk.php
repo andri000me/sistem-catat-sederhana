@@ -41,24 +41,4 @@
         		</div>
         	</div>
         </div>
-        <!-- <div class="row mt-1">
-                                                    <div class="col-md-3 col-sm-3">
-                                                        <a href="'.base_url().'admin/tambah_foto_produk/'.$data->id_produk.'"class="btn btn-success btn-sm text-white"><i class="mdi mdi-pencil-box"></i> Tambah Foto Produk</a>
-                                                    </div>
-                                                </div>
-                                                <div class="row mt-1">
-                                                    <div class="col-md-3 col-sm-3">
-                                                        <a class="btn btn-primary btn-sm text-white"><i class="mdi mdi-check-circle"></i> Detail Produk</a>
-                                                    </div>
-                                                </div>
-                                                <div class="row mt-1">
-                                                    <div class="col-md-3 col-sm-3">
-                                                        <a class="btn btn-warning btn-sm"><i class="mdi mdi-pencil-box"></i> Edit Produk</a>
-                                                    </div>
-                                                </div>
-                                                <div class="row mt-1">
-                                                    <div class="col-md-3 col-sm-3">
-                                                    <a class="btn btn-danger btn-sm text-white" onclick="delete_produk('.$data->id_produk.')"><i class="mdi mdi-delete"></i> Delete</a>
-                                                    </div>
-                                                </div> -->
 <?php $this->load->view('data/foot'); ?>

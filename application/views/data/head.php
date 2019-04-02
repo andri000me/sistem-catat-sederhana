@@ -14,6 +14,7 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="<?php echo base_url();?>assets/images/favicon1.png" />
   <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> -->
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
   <style type="text/css">
     #black{
@@ -25,6 +26,8 @@
     #berhasil,#gagal{
       display: none;
     }
+   .nowrap{ table-layout:fixed; width:100%; }
+
   </style>
 </head>
 
@@ -244,7 +247,7 @@
                   <a class="nav-link" href="<?php echo base_url('admin/data_produk');?>">Data Produk</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="pages/samples/login.html"> Data Penjualan </a>
+                  <a class="nav-link" href="<?php echo base_url('admin/data_penjualan');?>"> Data Penjualan </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="pages/samples/register.html"> Omset User </a>

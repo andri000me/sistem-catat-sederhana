@@ -185,6 +185,38 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function get_penjualan()
+	{
+		if($this->session->userdata('logged')){
+			$data = $this->Admin_model->get_penjualan();
+			if($data){
+				echo json_encode($data);
+			}else{
+				return FALSE;
+			}
+		}
+	}
+
+	public function data_penjualan()
+	{
+		if($this->session->userdata('logged')){
+			$data['title'] = 'Data Penjualan';
+			$this->load->view('data/data_penjualan', $data);
+		}
+	}
+
+	public function delete_penjualan($id_penjualan)
+	{
+		if($this->session->userdata('logged')){
+			$data = $this->Admin_model->delete_penjualan($id_penjualan);
+			if($data){
+				echo json_encode($data);
+			}else{
+				return false;
+			}
+		}
+	}
+
 }
 
 /* End of file Admin.php */

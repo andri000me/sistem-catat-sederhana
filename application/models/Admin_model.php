@@ -92,6 +92,21 @@ class Admin_model extends CI_Model {
 		return $this->db->update('ct_produk',array('deleted'=>'1'),array('id_produk'=>$id_produk));
 	}
 
+	public function get_penjualan()
+	{
+		return $this->db->select('ct_penjualan.*,ct_user.nama_user')
+						->from('ct_penjualan')
+						->join('ct_user','ct_user.id_user=ct_penjualan.id_user')
+						->where('ct_penjualan.deleted',0)
+						->get()
+						->result();
+	}
+
+	public function delete_penjualan($id_penjualan)
+	{
+		return $this->db->update('ct_penjualan',array('deleted'=>'1'),array('id_penjualan'=>$id_penjualan));
+	}
+
 }
 
 /* End of file Admin_model.php */
