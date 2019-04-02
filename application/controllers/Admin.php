@@ -140,6 +140,18 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function delete_produk($id_produk)
+	{
+		if($this->session->userdata('logged')){
+			$data = $this->Admin_model->delete_produk($id_produk);
+			if($data){
+				echo json_encode($data);
+			}else{
+				return false;
+			}
+		}
+	}
+
 	public function penjualan()
 	{
 		if ($this->session->userdata('logged')) {

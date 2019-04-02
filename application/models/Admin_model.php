@@ -87,6 +87,11 @@ class Admin_model extends CI_Model {
 						->result();
 	}
 
+	public function delete_produk($id_produk)
+	{
+		return $this->db->update('ct_produk',array('deleted'=>'1'),array('id_produk'=>$id_produk));
+	}
+
 }
 
 /* End of file Admin_model.php */

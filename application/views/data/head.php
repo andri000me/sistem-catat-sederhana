@@ -22,6 +22,9 @@
     .verticalLine {
       border-right: thin solid lightgrey;
     }
+    #berhasil,#gagal{
+      display: none;
+    }
   </style>
 </head>
 

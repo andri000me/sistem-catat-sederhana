@@ -90,6 +90,28 @@
         $("#temp").text(final);
       }
     }
+
+    function delete_produk(id_produk) {
+      $.ajax({
+        type:"POST",
+        url:"<?php echo base_url();?>admin/delete_produk/"+id_produk,
+        dataType:"json",
+        success:function(data){
+          $("html, body").animate({scrollTop: 0}, 1000);
+          $("#text_berhasil").text('Delete produk berhasil');
+            $("#berhasil").slideDown('slow').css('text-align','center');
+            setTimeout(function(){$("#berhasil").slideUp('slow', function(){
+              window.location.reload();
+          });},2000);
+        },
+        error:function(error){
+          $("#text_gagal").text('Delete produk gagal');
+            $("#gagal").slideDown('slow').css('text-align','center');
+            setTimeout(function(){$("#gagal").slideUp('slow', function(){
+          });},2000);
+        }
+      });
+    }
   </script>
 </body>
 
