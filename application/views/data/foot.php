@@ -34,6 +34,7 @@
   <script type="text/javascript">
     var day = "<?php date_default_timezone_set("Asia/Jakarta"); echo date('l');?>";
     var date= "<?php date_default_timezone_set("Asia/Jakarta"); echo date('d F Y');?>";
+    var base_url = "<?php echo base_url();?>";
     $(document).ready(function() {
       $('#tableData').DataTable();
     } );
@@ -44,6 +45,7 @@
        },200000);
        get_day();
        get_location();
+       data_produk();
        $("#nama_produk").focus();
        $("#img_produk").focus();
     });
@@ -97,14 +99,15 @@
         url:"<?php echo base_url();?>admin/delete_produk/"+id_produk,
         dataType:"json",
         success:function(data){
+          data_produk();
           $("html, body").animate({scrollTop: 0}, 1000);
           $("#text_berhasil").text('Delete produk berhasil');
             $("#berhasil").slideDown('slow').css('text-align','center');
             setTimeout(function(){$("#berhasil").slideUp('slow', function(){
-              window.location.reload();
           });},2000);
         },
         error:function(error){
+          data_produk();
           $("#text_gagal").text('Delete produk gagal');
             $("#gagal").slideDown('slow').css('text-align','center');
             setTimeout(function(){$("#gagal").slideUp('slow', function(){
@@ -112,6 +115,45 @@
         }
       });
     }
+
+    function data_produk() {
+      $.ajax({
+        type:"POST",
+        url:"<?php echo base_url();?>admin/get_produk",
+        dataType:"json",
+        success:function(data){
+          html = '';
+          var i = 0;
+          for(i=0; i<data.length; i++){
+             html += '<tr>'+
+                        '<td>'+data[i].kode_produk+'</td>'+
+                        '<td>'+data[i].nama_produk+'</td>'+
+                        '<td>'+data[i].nama_kategori_produk+'</td>'+
+                        '<td>'+data[i].harga_produksi+'</td>'+
+                        '<td>'+data[i].harga_jual+'</td>'+
+                        '<td>'+data[i].stok+'</td>'+
+                        '<td>'+
+                          '<div class="row">'+
+                              '<div class="col-md-3 col-sm-3">'+
+                                  '<div class="dropdown show">'+
+                                      '<a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>'+
+                                        '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">'+
+                                            '<a class="dropdown-item" href="'+base_url+'admin/tambah_foto_produk/'+data[i].id_produk+'">Tambah Foto Produk</a>'+
+                                        '<a class="dropdown-item" href="#">Detail Produk</a>'+
+                                        '<a class="dropdown-item" href="#">Edit produk</a>'+
+                                        '<a class="dropdown-item text-danger" href="#" onclick="delete_produk('+data[i].id_produk+')">Delete</a>'+
+                                      '</div>'+
+                                  '</div>'+
+                                '</div>'+
+                            '</div>'+
+                        '</td>'+
+                    '</tr>';
+            }
+          $("#data_produk").html(html);
+        }
+      });
+    }
+
   </script>
 </body>
 

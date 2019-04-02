@@ -32,36 +32,8 @@
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <?php 
-                                    foreach ($produk as $data) {
-                                        echo'
-                                        <tr>
-                                            <td>'.$data->kode_produk.'</td>
-                                            <td>'.$data->nama_produk.'</td>
-                                            <td>'.$data->nama_kategori_produk.'</td>
-                                            <td>Rp '.number_format($data->harga_produksi).'</td>
-                                            <td>Rp '.number_format($data->harga_jual).'</td>
-                                            <td>'.$data->stok.'</td>
-                                            <td>
-                                            <div class="row">
-                                                <div class="col-md-3 col-sm-3">
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Aksi
-                                                    <span class="caret"></span></button>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="'.base_url().'admin/tambah_foto_produk/'.$data->id_produk.'">Tambah Foto Produk</a></li>
-                                                            <li><a href="#">Detail Produk</a></li>
-                                                            <li><a href="#">Edit Produk</a></li>
-                                                            <li><a href="#" onclick="delete_produk('.$data->id_produk.')">Delete</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>';
-                                    }
-                                    ?>
+                                <tbody id="data_produk">
+                                    
                                 </tbody>
                             </table>
                         </div>

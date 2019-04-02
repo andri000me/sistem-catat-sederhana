@@ -51,9 +51,9 @@
                       <i class="mdi mdi-poll-box text-success icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Sales</p>
+                      <p class="mb-0 text-right">Product</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">5693</h3>
+                        <h3 class="font-weight-medium text-right mb-0"><?= $count_produk;?></h3>
                       </div>
                     </div>
                   </div>

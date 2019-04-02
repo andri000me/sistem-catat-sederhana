@@ -14,6 +14,7 @@ class Admin extends CI_Controller {
 		if($this->session->userdata('logged')){
 			$data['title'] = 'Dashboard';
 			$data['count_user'] = $this->Admin_model->count_all('ct_user');
+			$data['count_produk'] = $this->Admin_model->count_all('ct_produk');
 			$this->load->view('data/dashboard', $data);
 		}else{
 			$data['title'] = 'Login User';
@@ -131,6 +132,18 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function get_produk()
+	{
+		if($this->session->userdata('logged')){
+			$data = $this->Admin_model->get_produk();
+			if($data){
+				echo json_encode($data);
+			}else{
+				return FALSE;
+			}
+		}
+	}
+
 	public function data_produk()
 	{
 		if($this->session->userdata('logged')){
@@ -156,7 +169,7 @@ class Admin extends CI_Controller {
 	{
 		if ($this->session->userdata('logged')) {
 			$data['title'] = 'Add Pesanan';
-			$this->load->view('transaction/penjualan', $data);
+			$this->load->view('transaction/add_penjualan', $data);
 		}else{
 			redirect('admin','refresh');
 		}

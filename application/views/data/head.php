@@ -34,7 +34,8 @@
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row" id="black">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <a class="navbar-brand brand-logo" href="<?php echo base_url();?>">
-          <img src="<?php echo base_url();?>assets/images/logo.png" alt="logo" />
+          <!-- <img src="<?php echo base_url();?>assets/images/logos.png" alt="logo" /> -->
+          <h2 class="mt-2 text-black">BASICCLASS</h2>
         </a>
         <a class="navbar-brand brand-logo-mini" href="<?php echo base_url();?>">
           <img src="<?php echo base_url();?>assets/images/logo-small.png" alt="logo" />
@@ -250,6 +251,12 @@
                 </li>
               </ul>
             </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url();?>">
+              <i class="menu-icon mdi mdi-file-document"></i>
+              <span class="menu-title">Laporan Penjualan</span>
+            </a>
           </li>
         </ul>
       </nav>
