@@ -80,9 +80,14 @@ class Admin extends CI_Controller {
 
 	public function tambah_foto_produk($id_produk)
 	{
-		$data['title'] = 'Tambah Foto Produk';
-		$data['cek_foto'] = $this->Admin_model->cek_foto($id_produk);
-		$this->load->view('transaction/tambah_foto_produk',$data);
+		if($this->session->userdata('logged')){
+			$data['title'] = 'Tambah Foto Produk';
+			$data['cek_foto'] = $this->Admin_model->cek_foto($id_produk);
+			$this->load->view('transaction/tambah_foto_produk',$data);
+		}else{
+			redirect('admin','refresh');
+		}
+		
 	}
 
 	public function img_upload()
