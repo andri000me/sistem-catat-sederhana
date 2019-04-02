@@ -1,0 +1,84 @@
+<?php $this->load->view('data/head'); ?>
+	<div class="main-panel">
+        <div class="content-wrapper">
+        	<div class="row">
+        		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
+        			<div class="card card-statistics">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <h2><?= $title;?></h2>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <a href="<?= base_url();?>admin/data_produk" class="btn btn-danger text-white float-right"><i class="mdi mdi-arrow-left-bold-circle"></i> Kembali</a>
+                                </div>
+                            </div>
+                        <hr>
+                            <form method="post" action="<?= base_url();?>transaction/add_produk" enctype="multipart/form-data">
+                                <div class="row">
+                                	<div class="col-md-8 verticalLine">
+                                        <?php
+                                            $berhasil = $this->session->flashdata('berhasil');
+                                            $gagal = $this->session->flashdata('gagal');
+                                            if(!empty($berhasil)){
+                                                echo '<div class="alert alert-success"><i class="mdi mdi-check-circle"></i> '.$berhasil.'</div>';
+                                            }
+
+                                            if(!empty($gagal)){
+                                                echo '<div class="alert alert-danger"><i class="mdi mdi-close-circle"></i> '.$gagal.'</div>';
+                                            }
+                                        ?>
+                                        <div class="form-group">
+                                          <label>Nama Produk</label>
+                                          <input type="text" name="nama_produk" id="nama_produk" class="form-control" placeholder="Nama Produk">
+                                        </div>
+                                        <div class="form-group">
+                                          <label>Kategori Produk</label>
+                                          <select name="id_kategori_produk" class="form-control">
+                                              <option value=""> Pilih Kategori</option>
+                                              <?php
+                                                foreach ($kategori as $data) {
+                                                    echo '<option value="'.$data->id_kategori_produk.'">'.$data->nama_kategori_produk.'</option>';
+                                                }
+                                              ?>
+                                          </select>
+                                        </div>
+                                        <div class="form-group">
+                                          <label>Size Produk<span class="text-danger"> *pisahkan dengan (,) koma</span></label>
+                                          <input type="text" name="size_produk" class="form-control" placeholder="Size">
+                                        </div>
+                                        <div class="form-group">
+                                          <label>Harga Produksi  <span class="text-danger"> *optional</span></label>
+                                          <input type="text" name="harga_produksi" class="form-control" placeholder="Harga Produksi">
+                                        </div>
+                                        <div class="form-group">
+                                          <label>Harga Jual</label>
+                                          <input type="text" name="harga_jual" class="form-control" placeholder="Harga Jual">
+                                        </div>
+                                        <div class="form-group">
+                                          <label>Stok</label>
+                                          <input type="text" name="stok" class="form-control" placeholder="Stok">
+                                        </div>
+                                        <!-- <div class="form-group">
+                                          <label>Gambar Produk<span class="text-danger"> *required</span></label>
+                                          <input type="file" name="img_prduk[]" multiple="" class="form-control" placeholder="Pilih File" required="">
+                                        </div> -->
+                                	</div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Admin input</label>
+                                            <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_user');?>">
+                                            <input type="text" name="nama_user" class="form-control" value="<?= $this->session->userdata('nama_user');?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <input type="submit" name="submit" value="Simpan produk" class="btn btn-success full">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            	</div>
+            </div>
+        </div>
+    <?php $this->load->view('data/foot'); ?>

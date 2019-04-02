@@ -6,8 +6,8 @@
             <div class="auto-form-wrapper">
               <form method="post">
                 <div class="form-group">
-                  <div class="alert alert-success" id="berhasil"><i class="fa fa-check-circle-o"></i> </div>
-                  <div class="alert alert-danger" id="gagal"><i class="fa fa-times-circle-o"></i> </div>
+                  <div class="alert alert-success" id="berhasil"><i class="mdi mdi-check-circle"></i> <span id="text_berhasil"></span></div>
+                  <div class="alert alert-danger" id="gagal"><i class="mdi mdi-close-circle"></i> <span id="text_gagal"></span></div>
                 </div>
                 <div class="form-group">
                   <label class="label">E-mail</label>

@@ -38,6 +38,7 @@
   <script src="<?php echo base_url()?>assets/js/off-canvas.js"></script>
   <script src="<?php echo base_url()?>assets/js/misc.js"></script>
   <!-- endinject -->
+  <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript">
 
@@ -78,7 +79,7 @@
 
     function check_email() {
       var el = $(this);
-
+      check();
       $.ajax({
         type : "POST",
         url : "<?php echo base_url();?>admin/check_email",
@@ -88,10 +89,10 @@
         },
         success:function(result){
             if(el.val().length == result.email.length){
-              $("#gagal").slideDown('slow').text('E-mail telah digunakan');
+              $("#text_gagal").text('E-mail telah digunakan')
+              $("#gagal").slideDown('slow').css('text-align','center');
               $("#email_circle").css('color','red');
             }else{
-              check();
               $("#email_circle").css('color','green');
               $("#gagal").slideUp('slow');
             }
@@ -113,6 +114,7 @@
       var password = $("#password").val();
       var nama_lengkap = $("#nama_lengkap").val();
       var form_data  = $('form').serialize();
+      var url = "<?php echo base_url();?>";
 
       if($("#email").val() == ''){
         alert('Email harus diisi');
@@ -130,10 +132,17 @@
           dataType : 'json',
           data : form_data,
           success:function(data){
-            $("#berhasil").slideDown('slow').text('Registrasi berhasil,cek email anda untuk aktivasi akun');
+            $("#text_berhasil").text('Registrasi berhasil,cek email anda untuk aktivasi akun');
+            $("#berhasil").slideDown('slow').css('text-align','center');
+            setTimeout(function(){$("#berhasil").slideUp('slow', function(){
+                window.location = url;
+            });},2000);
           },
           error:function(error){
-            $("#gagal").slideDown('slow').text('Registrasi gagal,cek kembali form anda');
+            $("#text_gagal").text('Registrasi gagal,cek kembali form anda');
+            $("#gagal").slideDown('slow').css('text-align','center');
+            setTimeout(function(){$("#gagal").slideUp('slow', function(){
+            });},2000);
           }
         });
       }
@@ -152,7 +161,8 @@
         success:function(data){
           if(data > 0){
             $('form').trigger('reset');
-            $("#berhasil").slideDown('slow').css('text-align','center').text('Login berhasil');
+            $("#text_berhasil").text('Login Berhasil');
+            $("#berhasil").slideDown('slow').css('text-align','center');
             setTimeout(function(){$("#berhasil").slideUp('slow', function(){
                 window.location = url;
             });},2000);
@@ -162,8 +172,9 @@
             });},2000);
           }
         },
-        error:function(error){
-          $("#gagal").slideDown('slow').css('text-align','center').text('Login gagal');
+        error:function(error){ 
+          $("#text_gagal").text('Login Gagal');
+          $("#gagal").slideDown('slow').css('text-align','center');
             setTimeout(function(){$("#gagal").slideUp('slow', function(){
           });},2000);
           $("#email").focus();
