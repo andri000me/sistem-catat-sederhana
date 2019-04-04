@@ -36,7 +36,9 @@
     var date= "<?php date_default_timezone_set("Asia/Jakarta"); echo date('d F Y');?>";
     var base_url = "<?php echo base_url();?>";
     $(document).ready(function() {
-      $('#tableData').DataTable();
+      $('#tableData').DataTable({
+        "search" : false
+      });
     } );
     $(document).ready(function(){
        setInterval(function(){
@@ -49,6 +51,7 @@
        data_penjualan();
        $("#nama_produk").focus();
        $("#img_produk").focus();
+       $("#search_data").focus();
     });
 
     function get_day() {

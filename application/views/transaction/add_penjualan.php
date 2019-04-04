@@ -14,7 +14,7 @@
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="basic-addon1"><i class="mdi mdi-file-find"></i></span>
 										  </div>
-										  <input type="text" class="form-control" placeholder="Search produk ..." aria-label="Search" aria-describedby="basic-addon1">
+										  <input type="text" class="form-control" id="search_data" placeholder="Search produk ..." aria-label="Search" aria-describedby="basic-addon1">
 										</div>
 		                            </div>
                                     <hr>
@@ -53,7 +53,7 @@
                             </div>
                             	<div class="col-md-3 col-sm-3">
                                     <div class="form-group">
-                                        <h4>Data Pembeli</h4>
+                                        <h4>Data Pembeli <span class="text-danger"> *required</span></h4>
                                     </div>
                             		<div class="form-group">
                                         <label>Nama Pembeli</label>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Apr 2019 pada 11.35
+-- Waktu pembuatan: 04 Apr 2019 pada 12.57
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.2.14
 
@@ -44,10 +44,27 @@ CREATE TABLE `ct_detail_penjualan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ct_detail_produk`
+-- Struktur dari tabel `ct_detail_produks`
 --
--- Kesalahan membaca struktur untuk tabel catat_basic.ct_detail_produk: #1932 - Table 'catat_basic.ct_detail_produk' doesn't exist in engine
--- Kesalahan membaca data untuk tabel catat_basic.ct_detail_produk: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `catat_basic`.`ct_detail_produk`' at line 1
+
+CREATE TABLE `ct_detail_produks` (
+  `id_detail_produk` int(11) NOT NULL,
+  `img_produk` varchar(200) NOT NULL,
+  `id_produk` int(11) NOT NULL,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `deleted` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `ct_detail_produks`
+--
+
+INSERT INTO `ct_detail_produks` (`id_detail_produk`, `img_produk`, `id_produk`, `created`, `updated`, `deleted`) VALUES
+(1, 'Asset_1See.png', 15, '2019-04-04 17:15:12', '2019-04-04 17:15:12', 0),
+(2, 'Front.png', 15, '2019-04-04 17:15:12', '2019-04-04 17:15:12', 0),
+(3, 'SeeYa2.PNG', 14, '2019-04-04 17:24:31', '2019-04-04 17:24:31', 0),
+(4, 'SeeYa11.PNG', 14, '2019-04-04 17:24:31', '2019-04-04 17:24:31', 0);
 
 -- --------------------------------------------------------
 
@@ -141,7 +158,8 @@ INSERT INTO `ct_produk` (`id_produk`, `kode_produk`, `nama_produk`, `size_produk
 (11, 'BSC-00009', 'High Croco', '', 75000, 100000, 1, 10, 1, '2019-04-02 15:01:35', '2019-04-02 16:55:12', 1),
 (12, 'BSC-00010', 'Basic Classic', '', 75000, 100000, 1, 10, 1, '2019-04-02 15:02:15', '2019-04-02 15:02:20', 1),
 (13, 'BSC-00011', 'Hoodie Basic', '', 75000, 100000, 2, 90, 1, '2019-04-02 16:59:24', '2019-04-02 16:59:27', 1),
-(14, 'BSC-00012', 'Basic Classic', '', 75000, 100000, 1, 100, 1, '2019-04-02 21:14:27', '2019-04-02 21:14:27', 0);
+(14, 'BSC-00012', 'Basic Classic', '', 75000, 100000, 1, 100, 1, '2019-04-02 21:14:27', '2019-04-02 21:14:27', 0),
+(15, 'BSC-00013', 'Basic Beach', '', 75000, 100000, 1, 80, 1, '2019-04-04 17:08:46', '2019-04-04 17:08:46', 0);
 
 -- --------------------------------------------------------
 
@@ -182,6 +200,13 @@ ALTER TABLE `ct_detail_penjualan`
   ADD KEY `id_penjualan` (`id_penjualan`);
 
 --
+-- Indeks untuk tabel `ct_detail_produks`
+--
+ALTER TABLE `ct_detail_produks`
+  ADD PRIMARY KEY (`id_detail_produk`),
+  ADD KEY `id_produk` (`id_produk`);
+
+--
 -- Indeks untuk tabel `ct_kategori_produk`
 --
 ALTER TABLE `ct_kategori_produk`
@@ -220,6 +245,12 @@ ALTER TABLE `ct_detail_penjualan`
   MODIFY `id_detail_penjualan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `ct_detail_produks`
+--
+ALTER TABLE `ct_detail_produks`
+  MODIFY `id_detail_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT untuk tabel `ct_kategori_produk`
 --
 ALTER TABLE `ct_kategori_produk`
@@ -235,7 +266,7 @@ ALTER TABLE `ct_penjualan`
 -- AUTO_INCREMENT untuk tabel `ct_produk`
 --
 ALTER TABLE `ct_produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_user`
