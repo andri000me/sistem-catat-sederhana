@@ -26,8 +26,13 @@
     #berhasil,#gagal{
       display: none;
     }
-   .nowrap{ table-layout:fixed; width:100%; }
-
+    .scroll-transaction{
+      overflow-y: scroll;
+      height: 400px;
+    }
+    .form-control{
+      border-color: lightgrey;
+    }
   </style>
 </head>
 

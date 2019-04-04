@@ -71,8 +71,10 @@
                                             <input type="text" name="nama_user" class="form-control" value="<?= $this->session->userdata('nama_user');?>">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                          <input type="submit" name="submit" value="Simpan produk" class="btn btn-success full">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                          <input type="submit" name="submit" value="Simpan produk" class="btn btn-success btn-block mt-3">
+                                        </div>
                                     </div>
                                 </div>
                             </form>

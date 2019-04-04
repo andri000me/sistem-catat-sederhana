@@ -7,17 +7,8 @@
                         <div class="card-body">
                             <h2><?= $title;?></h2>
                                 <hr>
-                                	<div class="row">
-	                                	<div class="col-md-6 col-sm-12">
-	                                		
-	                                	</div>
-	                                	<div class="col-md-6 col-sm-12">
-	                                		<a href="<?= base_url();?>admin/add_produk" class="btn btn-info float-right"><i class="mdi mdi-printer"></i> Print</a>
-	                                	</div>
-                                	</div>
-                                <hr>
                             <div class="row">
-                            	<div class="col-md-8 verticalLine">
+                            	<div class="col-md-9 col-sm-9 verticalLine">
 		                            <div class="form-group">
 		                            	<div class="input-group mb-3">
 										  <div class="input-group-prepend">
@@ -27,34 +18,42 @@
 										</div>
 		                            </div>
                                     <hr>
-                                    <table class="table table-striped table-bordered nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th>Kode Produk</th>
-                                                <th>Nama Produk</th>
-                                                <th>Size</th>
-                                                <th>Jenis</th>
-                                                <th>Harga Produk</th>
-                                                <th>Qty</th>
-                                                <th>Subtotal</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="pesanan">
-                                            <tr>
-                                                <td>Kode Produk</td>
-                                                <td>Nama Produk</td>
-                                                <td>Size</td>
-                                                <td>Jenis</td>
-                                                <td>Harga Produk</td>
-                                                <td>Qty</td>
-                                                <td>Subtotal</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                            	</div>
-                            	<div class="col-md-4">
+                                <div class="scroll-transaction">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Kode Produk</th>
+                                                    <th>Nama Produk</th>
+                                                    <th>Harga Produk</th>
+                                                    <th>Quantity</th>
+                                                    <th>Size bisa > 1</th>
+                                                    <th>Subtotal</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="pesanan">
+                                                <?php
+
+                                                for ($i=0; $i<10 ; $i++){ 
+                                                   echo '<tr>
+                                                    <td><input type="text" name="" class="form-control input-sm" placeholder="dummy"></td>
+                                                    <td><input type="text" name="" class="form-control input-sm" placeholder="dummy"></td>
+                                                    <td><input type="text" name="" class="form-control input-sm" placeholder="dummy"></td>
+                                                    <td><input type="text" name="" class="form-control input-sm" placeholder="dummy"></td>
+                                                    <td><input type="text" name="" class="form-control input-sm" placeholder="dummy"></td>
+                                                    <td><input type="text" name="" class="form-control input-sm" placeholder="dummy"></td>
+                                                </tr>';
+                                                }
+                                                
+                                                ?>
+                                            </tbody>
+                                         </table>
+                                    </div>
+                                </div>  
+                            </div>
+                            	<div class="col-md-3 col-sm-3">
                                     <div class="form-group">
-                                        <h3>Data Pembeli</h3>
+                                        <h4>Data Pembeli</h4>
                                     </div>
                             		<div class="form-group">
                                         <label>Nama Pembeli</label>
@@ -68,7 +67,29 @@
                                         <label>Alamat</label>
                                         <textarea class="form-control" name="alamat_pembeli" placeholder="Alamat Lengkap"></textarea>
                                     </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <h4>Admin</h4>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_user');?>">
+                                        <input type="text" name="nama_user" class="form-control" value="<?= $this->session->userdata('nama_user');?>" readonly>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <h4>TOTAL</h4>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="total" class="form-control" placeholder="Total">
+                                    </div>
                             	</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12 col-md-12">
+                                   <div class="form-group">
+                                       <input type="submit" name="submit" value="Simpan Pesanan" class="btn btn-success btn-block mt-3"> 
+                                   </div>
+                                </div>
                             </div>
                         </div>
                     </div>
