@@ -83,7 +83,7 @@ class Admin_model extends CI_Model {
 		return $this->db->select('*')
 						->where('deleted',0)
 						->where('id_produk',$id_produk)
-						->get('ct_detail_produk')
+						->get('ct_detail_produks')
 						->result();
 	}
 

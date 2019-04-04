@@ -119,16 +119,15 @@ class Admin extends CI_Controller {
 
 				if($this->upload->do_upload('img_produk')){
 					$data = $this->upload->data();
-					echo '<pre>';
-					print_r($data);
-					echo '</pre>';
 
 					$insert[$i]['img_produk'] = $data['file_name'];
 				}
 				$insert[$i]['id_produk'] = $this->uri->segment(3);
 			}
+			$this->db->insert_batch('ct_detail_produks', $insert,array('id_produk' => $this->uri->segment(3)));
 
-			$this->db->insert_batch('ct_detail_produk', $insert,array('id_produk' => $this->uri->segment(3)));
+			$this->session->set_flashdata('berhasil', 'Foto berhasil ditambahkan');
+			redirect('admin/tambah_foto_produk/'.$this->uri->segment(3),'refresh');
 		}
 	}
 

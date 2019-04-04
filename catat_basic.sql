@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Apr 2019 pada 08.34
+-- Waktu pembuatan: 04 Apr 2019 pada 11.35
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.2.14
 
@@ -46,15 +46,8 @@ CREATE TABLE `ct_detail_penjualan` (
 --
 -- Struktur dari tabel `ct_detail_produk`
 --
-
-CREATE TABLE `ct_detail_produk` (
-  `id_detail_produk` int(11) NOT NULL,
-  `img_produk` varchar(200) NOT NULL,
-  `id_produk` int(11) NOT NULL,
-  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `deleted` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- Kesalahan membaca struktur untuk tabel catat_basic.ct_detail_produk: #1932 - Table 'catat_basic.ct_detail_produk' doesn't exist in engine
+-- Kesalahan membaca data untuk tabel catat_basic.ct_detail_produk: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `catat_basic`.`ct_detail_produk`' at line 1
 
 -- --------------------------------------------------------
 
@@ -92,13 +85,24 @@ CREATE TABLE `ct_penjualan` (
   `nama_pembeli` varchar(200) NOT NULL,
   `alamat_pembeli` varchar(200) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `bayar` double NOT NULL,
-  `sisa` double NOT NULL,
+  `nomor_telepon` varchar(200) NOT NULL,
+  `status` enum('Belum Terbayar','Lunas') NOT NULL,
   `total` double NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `deleted` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `ct_penjualan`
+--
+
+INSERT INTO `ct_penjualan` (`id_penjualan`, `kode_penjualan`, `tanggal_penjualan`, `nama_pembeli`, `alamat_pembeli`, `id_user`, `nomor_telepon`, `status`, `total`, `created`, `updated`, `deleted`) VALUES
+(1, '12123123', '2019-03-15 00:00:00', 'Amenk', 'Jalan Sakura', 7, '0909090', 'Lunas', 1000000, '2019-04-02 16:34:57', '2019-04-02 20:23:26', 1),
+(2, '12313123', '2019-04-23 00:00:00', 'Asoy', 'sasas', 1, '78907890978', 'Belum Terbayar', 1231231231, '2019-04-02 16:52:24', '2019-04-02 16:52:31', 1),
+(3, '12313123', '2019-04-23 00:00:00', 'Asoy', 'sasas', 1, '78907890978', 'Belum Terbayar', 1231231231, '2019-04-02 16:53:14', '2019-04-02 16:53:49', 1),
+(4, '45546456546', '2019-04-30 00:00:00', 'asri', 'dsadf', 1, '09808908', 'Belum Terbayar', 234, '2019-04-02 16:55:54', '2019-04-02 16:57:21', 1),
+(5, '45546456546', '2019-04-30 00:00:00', 'asri', 'dsadf', 1, '09808908', 'Belum Terbayar', 234, '2019-04-02 16:55:59', '2019-04-02 16:57:01', 1);
 
 -- --------------------------------------------------------
 
@@ -126,11 +130,18 @@ CREATE TABLE `ct_produk` (
 --
 
 INSERT INTO `ct_produk` (`id_produk`, `kode_produk`, `nama_produk`, `size_produk`, `harga_produksi`, `harga_jual`, `id_kategori_produk`, `stok`, `id_user`, `created`, `updated`, `deleted`) VALUES
-(3, 'BSC-00001', 'Basic Beach', '', 75000, 100000, 1, 50, 1, '2019-04-02 11:34:28', '2019-04-02 11:34:28', 0),
-(4, 'BSC-00002', 'Basic Classic', '', 75000, 100000, 1, 80, 1, '2019-04-02 11:53:53', '2019-04-02 11:53:53', 0),
-(5, 'BSC-00003', 'Angel Of Death', '', 75000, 100000, 1, 50, 1, '2019-04-02 11:57:27', '2019-04-02 11:57:27', 0),
-(6, 'BSC-00004', 'Basic Classic', '', 75000, 100000, 1, 19, 1, '2019-04-02 12:43:11', '2019-04-02 12:43:11', 0),
-(7, 'BSC-00005', 'Basic Classic', '', 80000, 24000, 1, 50, 1, '2019-04-02 12:44:30', '2019-04-02 12:44:30', 0);
+(3, 'BSC-00001', 'Basic Beach', '', 75000, 100000, 1, 50, 1, '2019-04-02 11:34:28', '2019-04-02 14:47:28', 1),
+(4, 'BSC-00002', 'Basic Classic', '', 75000, 100000, 1, 80, 1, '2019-04-02 11:53:53', '2019-04-02 14:00:35', 1),
+(5, 'BSC-00003', 'Angel Of Death', '', 75000, 100000, 1, 50, 1, '2019-04-02 11:57:27', '2019-04-02 16:58:07', 1),
+(6, 'BSC-00004', 'Basic Classic', '', 75000, 100000, 1, 19, 1, '2019-04-02 12:43:11', '2019-04-02 13:50:44', 1),
+(7, 'BSC-00005', 'Basic Classic', '', 80000, 24000, 1, 50, 1, '2019-04-02 12:44:30', '2019-04-02 13:48:59', 1),
+(8, 'BSC-00006', 'Hallucination', '', 140000, 190000, 2, 10, 1, '2019-04-02 13:53:12', '2019-04-02 13:53:19', 1),
+(9, 'BSC-00007', 'Jimmi Hendrix', '', 75000, 100000, 1, 10, 1, '2019-04-02 14:00:28', '2019-04-02 15:27:57', 1),
+(10, 'BSC-00008', 'Basic Logo Varsity', '', 75000, 100000, 1, 80, 1, '2019-04-02 14:46:26', '2019-04-02 14:46:31', 1),
+(11, 'BSC-00009', 'High Croco', '', 75000, 100000, 1, 10, 1, '2019-04-02 15:01:35', '2019-04-02 16:55:12', 1),
+(12, 'BSC-00010', 'Basic Classic', '', 75000, 100000, 1, 10, 1, '2019-04-02 15:02:15', '2019-04-02 15:02:20', 1),
+(13, 'BSC-00011', 'Hoodie Basic', '', 75000, 100000, 2, 90, 1, '2019-04-02 16:59:24', '2019-04-02 16:59:27', 1),
+(14, 'BSC-00012', 'Basic Classic', '', 75000, 100000, 1, 100, 1, '2019-04-02 21:14:27', '2019-04-02 21:14:27', 0);
 
 -- --------------------------------------------------------
 
@@ -171,12 +182,6 @@ ALTER TABLE `ct_detail_penjualan`
   ADD KEY `id_penjualan` (`id_penjualan`);
 
 --
--- Indeks untuk tabel `ct_detail_produk`
---
-ALTER TABLE `ct_detail_produk`
-  ADD PRIMARY KEY (`id_detail_produk`);
-
---
 -- Indeks untuk tabel `ct_kategori_produk`
 --
 ALTER TABLE `ct_kategori_produk`
@@ -215,12 +220,6 @@ ALTER TABLE `ct_detail_penjualan`
   MODIFY `id_detail_penjualan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `ct_detail_produk`
---
-ALTER TABLE `ct_detail_produk`
-  MODIFY `id_detail_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
 -- AUTO_INCREMENT untuk tabel `ct_kategori_produk`
 --
 ALTER TABLE `ct_kategori_produk`
@@ -230,13 +229,13 @@ ALTER TABLE `ct_kategori_produk`
 -- AUTO_INCREMENT untuk tabel `ct_penjualan`
 --
 ALTER TABLE `ct_penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_produk`
 --
 ALTER TABLE `ct_produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_user`
@@ -253,12 +252,6 @@ ALTER TABLE `ct_user`
 --
 ALTER TABLE `ct_detail_penjualan`
   ADD CONSTRAINT `ct_detail_penjualan_ibfk_1` FOREIGN KEY (`id_penjualan`) REFERENCES `ct_penjualan` (`id_penjualan`);
-
---
--- Ketidakleluasaan untuk tabel `ct_detail_produk`
---
-ALTER TABLE `ct_detail_produk`
-  ADD CONSTRAINT `ct_detail_produk_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `ct_produk` (`id_produk`);
 
 --
 -- Ketidakleluasaan untuk tabel `ct_kategori_produk`

@@ -1,4 +1,12 @@
 <?php $this->load->view('data/head');?>
+<style type="text/css">
+	.img-border{
+		border: thin solid lightgrey;
+		padding: 10px;
+		margin: 0px auto;
+		display: block;
+	}
+</style>
 	<div class="main-panel">
         <div class="content-wrapper">
         	<div class="row">
@@ -21,13 +29,20 @@
                         <hr>
 	                        <div class="row">
 	                        	<div class="col-md-12 col-sm-12">
+	                        		<?php
+	                        			$berhasil = $this->session->flashdata('berhasil');
+
+	                        			if(!empty($berhasil)){
+	                        				echo '<div class="alert alert-success"><i class="mdi mdi-check-circle"></i>'.$berhasil.'</div>';
+	                        			} 
+	                        		?>
 	                        		<form method="post" action="<?= base_url();?>admin/img_upload/<?= $this->uri->segment(3);?>" enctype="multipart/form-data">
 	                        			<div class="form-group">
 	                        				<label>Upload File : <span class="text-danger">*Dapat lebih dari 1 foto</span></label>
 	                        				<input type="file" name="img_produk[]" multiple="" class="form-control" id="img_produk">
 	                        			</div>
 										<div class="form-group">
-											<input type="submit" name="submit" value="upload file" class="btn btn-success" value="Tambahkan Gambar">
+											<input type="submit" name="submit" class="btn btn-success" value="Tambahkan Gambar">
 										</div>
 									</form>
 	                        	</div>
@@ -40,8 +55,8 @@
 	                        			<?php
 	                        			if(!empty($cek_foto)){
 	                        				foreach ($cek_foto as $data) {
-	                        					echo'<div class="col-md-4 col-sm-4">
-	                        							<img src="'.base_url().'uploads/'.$data->img_produk.'" class="img-responsive">
+	                        					echo'<div class="col-md-4 col-sm-4 img-border">
+	                        							<img src="'.base_url().'uploads/'.$data->img_produk.'" style="width:100px;height:100px">
 	                        						</div>';
 	                        				}
 	                        			}else{
