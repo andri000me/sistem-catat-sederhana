@@ -33,6 +33,32 @@
     .form-control{
       border-color: lightgrey;
     }
+    .form-barang{
+      border: none;
+      padding: 10px;
+      width: 100%;
+      font-size: 12px;
+      background-color: transparent;
+    }
+    #autoSuggestionsList > li {
+      background: none repeat scroll 0 0 #F3F3F3;
+      border-bottom: thin solid lightgrey; 
+      list-style: none outside none;
+      padding: 10px 15px 10px 15px;
+      text-align: left;
+      font-size: 12px;
+    }
+    #autoSuggestionsList > li:hover {
+      background: none repeat scroll 0 0 lightgrey;
+      color: black;
+     }
+    .auto_list {
+      border: 1px solid #E3E3E3;
+      /* border-radius: 5px 5px 5px 5px; */
+      position: absolute;
+      z-index: 1;
+      width: 96.5%;
+    }
   </style>
 </head>
 
@@ -229,8 +255,8 @@
                   </div>
                 </div>
               </div>
-              <a href="<?= base_url();?>admin/penjualan" class="btn btn-success btn-block">New Penjualan
-                <i class="mdi mdi-plus"></i>
+              <a href="<?= base_url();?>admin/penjualan" class="btn btn-success btn-block"><i class="mdi mdi-plus-box"></i> Add Penjualan
+                
               </a>
             </div>
           </li>

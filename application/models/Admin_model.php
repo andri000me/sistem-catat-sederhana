@@ -107,6 +107,15 @@ class Admin_model extends CI_Model {
 		return $this->db->update('ct_penjualan',array('deleted'=>'1'),array('id_penjualan'=>$id_penjualan));
 	}
 
+	public function scan_data($scan_data)
+	{
+				$this->db->select('*');
+				$this->db->like('nama_produk',$scan_data);
+				$this->db->or_like('kode_produk',$scan_data);
+				$this->db->where('deleted',0);
+		return 	$this->db->get('ct_produk')->result();
+	}
+
 }
 
 /* End of file Admin_model.php */

@@ -33,7 +33,33 @@
                                     </tr>
                                 </thead>
                                 <tbody id="data_produk">
-                                    
+                                    <?php
+                                        foreach ($produk as $data) {
+                                           echo '<tr>
+                                                <td>'.$data->kode_produk.'</td>
+                                                <td>'.$data->nama_produk.'</td>
+                                                <td>'.$data->nama_kategori_produk.'</td>
+                                                <td>'.$data->harga_produksi.'</td>
+                                                <td>'.$data->harga_jual.'</td>
+                                                <td>'.$data->stok.'</td>
+                                                <td>
+                                                  <div class="row">
+                                                     <div class="col-md-3 col-sm-3">
+                                                          <div class="dropdown show">
+                                                              <a class="btn btn-primary dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                                    <a class="dropdown-item" href="'.base_url().'admin/tambah_foto_produk/'.$data->id_produk.'">Tambah Foto Produk</a>
+                                                                <a class="dropdown-item" href="#">Detail Produk</a>
+                                                                <a class="dropdown-item" href="#">Edit produk</a>
+                                                                <a class="dropdown-item text-danger" href="#" onclick="delete_produk('.$data->id_produk.')">Delete</a>
+                                                              </div>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>';
+                                        }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>

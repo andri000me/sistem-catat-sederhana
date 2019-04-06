@@ -200,6 +200,7 @@ class Admin extends CI_Controller {
 	{
 		if($this->session->userdata('logged')){
 			$data['title'] = 'Data Penjualan';
+			$data['penjualan'] = $this->Admin_model->get_penjualan();
 			$this->load->view('data/data_penjualan', $data);
 		}
 	}
@@ -213,6 +214,36 @@ class Admin extends CI_Controller {
 			}else{
 				return false;
 			}
+		}
+	}
+
+	public function scan_data()
+	{
+		if($this->session->userdata('logged')){
+			$scan_data = $this->input->post('search_data');
+
+				$result = $this->Admin_model->scan_data($scan_data);
+
+					if(!empty($result)){
+						foreach ($result as $row) {
+							echo '<li>
+					               <a class="list" style="display:block;cursor:pointer" data-produk-id="'.$row->id_produk.'" data-produkkode="'.$row->kode_produk.'" data-produknama="'.$row->nama_produk.'" data-produkharga="'.$row->harga_jual.'" onclick="add_barang(this);">
+								        <div class="row">
+									         <div class="col-sm-6">
+									               ' . $row->nama_produk. '
+									                </div>
+									                <div class="col-sm-6">
+								                		
+							                		</div>
+						                		</div>
+					                		</a>
+					                	</li>';
+						}
+					}else{
+						echo '<li>Produk tidak ditemukan</li>';
+					}
+		}else{
+			redirect('admin','refresh');
 		}
 	}
 

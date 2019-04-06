@@ -27,10 +27,7 @@
   <!-- inject:js -->
   <script src="<?php echo base_url();?>assets/js/off-canvas.js"></script>
   <script src="<?php echo base_url();?>assets/js/misc.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
   <script src="<?php echo base_url();?>assets/js/dashboard.js"></script>
-  <!-- End custom js for this page-->
   <script type="text/javascript">
     var day = "<?php date_default_timezone_set("Asia/Jakarta"); echo date('l');?>";
     var date= "<?php date_default_timezone_set("Asia/Jakarta"); echo date('d F Y');?>";
@@ -169,12 +166,6 @@
           stat = '';
           var i = 0;
           for(i=0; i<data.length; i++){
-            if(data[i].status == "Lunas"){
-              stat+='<div class="btn btn-success">'+data[i].status+'</div>';
-            }else{
-              stat+='<div class="btn btn-danger">'+data[i].status+'</div>';
-            }
-
              html += '<tr>'+
                         '<td>'+data[i].kode_penjualan+'</td>'+
                         '<td>'+data[i].tanggal_penjualan+'</td>'+
@@ -182,7 +173,6 @@
                         '<td>'+data[i].alamat_pembeli+'</td>'+
                         '<td>'+data[i].nomor_telepon+'</td>'+
                         '<td>'+data[i].total+'</td>'+
-                        '<td>'+stat+'</td>'+
                         '<td>'+
                           '<div class="row">'+
                               '<div class="col-md-3 col-sm-3">'+
@@ -227,6 +217,30 @@
           });},2000);
         }
       });
+    }
+
+    function scan_data() {
+      var input = $("#search_data").val();
+      if(input.length === 0){
+        $("#suggestions").hide();
+      }else{
+        var post_data = {
+          'search_data': input,
+          '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+        };
+        $.ajax({
+          type:"POST",
+          url : "<?php echo base_url();?>admin/scan_data",
+          data : post_data,
+          success:function(data){
+            if(data.length > 0){
+              $("#suggestions").show();
+              $("#autoSuggestionsList").addClass('auto_list');
+              $("#autoSuggestionsList").html(data);
+            }
+          }
+        })
+      }
     }
 
   </script>

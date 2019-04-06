@@ -5,18 +5,28 @@
         		<div class="col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
         			<div class="card card-statistics">
                         <div class="card-body">
-                            <h2><?= $title;?></h2>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <h2><?= $title;?></h2>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <a href="<?= base_url();?>admin/penjualan" class="btn btn-danger text-white float-right"><i class="mdi mdi-arrow-left-bold-circle"></i> Kembali</a>
+                                </div>
+                            </div>
+                            
                                 <hr>
                             <div class="row">
                             	<div class="col-md-9 col-sm-9 verticalLine">
 		                            <div class="form-group">
-		                            	<div class="input-group mb-3">
-										  <div class="input-group-prepend">
-										    <span class="input-group-text" id="basic-addon1"><i class="mdi mdi-file-find"></i></span>
-										  </div>
-										  <input type="text" class="form-control" id="search_data" placeholder="Search produk ..." aria-label="Search" aria-describedby="basic-addon1">
-										</div>
-		                            </div>
+		                            	<div class="form-group has-feedback has-search">
+                                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                          <input name="search_data" class="form-control" id="search_data" placeholder="Search / Scan Produk" type="text" onkeyup="scan_data();">
+                                                <div id="suggestions">
+                                                    <div id="autoSuggestionsList">
+                                                    </div>
+                                                </div>
+                                            </div>
+    		                            </div>
                                     <hr>
                                 <div class="scroll-transaction">
                                     <div class="table-responsive">
@@ -36,12 +46,12 @@
 
                                                 for ($i=0; $i<10 ; $i++){ 
                                                    echo '<tr>
-                                                    <td><input type="text" name="" class="form-control input-sm" placeholder="dummy"></td>
-                                                    <td><input type="text" name="" class="form-control input-sm" placeholder="dummy"></td>
-                                                    <td><input type="text" name="" class="form-control input-sm" placeholder="dummy"></td>
-                                                    <td><input type="text" name="" class="form-control input-sm" placeholder="dummy"></td>
-                                                    <td><input type="text" name="" class="form-control input-sm" placeholder="dummy"></td>
-                                                    <td><input type="text" name="" class="form-control input-sm" placeholder="dummy"></td>
+                                                    <td><input type="text" name="" class="form-barang" placeholder="dummy"></td>
+                                                    <td><input type="text" name="" class="form-barang" placeholder="dummy"></td>
+                                                    <td><input type="text" name="" class="form-barang" placeholder="dummy"></td>
+                                                    <td><input type="text" name="" class="form-control" placeholder="dummy"></td>
+                                                    <td><input type="text" name="" class="form-control" placeholder="dummy"></td>
+                                                    <td><input type="text" name="" class="form-barang" placeholder="dummy"></td>
                                                 </tr>';
                                                 }
                                                 
@@ -87,7 +97,7 @@
                             <div class="row">
                                 <div class="col-lg-12 col-sm-12 col-md-12">
                                    <div class="form-group">
-                                       <input type="submit" name="submit" value="Simpan Pesanan" class="btn btn-success btn-block mt-3"> 
+                                       <input type="submit" name="submit" value="Simpan Pesanan" class="btn btn-success btn-block btn-lg mt-3"> 
                                    </div>
                                 </div>
                             </div>
