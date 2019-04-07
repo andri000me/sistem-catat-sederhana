@@ -9,7 +9,7 @@
                                 <hr>
                                     <div class="row">
                                         <div class="col-md-6 col-sm-12">
-                                            <a href="<?= base_url();?>admin/penjualan" class="btn btn-success"><i class="mdi mdi-plus-box"></i> Add Penjualan</a>
+                                            <a href="<?= base_url();?>admin/penjualan" class="btn btn-success"><i class="mdi mdi-plus-box"></i> Add Pesanan</a>
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <a href="#" class="btn btn-info float-right"><i class="mdi mdi-printer"></i> Print</a>
@@ -23,8 +23,8 @@
                             <table id="tableData" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Nomor Penjualan</th>
-                                        <th>Tanggal Penjualan</th>
+                                        <th>Nomor Pesanan</th>
+                                        <th>Tanggal Pesanan</th>
                                         <th>Pembeli</th>
                                         <th>Alamat</th>
                                         <th>Nomor Telepon</th>

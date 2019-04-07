@@ -22,6 +22,18 @@ class Transaction extends CI_Controller {
 		}
 	}
 
+	public function add_pesanan()
+	{
+		if($this->session->userdata('logged')){
+			$data = $this->Admin_model->add_pesanan();
+			if($data){
+				echo json_encode($data);
+			}else{
+				return FALSE;
+			}
+		}
+	}
+
 }
 
 /* End of file Transaction.php */

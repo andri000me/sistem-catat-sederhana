@@ -116,6 +116,78 @@ class Admin_model extends CI_Model {
 		return 	$this->db->get('ct_produk')->result();
 	}
 
+	public function kode_penjualan()
+	{
+		$this->db->select('RIGHT(ct_penjualan.kode_penjualan,5) as kode_penjualan', FALSE);
+        $this->db->order_by('kode_penjualan','DESC');    
+        $this->db->limit(1);    
+        $query = $this->db->get('ct_penjualan');   
+        if($query->num_rows() <> 0){      
+   
+               $data = $query->row();      
+               $kode = intval($data->kode_penjualan) + 1; 
+          }
+          else{      
+               $kode = 1;
+          } 
+              $kode_penjualan_max = str_pad($kode, 5, "0", STR_PAD_LEFT);    
+              $kode_tampil = "BSC-".$kode_penjualan_max;
+              return $kode_tampil;
+	}
+
+	public function add_pesanan()
+	{
+		$kode_penjualan = $this->kode_penjualan();
+		$nama_pembeli = $this->input->post('nama_pembeli');
+		$nomor_telepon = $this->input->post('nomor_telepon');
+		$alamat_pembeli = $this->input->post('alamat_pembeli');
+		$total  = $this->input->post('total');
+
+		$data = array(
+			'kode_penjualan' => $kode_penjualan,
+			'tanggal_penjualan' => date('Y-m-d H:i:s'),
+			'nama_pembeli' => $nama_pembeli,
+			'alamat_pembeli' => $alamat_pembeli,
+			'id_user' => $this->session->userdata('id_user'),
+			'nomor_telepon' => $nomor_telepon,
+			'status' => 'Belum Terbayar',
+			'total' => $total
+		);
+
+		$this->db->insert('ct_penjualan',$data);
+		$id = $this->db->insert_id();
+
+		$detail = array();
+		$id_produk = $this->input->post('id_produk');
+		$kode_produk = $this->input->post('kode_produk');
+		$nama_produk = $this->input->post('nama_produk');
+		$harga_produk = $this->input->post('harga_produk');
+		$quantity = $this->input->post('quantity');
+		$size = $this->input->post('size');
+		$subtotal = $this->input->post('subtotal');
+
+		foreach ($id_produk as $i => $item) {
+			$detail[] = array(
+				'id_produk' => $id_produk[$i],
+				'kode_produk'=> $kode_produk[$i],
+				'nama_produk' => $nama_produk[$i],
+				'harga_produk' => $harga_produk[$i],
+				'quantity' => $quantity[$i],
+				'size' => $size[$i],
+				'subtotal' => $subtotal[$i],
+				'id_penjualan' => $id
+			);
+		}
+
+		$this->db->insert_batch('ct_detail_penjualan', $detail, $id);
+
+		if($this->db->affected_rows()>0){
+			return TRUE;
+		}else{
+			return FALSE;
+		}
+	}
+
 }
 
 /* End of file Admin_model.php */

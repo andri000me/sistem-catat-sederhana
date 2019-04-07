@@ -20,7 +20,6 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
-
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
@@ -218,31 +217,6 @@
         }
       });
     }
-
-    function scan_data() {
-      var input = $("#search_data").val();
-      if(input.length === 0){
-        $("#suggestions").hide();
-      }else{
-        var post_data = {
-          'search_data': input,
-          '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
-        };
-        $.ajax({
-          type:"POST",
-          url : "<?php echo base_url();?>admin/scan_data",
-          data : post_data,
-          success:function(data){
-            if(data.length > 0){
-              $("#suggestions").show();
-              $("#autoSuggestionsList").addClass('auto_list');
-              $("#autoSuggestionsList").html(data);
-            }
-          }
-        })
-      }
-    }
-
   </script>
 </body>
 

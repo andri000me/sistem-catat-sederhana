@@ -227,20 +227,20 @@ class Admin extends CI_Controller {
 					if(!empty($result)){
 						foreach ($result as $row) {
 							echo '<li>
-					               <a class="list" style="display:block;cursor:pointer" data-produk-id="'.$row->id_produk.'" data-produkkode="'.$row->kode_produk.'" data-produknama="'.$row->nama_produk.'" data-produkharga="'.$row->harga_jual.'" onclick="add_barang(this);">
+					               <a class="list" style="display:block;cursor:pointer" data-produkid="'.$row->id_produk.'" data-produkkode="'.$row->kode_produk.'" data-produknama="'.$row->nama_produk.'" data-produkharga="'.$row->harga_jual.'" onclick="add_barang(this);">
 								        <div class="row">
-									         <div class="col-sm-6">
+									        <div class="col-sm-6">
 									               ' . $row->nama_produk. '
-									                </div>
-									                <div class="col-sm-6">
+									        </div>
+									        <div class="col-sm-6">
 								                		
-							                		</div>
-						                		</div>
-					                		</a>
-					                	</li>';
+							                </div>
+						                </div>
+					                </a>
+					            </li>';
 						}
 					}else{
-						echo '<li>Produk tidak ditemukan</li>';
+						echo '<li><i class="mdi mdi-close-circle text-danger"></i> Produk tidak ditemukan </li>';
 					}
 		}else{
 			redirect('admin','refresh');

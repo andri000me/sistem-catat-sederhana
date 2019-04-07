@@ -16,6 +16,9 @@
   <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> -->
   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+  <script type="text/javascript">
+    var base_url = "<?php echo base_url();?>";
+  </script>
   <style type="text/css">
     #black{
       background: black;
@@ -58,6 +61,9 @@
       position: absolute;
       z-index: 1;
       width: 96.5%;
+    }
+    .table td, .table th{
+      padding: 10px;
     }
   </style>
 </head>
@@ -255,7 +261,7 @@
                   </div>
                 </div>
               </div>
-              <a href="<?= base_url();?>admin/penjualan" class="btn btn-success btn-block"><i class="mdi mdi-plus-box"></i> Add Penjualan
+              <a href="<?= base_url();?>admin/penjualan" class="btn btn-success btn-block"><i class="mdi mdi-plus-box"></i> Add Pesanan
                 
               </a>
             </div>
@@ -278,7 +284,7 @@
                   <a class="nav-link" href="<?php echo base_url('admin/data_produk');?>">Data Produk</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('admin/data_penjualan');?>"> Data Penjualan </a>
+                  <a class="nav-link" href="<?php echo base_url('admin/data_penjualan');?>"> Data Pesanan</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="pages/samples/register.html"> Omset User </a>

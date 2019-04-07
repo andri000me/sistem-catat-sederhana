@@ -4,17 +4,17 @@
         	<div class="row">
         		<div class="col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
         			<div class="card card-statistics">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <h2><?= $title;?></h2>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+                                        <h2><?= $title;?></h2>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6">
+                                        <a href="<?php echo base_url();?>admin/data_penjualan" class="btn btn-danger text-white float-right"><i class="mdi mdi-arrow-left-bold-circle"></i> Kembali</a>
+                                    </div>
                                 </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <a href="<?= base_url();?>admin/penjualan" class="btn btn-danger text-white float-right"><i class="mdi mdi-arrow-left-bold-circle"></i> Kembali</a>
-                                </div>
-                            </div>
-                            
-                                <hr>
+                            <hr>
+                        <form method="post">
                             <div class="row">
                             	<div class="col-md-9 col-sm-9 verticalLine">
 		                            <div class="form-group">
@@ -39,23 +39,11 @@
                                                     <th>Quantity</th>
                                                     <th>Size bisa > 1</th>
                                                     <th>Subtotal</th>
+                                                    <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="pesanan">
-                                                <?php
-
-                                                for ($i=0; $i<10 ; $i++){ 
-                                                   echo '<tr>
-                                                    <td><input type="text" name="" class="form-barang" placeholder="dummy"></td>
-                                                    <td><input type="text" name="" class="form-barang" placeholder="dummy"></td>
-                                                    <td><input type="text" name="" class="form-barang" placeholder="dummy"></td>
-                                                    <td><input type="text" name="" class="form-control" placeholder="dummy"></td>
-                                                    <td><input type="text" name="" class="form-control" placeholder="dummy"></td>
-                                                    <td><input type="text" name="" class="form-barang" placeholder="dummy"></td>
-                                                </tr>';
-                                                }
-                                                
-                                                ?>
+                                    
                                             </tbody>
                                          </table>
                                     </div>
@@ -67,22 +55,21 @@
                                     </div>
                             		<div class="form-group">
                                         <label>Nama Pembeli</label>
-                                        <input type="text" name="nama_pembeli" class="form-control" placeholder="Nama Pembeli">
+                                        <input type="text" name="nama_pembeli" id="nama_pembeli" class="form-control" placeholder="Nama Pembeli">
                                     </div>
                                     <div class="form-group">
                                         <label>No.Telepon</label>
-                                        <input type="text" name="nomor_telepon" class="form-control" placeholder="Nomor Telepon">
+                                        <input type="text" name="nomor_telepon" id="nomor_telepon" class="form-control" placeholder="Nomor Telepon">
                                     </div>
                                     <div class="form-group">
                                         <label>Alamat</label>
-                                        <textarea class="form-control" name="alamat_pembeli" placeholder="Alamat Lengkap"></textarea>
+                                        <textarea class="form-control" name="alamat_pembeli" id="alamat_pembeli" placeholder="Alamat Lengkap"></textarea>
                                     </div>
                                     <hr>
                                     <div class="form-group">
                                         <h4>Admin</h4>
                                     </div>
                                     <div class="form-group">
-                                        <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_user');?>">
                                         <input type="text" name="nama_user" class="form-control" value="<?= $this->session->userdata('nama_user');?>" readonly>
                                     </div>
                                     <hr>
@@ -90,20 +77,22 @@
                                         <h4>TOTAL</h4>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="total" class="form-control" placeholder="Total">
+                                        <input type="text" name="total" class="form-control" placeholder="Total" id="total">
                                     </div>
                             	</div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-sm-12 col-md-12">
                                    <div class="form-group">
-                                       <input type="submit" name="submit" value="Simpan Pesanan" class="btn btn-success btn-block btn-lg mt-3"> 
+                                       <input type="submit" name="submit" value="Simpan Pesanan" id="btnSimpanPesanan" class="btn btn-success btn-block btn-lg mt-3"> 
                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
-        		</div>
+                </div>
         	</div>
         </div>
+    </div>
 <?php $this->load->view('data/foot'); ?>
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/transaksi.js"></script>
