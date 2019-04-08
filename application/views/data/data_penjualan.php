@@ -27,7 +27,6 @@
                                                 <th>Nomor Pesanan</th>
                                                 <th>Tanggal Pesanan</th>
                                                 <th>Pembeli</th>
-                                                <th>Alamat</th>
                                                 <th>Nomor Telepon</th>
                                                 <th>Ongkos Kirim</th>
                                                 <th>Total</th>
@@ -41,15 +40,14 @@
                                                             <td>'.$data->kode_penjualan.'</td>
                                                             <td>'.$data->tanggal_penjualan.'</td>
                                                             <td>'.$data->nama_pembeli.'</td>
-                                                            <td>'.$data->alamat_pembeli.'</td>
                                                             <td>'.$data->nomor_telepon.'</td>
-                                                            <td>'.$data->ongkos_kirim.'</td>
-                                                            <td>'.$data->total.'</td>
+                                                            <td>Rp '.number_format($data->ongkos_kirim).'</td>
+                                                            <td>Rp '.number_format($data->total).'</td>
                                                             <td>
                                                                 <div class="row">
                                                                     <div class="col-md-3 col-sm-3">
                                                                         <div class="dropdown show">
-                                                                            <a class="btn btn-primary dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>
+                                                                            <a class="btn btn-primary btn-sm dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>
                                                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                                                 <a class="dropdown-item" href="'.base_url().'admin/cetak_nota/'.$data->id_penjualan.'">Cetak Nota</a>
                                                                                 <a class="dropdown-item" href="#">Detail Penjualan</a>

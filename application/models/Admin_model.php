@@ -219,12 +219,14 @@ class Admin_model extends CI_Model {
 		  echo "cURL Error #:" . $err;
 		} else {
 		  $hasil = json_decode($response,true);
+		  
+		  //Get Ongkir
 		  $ongkir = $hasil['rajaongkir']['results'][0]['costs'][1]['cost'][0]['value'];
 		  $this->db->update('ct_penjualan', array('ongkos_kirim' => $ongkir),array('id_penjualan'=>$id_penjualan));
 
+		  //Generate Total Harga dengan Ongkir
 		  $get_total = $this->db->query("SELECT total FROM ct_penjualan WHERE id_penjualan=$id_penjualan")->row();
 		  $total = $get_total->total;
-
 		  $new_total  = $total + $ongkir;
 		  $this->db->update('ct_penjualan', array('total' => $new_total),array('id_penjualan'=>$id_penjualan));
 		}

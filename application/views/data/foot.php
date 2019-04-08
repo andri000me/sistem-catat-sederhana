@@ -137,7 +137,7 @@
                           '<div class="row">'+
                               '<div class="col-md-3 col-sm-3">'+
                                   '<div class="dropdown show">'+
-                                      '<a class="btn btn-primary dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>'+
+                                      '<a class="btn btn-primary btn-sm dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>'+
                                         '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">'+
                                             '<a class="dropdown-item" href="'+base_url+'admin/tambah_foto_produk/'+data[i].id_produk+'">Tambah Foto Produk</a>'+
                                         '<a class="dropdown-item" href="#">Detail Produk</a>'+
@@ -169,7 +169,6 @@
                         '<td>'+data[i].kode_penjualan+'</td>'+
                         '<td>'+data[i].tanggal_penjualan+'</td>'+
                         '<td>'+data[i].nama_pembeli+'</td>'+
-                        '<td>'+data[i].alamat_pembeli+'</td>'+
                         '<td>'+data[i].nomor_telepon+'</td>'+
                         '<td>Rp '+data[i].ongkos_kirim.toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")+'</td>'+
                         '<td>Rp '+data[i].total.toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")+'</td>'+
@@ -177,7 +176,7 @@
                           '<div class="row">'+
                               '<div class="col-md-3 col-sm-3">'+
                                   '<div class="dropdown show">'+
-                                      '<a class="btn btn-primary dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>'+
+                                      '<a class="btn btn-primary btn-sm dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>'+
                                         '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">'+
                                         '<a class="dropdown-item" href="'+base_url+'admin/cetak_nota/'+data[i].id_penjualan+'">Cetak Nota</a>'+
                                         '<a class="dropdown-item" href="#">Detail Penjualan</a>'+

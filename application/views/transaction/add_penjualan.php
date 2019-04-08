@@ -30,7 +30,7 @@
                                     <hr>
                                 <div class="scroll-transaction">
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-bordered">
+                                        <table class="table table-striped table-bordered" id="myTable">
                                             <thead>
                                                 <tr>
                                                     <th>Kode Produk</th>

@@ -37,8 +37,8 @@ function scan_data(){
             '<td><input type="hidden" name="id_produk['+i+']" value="'+produk_id+'"><input type="text" name="kode_produk['+i+']" value="'+produk_kode+'" class="form-barang">'+
             '</td>'+
             '<td><input type="text" name="nama_produk['+i+']" value="'+produk_nama+'" class="form-barang"></td>'+
-            '<td><input type="text" name="harga_produk['+i+']" value="'+produk_harga+'" class="form-barang"></td>'+
-            '<td><input type="number" name="quantity['+i+']" value="'+quantity+'" id="qty'+produk_id+'" class="form-control"></td>'+
+            '<td><input type="text" name="harga_produk['+i+']" value="'+produk_harga+'" class="form-barang harga_produk"></td>'+
+            '<td><input type="number" name="quantity['+i+']" value="'+quantity+'" id="qty'+produk_id+'" class="form-control quantity" onkeyup="update_qty();"></td>'+
             '<td><input type="text" name="size['+i+']" value="" class="form-control" placeholder="Isikan Size"></td>'+
             '<td><input type="text" name="subtotal['+i+']" value="'+subtotal+'" id="sub'+produk_id+'" class="form-barang subtotal"></td>'+
             '<td><a href="javascript:void(0)" class="btn btn-danger" onclick="hapus_row(this)"><i class="mdi mdi-delete"></i></a></td>'+
@@ -107,3 +107,24 @@ function scan_data(){
           });
         }
     });
+
+    function update_qty() {
+      total();
+      quantity();
+      $(".quantity").keyup(function(){
+          quantity();
+          total();
+      });
+    }
+
+    function quantity() {
+      var sum = 0;
+          $('#myTable > tbody  > tr').each(function() {
+              var id = $(this).find('.id').val();
+              var qty = $(this).find('.quantity').val();
+              var price = $(this).find('.harga_produk').val();
+              var amount = (qty*price)
+              sum+=amount;
+              $(this).find('.subtotal').val(amount);
+          });
+    }
