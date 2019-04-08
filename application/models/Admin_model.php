@@ -141,6 +141,7 @@ class Admin_model extends CI_Model {
 		$nama_pembeli = $this->input->post('nama_pembeli');
 		$nomor_telepon = $this->input->post('nomor_telepon');
 		$alamat_pembeli = $this->input->post('alamat_pembeli');
+		$kota_tujuan = $this->input->post('kota_tujuan');
 		$total  = $this->input->post('total');
 
 		$data = array(
@@ -150,6 +151,7 @@ class Admin_model extends CI_Model {
 			'alamat_pembeli' => $alamat_pembeli,
 			'id_user' => $this->session->userdata('id_user'),
 			'nomor_telepon' => $nomor_telepon,
+			'kota_tujuan' => $kota_tujuan,
 			'status' => 'Belum Terbayar',
 			'total' => $total
 		);
@@ -181,11 +183,46 @@ class Admin_model extends CI_Model {
 
 		$this->db->insert_batch('ct_detail_penjualan', $detail, $id);
 
+		$this->get_cost($id,$kota_tujuan);
+
 		if($this->db->affected_rows()>0){
 			return TRUE;
 		}else{
 			return FALSE;
 		}
+	}
+
+	public function get_cost($id_penjualan,$kota_tujuan)
+	{
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+		  CURLOPT_URL => "https://api.rajaongkir.com/starter/cost",
+		  CURLOPT_RETURNTRANSFER => true,
+		  CURLOPT_ENCODING => "",
+		  CURLOPT_MAXREDIRS => 10,
+		  CURLOPT_TIMEOUT => 30,
+		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		  CURLOPT_CUSTOMREQUEST => "POST",
+		  CURLOPT_POSTFIELDS => "origin=444&destination=$kota_tujuan&weight=1000&courier=jne",
+		  CURLOPT_HTTPHEADER => array(
+		  	"content-type: application/x-www-form-urlencoded",
+		    "key:3275a8000010695a45f9ea333d0145f9"
+		  ),
+		));
+
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+
+		curl_close($curl);
+
+		if ($err) {
+		  echo "cURL Error #:" . $err;
+		} else {
+		  $hasil = json_decode($response,true);
+		  $ongkir = $hasil['rajaongkir']['results'][0]['costs'][1]['cost'][0]['value'];
+		  $this->db->update('ct_penjualan', array('ongkos_kirim' => $ongkir),array('id_penjualan'=>$id_penjualan));
+		}
+
 	}
 
 }

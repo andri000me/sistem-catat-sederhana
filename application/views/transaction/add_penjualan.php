@@ -65,6 +65,17 @@
                                         <label>Alamat</label>
                                         <textarea class="form-control" name="alamat_pembeli" id="alamat_pembeli" placeholder="Alamat Lengkap"></textarea>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Kota/Kabupaten</label>
+                                        <select name="kota_tujuan" class="form-control">
+                                            <option value=""> - Kota / Kabupaten -</option>
+                                            <?php
+                                                foreach ($city['rajaongkir']['results'] as $data) {
+                                                    echo '<option value="'.$data['city_id'].'">'.$data['city_name'].'</div>';
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
                                     <hr>
                                     <div class="form-group">
                                         <h4>Admin</h4>

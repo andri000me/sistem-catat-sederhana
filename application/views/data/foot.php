@@ -171,7 +171,8 @@
                         '<td>'+data[i].nama_pembeli+'</td>'+
                         '<td>'+data[i].alamat_pembeli+'</td>'+
                         '<td>'+data[i].nomor_telepon+'</td>'+
-                        '<td>'+data[i].total+'</td>'+
+                        '<td>Rp '+data[i].ongkos_kirim.toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")+'</td>'+
+                        '<td>Rp '+data[i].total.toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")+'</td>'+
                         '<td>'+
                           '<div class="row">'+
                               '<div class="col-md-3 col-sm-3">'+
