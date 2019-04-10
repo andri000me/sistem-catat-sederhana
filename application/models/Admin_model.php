@@ -131,7 +131,7 @@ class Admin_model extends CI_Model {
                $kode = 1;
           } 
               $kode_penjualan_max = str_pad($kode, 5, "0", STR_PAD_LEFT);    
-              $kode_tampil = "BSC-".$kode_penjualan_max;
+              $kode_tampil = "PJ-".$kode_penjualan_max;
               return $kode_tampil;
 	}
 
@@ -231,6 +231,24 @@ class Admin_model extends CI_Model {
 		  $this->db->update('ct_penjualan', array('total' => $new_total),array('id_penjualan'=>$id_penjualan));
 		}
 
+	}
+
+	public function detail_penjualan($id_penjualan)
+	{
+		return $this->db->select('ct_penjualan.*,ct_user.nama_user')
+						->from('ct_penjualan')
+						->join('ct_user','ct_user.id_user=ct_penjualan.id_user')
+						->where('ct_penjualan.id_penjualan',$id_penjualan)
+						->get()
+						->row();
+	}
+
+	public function detail_produk_penjualan($id_penjualan)
+	{
+		return $this->db->select('*')
+						->where('id_penjualan',$id_penjualan)
+						->get('ct_detail_penjualan')
+						->result();
 	}
 
 }

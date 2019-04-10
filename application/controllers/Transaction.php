@@ -34,6 +34,20 @@ class Transaction extends CI_Controller {
 		}
 	}
 
+	public function detail_penjualan($id_penjualan)
+	{
+		if($this->session->userdata('logged')){
+			$query = $this->Admin_model->detail_penjualan($id_penjualan);
+			$nomor_penjualan = $query->kode_penjualan;
+			$data['title'] = 'Detail Penjualan '.$nomor_penjualan;
+			$data['detail'] = $this->Admin_model->detail_penjualan($id_penjualan);
+			$data['detail_produk'] = $this->Admin_model->detail_produk_penjualan($id_penjualan);
+			$this->load->view('transaction/detail_penjualan', $data);
+		}else{
+			redirect('admin','refresh');
+		}
+	}
+
 }
 
 /* End of file Transaction.php */

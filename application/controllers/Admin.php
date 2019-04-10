@@ -276,6 +276,23 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function cetak_nota($id_penjualan)
+	{
+		$query = $this->Admin_model->detail_penjualan($id_penjualan);
+		$nomor_penjualan = $query->kode_penjualan;
+		$data['title'] = 'Detail pesanan - '.$nomor_penjualan;
+		$data['detail'] = $this->Admin_model->detail_penjualan($id_penjualan);
+		$data['detail_produk'] = $this->Admin_model->detail_produk_penjualan($id_penjualan);
+		$this->load->view('transaction/cetak_nota',$data);
+		$html = $this->output->get_output();
+		$this->load->library('pdf');
+		$this->dompdf->setPaper('A4','portrait');
+		$this->dompdf->set_option('isHtml5ParserEnabled', true);
+		$this->dompdf->loadHtml($html);
+		$this->dompdf->render();
+		$this->dompdf->stream('Detail pesanan - '.$nomor_penjualan.'.pdf',array('Attachment'=>0));
+	}
+
 }
 
 /* End of file Admin.php */

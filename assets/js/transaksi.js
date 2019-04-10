@@ -31,7 +31,7 @@ function scan_data(){
       var qtyItem = $("#qty"+produk_id);
       var quantity = 1;
 
-      if($("#pesanan tr td input[value='"+produk_id+"']").length == 0 && qtyItem.length == 0){
+    
         var subtotal = quantity*produk_harga;
         $("#pesanan").append('<tr>'+
             '<td><input type="hidden" name="id_produk['+i+']" value="'+produk_id+'"><input type="text" name="kode_produk['+i+']" value="'+produk_kode+'" class="form-barang">'+
@@ -48,16 +48,7 @@ function scan_data(){
         total();
         $("#search_data").val("").focus();
         $("#suggestions").hide();
-      }else{
-        var currentVal = parseFloat(qtyItem.val());
-        if(!isNaN(currentVal) && qtyItem.length == 1){
-        qtyItem.attr('value',currentVal+1) ;
-        }
-        $("#sub"+produk_id).val( qtyItem.val()*produk_harga);
-        total();
-        $("#suggestions").hide();
-        $("#search_data").val("").focus();
-      }
+      
     }
 
     function hapus_row(e) {
@@ -90,6 +81,9 @@ function scan_data(){
         }else if($("#nomor_telepon").val() == ''){
           alert('Nomor telepon tidak boleh kosong');
           $("#nomor_telepon").focus();
+        }else if($("#kota_tujuan").val() == ''){
+          alert('Pilih kota tujuan terlebih dahulu');
+          $("#kota_tujuan").focus();
         }else{
           $.ajax({
             type:"POST",

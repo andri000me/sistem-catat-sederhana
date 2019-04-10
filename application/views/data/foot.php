@@ -179,7 +179,7 @@
                                       '<a class="btn btn-primary btn-sm dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>'+
                                         '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">'+
                                         '<a class="dropdown-item" href="'+base_url+'admin/cetak_nota/'+data[i].id_penjualan+'">Cetak Nota</a>'+
-                                        '<a class="dropdown-item" href="#">Detail Penjualan</a>'+
+                                        '<a class="dropdown-item" href="'+base_url+'transaction/detail_penjualan/'+data[i].id_penjualan+'">Detail Penjualan</a>'+
                                         '<a class="dropdown-item" href="#">Edit Penjualan</a>'+
                                         '<a class="dropdown-item text-danger" href="#" onclick="delete_penjualan('+data[i].id_penjualan+')">Delete</a>'+
                                       '</div>'+
