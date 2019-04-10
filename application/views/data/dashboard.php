@@ -3,27 +3,7 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-cube text-danger icon-lg"></i>
-                    </div>
-                    <div class="float-right">
-                      <p class="mb-0 text-right">Omset</p>
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">65,650</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> 65% lower growth
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <div class="card-body">
                   <div class="clearfix">
@@ -33,17 +13,17 @@
                     <div class="float-right">
                       <p class="mb-0 text-right">Penjualan</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">3455</h3>
+                        <h3 class="font-weight-medium text-right mb-0"><?= $count_penjualan;?></h3>
                       </div>
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Product-wise sales
+                    <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Total Sales
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <div class="card-body">
                   <div class="clearfix">
@@ -51,19 +31,19 @@
                       <i class="mdi mdi-poll-box text-success icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Product</p>
+                      <p class="mb-0 text-right">Produk Terjual</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0"><?= $count_produk;?></h3>
+                        <h3 class="font-weight-medium text-right mb-0"><?= $count_produk_terjual;?></h3>
                       </div>
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i> Weekly Sales
+                    <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i> All Product sales
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <div class="card-body">
                   <div class="clearfix">
@@ -78,7 +58,7 @@
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-reload mr-1" aria-hidden="true"></i> Product-wise sales
+                    <i class="mdi mdi-reload mr-1" aria-hidden="true"></i> Team Basic
                   </p>
                 </div>
               </div>
@@ -112,17 +92,17 @@
             <div class="col-lg-5 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h2 class="card-title text-primary mb-5">Performance History</h2>
+                  <h2 class="card-title text-primary mb-5">Omset</h2>
                   <div class="wrapper d-flex justify-content-between">
                     <div class="side-left">
-                      <p class="mb-2">The best performance</p>
-                      <p class="display-3 mb-4 font-weight-light">+45.2%</p>
+                      <p class="mb-2">Omset Penjualan</p>
+                      <p class="display-3 mb-4 font-weight-light"><?= 'Rp '.number_format($sum_omset);?></p>
                     </div>
                     <div class="side-right">
-                      <small class="text-muted">2017</small>
+                      <small class="text-muted">All Time</small>
                     </div>
                   </div>
-                  <div class="wrapper d-flex justify-content-between">
+                  <!-- <div class="wrapper d-flex justify-content-between">
                     <div class="side-left">
                       <p class="mb-2">Worst performance</p>
                       <p class="display-3 mb-5 font-weight-light">-35.3%</p>
@@ -130,8 +110,8 @@
                     <div class="side-right">
                       <small class="text-muted">2015</small>
                     </div>
-                  </div>
-                  <div class="wrapper">
+                  </div> -->
+                  <!-- <div class="wrapper">
                     <div class="d-flex justify-content-between">
                       <p class="mb-2">Sales</p>
                       <p class="mb-2 text-primary">88%</p>
@@ -140,7 +120,7 @@
                       <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 88%" aria-valuenow="88"
                         aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                  </div>
+                  </div> -->
                   <div class="wrapper mt-4">
                     <div class="d-flex justify-content-between">
                       <p class="mb-2">Visits</p>
@@ -155,7 +135,7 @@
               </div>
             </div>
           </div>
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-md-12 grid-margin">
               <div class="card">
                 <div class="card-body">
@@ -485,7 +465,7 @@
                             <a class="dropdown-item" href="#">
                               <i class="fa fa-times text-danger fa-fw"></i>Close Issue</a>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                   </div>

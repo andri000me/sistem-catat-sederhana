@@ -3,6 +3,9 @@
     #total tr td{
         font-size: 20px;
     }
+    #produk td{
+        padding: 10px;
+    }
 </style>
 	<div class="main-panel">
         <div class="content-wrapper">
@@ -12,7 +15,25 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6">
-                                        <h2><?= $title;?></h2>
+                                        
+                                        <table width="100%">
+                                            <tr>
+                                                <td><b><?= $title;?></b></td>
+                                                <td style="text-align: right;"><b>BASICCLASS.CO</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td style="text-align: right;">@basicclass.co</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td style="text-align: right;">Contact : 0895364791632</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td style="text-align: right;">Surabaya, ID</td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </div>
                             <hr>
@@ -37,8 +58,8 @@
                                 <hr>
                             <div class="row">
                             	<div class="col-md-9 col-sm-9 verticalLine">
-                                    <h4>Produk</h4>
-                                        <table border="1" style="border-collapse: collapse;" width="100%">
+                                    <h4>Data Produk</h4>
+                                        <table border="1" style="border-collapse: collapse;" width="100%" id="produk">
                                             <thead>
                                                 <tr>
                                                     <th>Kode Produk</th>
@@ -58,7 +79,7 @@
                                                         <td>Rp '.number_format($data->harga_produk).'</td>
                                                         <td>'.$data->quantity.'</td>
                                                         <td>'.$data->size.'</td>
-                                                        <td>'.$data->subtotal.'</td>
+                                                        <td>Rp '.number_format($data->subtotal).'</td>
                                                       </tr>';
                                                     }
                                                 ?>
@@ -71,7 +92,7 @@
                             <div style="float: right;margin-top: 20px;">
                                 <table width="50%" id="total">
                                        <tr>
-                                            <td style="text-align: right;">Ongkos Kirim</td>
+                                            <td style="text-align: right;"><b>ONGKIR</b></td>
                                             <td>:</td>
                                             <td>Rp <?= number_format($detail->ongkos_kirim);?></td>
                                         </tr>

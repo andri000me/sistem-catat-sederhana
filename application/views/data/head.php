@@ -65,6 +65,12 @@
     .table td, .table th{
       padding: 10px;
     }
+    .img-border{
+      border: thin solid lightgrey;
+      padding: 10px;
+      margin: 0px auto;
+      display: block;
+    }
   </style>
 </head>
 

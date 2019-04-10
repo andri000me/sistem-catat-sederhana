@@ -16,6 +16,26 @@ class Admin_model extends CI_Model {
 		return $this->db->count_all_results($table);
 	}
 
+	public function count_produk_terjual()
+	{
+		$query  = $this->db->query("SELECT sum(ct_detail_penjualan.quantity) as terjual FROM ct_detail_penjualan")->result();
+		foreach ($query as $data) {
+			$jumlah = $data->terjual;
+		}
+
+		return $jumlah;
+	}
+
+	public function omset()
+	{
+		$query = $this->db->query("SELECT sum(ct_penjualan.total) as omset FROM ct_penjualan")->result();
+		foreach ($query as $data) {
+			$omset = $data->omset;
+		}
+
+		return $omset;
+	}
+
 	public function kode_produk()
     {
         $this->db->select('RIGHT(ct_produk.kode_produk,5) as kode_produk', FALSE);
@@ -42,6 +62,7 @@ class Admin_model extends CI_Model {
 		$id_kategori_produk = $this->input->post('id_kategori_produk');
 		$harga_produksi = $this->input->post('harga_produksi');
 		$harga_jual = $this->input->post('harga_jual');
+		$warna = $this->input->post('warna');
 		$size_produk =$this->input->post('size_produk');
 		$stok = $this->input->post('stok');
 		$id_user = $this->input->post('id_user');
@@ -52,6 +73,7 @@ class Admin_model extends CI_Model {
 			'id_kategori_produk' => $id_kategori_produk,
 			'harga_produksi' => $harga_produksi,
 			'harga_jual' => $harga_jual,
+			'warna' => $warna,
 			'size_produk' => $size_produk,
 			'stok' => $stok,
 			'id_user' => $id_user 

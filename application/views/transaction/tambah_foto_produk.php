@@ -1,12 +1,4 @@
 <?php $this->load->view('data/head');?>
-<style type="text/css">
-	.img-border{
-		border: thin solid lightgrey;
-		padding: 10px;
-		margin: 0px auto;
-		display: block;
-	}
-</style>
 	<div class="main-panel">
         <div class="content-wrapper">
         	<div class="row">
@@ -39,7 +31,7 @@
 	                        		<form method="post" action="<?= base_url();?>admin/img_upload/<?= $this->uri->segment(3);?>" enctype="multipart/form-data">
 	                        			<div class="form-group">
 	                        				<label>Upload File : <span class="text-danger">*Dapat lebih dari 1 foto</span></label>
-	                        				<input type="file" name="img_produk[]" multiple="" class="form-control" id="img_produk">
+	                        				<input type="file" name="img_produk[]" multiple="" class="form-control" id="img_produk" required="">
 	                        			</div>
 										<div class="form-group">
 											<input type="submit" name="submit" class="btn btn-success" value="Tambahkan Gambar">

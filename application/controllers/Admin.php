@@ -14,7 +14,9 @@ class Admin extends CI_Controller {
 		if($this->session->userdata('logged')){
 			$data['title'] = 'Dashboard';
 			$data['count_user'] = $this->Admin_model->count_all('ct_user');
-			$data['count_produk'] = $this->Admin_model->count_all('ct_produk');
+			$data['count_penjualan'] = $this->Admin_model->count_all('ct_penjualan');
+			$data['count_produk_terjual'] = $this->Admin_model->count_produk_terjual();
+			$data['sum_omset'] = $this->Admin_model->omset();
 			$this->load->view('data/dashboard', $data);
 		}else{
 			$data['title'] = 'Login User';
@@ -149,6 +151,8 @@ class Admin extends CI_Controller {
 			$data['title'] = 'Data Produk';
 			$data['produk'] = $this->Admin_model->get_produk();
 			$this->load->view('data/data_produk', $data);
+		}else{
+			redirect('admin','refresh');
 		}
 	}
 
@@ -203,6 +207,8 @@ class Admin extends CI_Controller {
 			$data['title'] = 'Data Penjualan';
 			$data['penjualan'] = $this->Admin_model->get_penjualan();
 			$this->load->view('data/data_penjualan', $data);
+		}else{
+			redirect('admin','refresh');
 		}
 	}
 
@@ -248,7 +254,7 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	public function get_city($value='')
+	public function get_city()
 	{
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
@@ -280,7 +286,7 @@ class Admin extends CI_Controller {
 	{
 		$query = $this->Admin_model->detail_penjualan($id_penjualan);
 		$nomor_penjualan = $query->kode_penjualan;
-		$data['title'] = 'Detail pesanan - '.$nomor_penjualan;
+		$data['title'] = 'Nota '.$nomor_penjualan;
 		$data['detail'] = $this->Admin_model->detail_penjualan($id_penjualan);
 		$data['detail_produk'] = $this->Admin_model->detail_produk_penjualan($id_penjualan);
 		$this->load->view('transaction/cetak_nota',$data);

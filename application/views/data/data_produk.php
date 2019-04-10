@@ -39,8 +39,8 @@
                                                 <td>'.$data->kode_produk.'</td>
                                                 <td>'.$data->nama_produk.'</td>
                                                 <td>'.$data->nama_kategori_produk.'</td>
-                                                <td>'.$data->harga_produksi.'</td>
-                                                <td>'.$data->harga_jual.'</td>
+                                                <td>Rp '.number_format($data->harga_produksi).'</td>
+                                                <td>Rp '.number_format($data->harga_jual).'</td>
                                                 <td>'.$data->stok.'</td>
                                                 <td>
                                                   <div class="row">

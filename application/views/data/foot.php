@@ -48,6 +48,25 @@
        $("#nama_produk").focus();
        $("#img_produk").focus();
        $("#search_data").focus();
+
+       $("#warna").change(function() {
+         var current = $('#warna').val();
+         if($("#warna").val() == "Black") {
+            $('#color_show').css('background-color','black');
+         }else if($("#warna").val() == 'White'){
+            $('#color_show').css('background-color','white');
+         }else if($("#warna").val() == 'Navy'){
+            $('#color_show').css('background-color','#000080');
+         }else if($("#warna").val() == 'Red'){
+            $('#color_show').css('background-color','red');
+         }else if($("#warna").val() == 'Maroon'){
+            $('#color_show').css('background-color','#800000');
+         }else if($("#warna").val() == 'Forest Green'){
+            $("#color-show").css('background-color','#228B22');
+         }else{
+            $("#color-show").css('background-color','pink');
+         }
+      }); 
     });
 
     function get_day() {
@@ -88,7 +107,7 @@
         return 'below absolute zero (0 K)';
       } else {
         var celcius_temp = (temp-273.15);
-        var final = celcius_temp.toFixed(2); 
+        var final = celcius_temp.toFixed(0); 
         $("#temp").text(final);
       }
     }
@@ -130,8 +149,8 @@
                         '<td>'+data[i].kode_produk+'</td>'+
                         '<td>'+data[i].nama_produk+'</td>'+
                         '<td>'+data[i].nama_kategori_produk+'</td>'+
-                        '<td>'+data[i].harga_produksi+'</td>'+
-                        '<td>'+data[i].harga_jual+'</td>'+
+                        '<td>Rp '+data[i].harga_produksi.toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")+'</td>'+
+                        '<td>Rp '+data[i].harga_jual.toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")+'</td>'+
                         '<td>'+data[i].stok+'</td>'+
                         '<td>'+
                           '<div class="row">'+

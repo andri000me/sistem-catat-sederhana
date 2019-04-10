@@ -30,11 +30,11 @@
                                         ?>
                                         <div class="form-group">
                                           <label>Nama Produk</label>
-                                          <input type="text" name="nama_produk" id="nama_produk" class="form-control" placeholder="Nama Produk">
+                                          <input type="text" name="nama_produk" id="nama_produk" class="form-control" placeholder="Nama Produk" required="">
                                         </div>
                                         <div class="form-group">
                                           <label>Kategori Produk</label>
-                                          <select name="id_kategori_produk" class="form-control">
+                                          <select name="id_kategori_produk" class="form-control" required="">
                                               <option value=""> Pilih Kategori</option>
                                               <?php
                                                 foreach ($kategori as $data) {
@@ -45,24 +45,39 @@
                                         </div>
                                         <div class="form-group">
                                           <label>Size Produk<span class="text-danger"> *pisahkan dengan (,) koma</span></label>
-                                          <input type="text" name="size_produk" class="form-control" placeholder="Size">
+                                          <input type="text" name="size_produk" class="form-control" placeholder="Size" required="">
                                         </div>
                                         <div class="form-group">
                                           <label>Harga Produksi  <span class="text-danger"> *optional</span></label>
-                                          <input type="text" name="harga_produksi" class="form-control" placeholder="Harga Produksi">
+                                          <input type="text" name="harga_produksi" class="form-control" placeholder="Harga Produksi" required="">
                                         </div>
                                         <div class="form-group">
                                           <label>Harga Jual</label>
-                                          <input type="text" name="harga_jual" class="form-control" placeholder="Harga Jual">
+                                          <input type="text" name="harga_jual" class="form-control" placeholder="Harga Jual" required="">
+                                        </div>
+                                        <div class="form-group">
+                                          <div class="row">
+                                            <div class="col-md-1">
+                                              <label>Warna</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                              <div style="height: 10px;width: 10px;background-color: black;border: 1px solid black" id="color_show"></div>
+                                            </div>
+                                          </div>
+                                          <select name="warna" class="form-control" id="warna" required="">
+                                            <option value=""> Pilih Warna</option>
+                                            <option value="Black">Black</option>
+                                            <option value="White">White</option>
+                                            <option value="Navy">Navy</option>
+                                            <option value="Red">Red</option>
+                                            <option value="Maroon">Maroon</option>
+                                            <option value="Forest Green">Green Forest</option>
+                                          </select>
                                         </div>
                                         <div class="form-group">
                                           <label>Stok</label>
                                           <input type="text" name="stok" class="form-control" placeholder="Stok">
                                         </div>
-                                        <!-- <div class="form-group">
-                                          <label>Gambar Produk<span class="text-danger"> *required</span></label>
-                                          <input type="file" name="img_prduk[]" multiple="" class="form-control" placeholder="Pilih File" required="">
-                                        </div> -->
                                 	</div>
                                     <div class="col-md-4 col-sm-12">
                                         <div class="form-group">
