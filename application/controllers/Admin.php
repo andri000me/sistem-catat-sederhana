@@ -299,6 +299,29 @@ class Admin extends CI_Controller {
 		$this->dompdf->stream('Detail pesanan - '.$nomor_penjualan.'.pdf',array('Attachment'=>0));
 	}
 
+	public function delete_foto_produk($id_detail_produk)
+	{
+		if($this->session->userdata('logged')){
+			$query = $this->db->select('*')->where('id_detail_produk',$id_detail_produk)->get('ct_detail_produks')->row();
+			$id_produk = $query->id_produk;
+			$nama_file = $query->img_produk;
+			$file = FCPATH.'uploads/'.$nama_file;
+			if(file_exists($file)){
+				unlink($file);
+				if($this->Admin_model->delete_foto_produk($id_detail_produk)){
+					$this->session->set_flashdata('berhasil', 'Foto berhasil dihapus!');
+					redirect('admin/tambah_foto_produk/'.$id_produk,'refresh');
+				}
+			}else{
+				$this->session->set_flashdata('gagal', 'File tidak ditemukan!');
+				redirect('admin/tambah_foto_produk/'.$id_produk,'refresh');
+			}
+		}else{
+			redirect('admin','refresh');
+		}
+		
+	}
+
 }
 
 /* End of file Admin.php */

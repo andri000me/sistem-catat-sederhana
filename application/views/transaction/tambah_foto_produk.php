@@ -49,6 +49,7 @@
 	                        				foreach ($cek_foto as $data) {
 	                        					echo'<div class="col-md-4 col-sm-4 img-border">
 	                        							<img src="'.base_url().'uploads/'.$data->img_produk.'" style="width:100px;height:100px">
+	                        							<a href="'.base_url().'admin/delete_foto_produk/'.$data->id_detail_produk.'" class="btn btn-danger float-right" onclick="return confirm("Are you sure?");"><i class="mdi mdi-delete"></i></a>
 	                        						</div>';
 	                        				}
 	                        			}else{

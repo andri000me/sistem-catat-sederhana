@@ -109,11 +109,6 @@ class Admin_model extends CI_Model {
 						->result();
 	}
 
-	public function delete_produk($id_produk)
-	{
-		return $this->db->update('ct_produk',array('deleted'=>'1'),array('id_produk'=>$id_produk));
-	}
-
 	public function get_penjualan()
 	{
 		return $this->db->select('ct_penjualan.*,ct_user.nama_user')
@@ -271,6 +266,24 @@ class Admin_model extends CI_Model {
 						->where('id_penjualan',$id_penjualan)
 						->get('ct_detail_penjualan')
 						->result();
+	}
+
+	public function delete_foto_produk($id_detail_produk)
+	{
+		return $this->db->where('id_detail_produk',$id_detail_produk)
+						->delete('ct_detail_produks');
+	}
+
+	public function delete_produk($id_produk)
+	{
+		$this->db->update('ct_produk',array('deleted'=>'1'),array('id_produk'=>$id_produk));
+		$this->db->update('ct_detail_produks',array('deleted'=>'1'),array('id_produk'=>$id_produk));
+
+		if($this->db->affected_rows()>0){
+			return TRUE;
+		}else{
+			return FALSE;
+		}
 	}
 
 }

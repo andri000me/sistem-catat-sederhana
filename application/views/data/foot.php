@@ -4,7 +4,7 @@
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->
-   <!-- partial:partials/_footer.html -->
+  <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
@@ -66,7 +66,14 @@
          }else{
             $("#color-show").css('background-color','pink');
          }
-      }); 
+      });
+
+        setTimeout(function(){$("#berhasil").slideUp('slow', function(){
+          });},1000);
+
+        setTimeout(function(){$("#gagal").slideUp('slow', function(){
+          });},1000);
+
     });
 
     function get_day() {

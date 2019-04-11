@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Apr 2019 pada 04.33
+-- Waktu pembuatan: 11 Apr 2019 pada 05.50
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.2.14
 
@@ -64,6 +64,15 @@ CREATE TABLE `ct_detail_produks` (
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `deleted` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `ct_detail_produks`
+--
+
+INSERT INTO `ct_detail_produks` (`id_detail_produk`, `img_produk`, `id_produk`, `created`, `updated`, `deleted`) VALUES
+(5, 'SeeYa3.PNG', 19, '2019-04-11 10:36:19', '2019-04-11 10:43:49', 1),
+(6, 'SeeYa12.PNG', 19, '2019-04-11 10:36:19', '2019-04-11 10:43:49', 1),
+(7, 'Freedom-Front.png', 18, '2019-04-11 10:49:45', '2019-04-11 10:49:45', 0);
 
 -- --------------------------------------------------------
 
@@ -145,7 +154,8 @@ CREATE TABLE `ct_produk` (
 --
 
 INSERT INTO `ct_produk` (`id_produk`, `kode_produk`, `nama_produk`, `size_produk`, `harga_produksi`, `harga_jual`, `warna`, `id_kategori_produk`, `stok`, `id_user`, `created`, `updated`, `deleted`) VALUES
-(18, 'BSC-00001', 'Hallucination', '', 140000, 190000, 'Navy', 2, 10, 1, '2019-04-10 14:16:53', '2019-04-10 14:16:53', 0);
+(18, 'BSC-00001', 'Hallucination', '', 140000, 190000, 'Navy', 2, 10, 1, '2019-04-10 14:16:53', '2019-04-10 14:16:53', 0),
+(19, 'BSC-00002', 'Angel Of Death', '', 75000, 100000, 'White', 1, 10, 1, '2019-04-11 10:36:00', '2019-04-11 10:43:49', 1);
 
 -- --------------------------------------------------------
 
@@ -233,7 +243,7 @@ ALTER TABLE `ct_detail_penjualan`
 -- AUTO_INCREMENT untuk tabel `ct_detail_produks`
 --
 ALTER TABLE `ct_detail_produks`
-  MODIFY `id_detail_produk` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detail_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_kategori_produk`
@@ -251,7 +261,7 @@ ALTER TABLE `ct_penjualan`
 -- AUTO_INCREMENT untuk tabel `ct_produk`
 --
 ALTER TABLE `ct_produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_user`
@@ -268,6 +278,12 @@ ALTER TABLE `ct_user`
 --
 ALTER TABLE `ct_detail_penjualan`
   ADD CONSTRAINT `ct_detail_penjualan_ibfk_1` FOREIGN KEY (`id_penjualan`) REFERENCES `ct_penjualan` (`id_penjualan`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `ct_detail_produks`
+--
+ALTER TABLE `ct_detail_produks`
+  ADD CONSTRAINT `ct_detail_produks_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `ct_produk` (`id_produk`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `ct_kategori_produk`
