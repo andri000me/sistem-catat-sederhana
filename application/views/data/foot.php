@@ -68,12 +68,11 @@
          }
       });
 
-        setTimeout(function(){$("#berhasil").slideUp('slow', function(){
+        setTimeout(function(){$("#berhasil_php").slideUp('slow', function(){
           });},1000);
 
         setTimeout(function(){$("#gagal").slideUp('slow', function(){
           });},1000);
-
     });
 
     function get_day() {
@@ -242,6 +241,32 @@
           });},2000);
         }
       });
+    }
+
+    function delete_foto_produk(id_detail_produk) {
+      var conf = confirm('Are you sure?');
+      if(conf){
+          $.ajax({
+            type:"POST",
+            url:"<?php echo base_url();?>admin/delete_foto_produk/"+id_detail_produk,
+            success:function(data){
+            $("html, body").animate({scrollTop: 0}, 1000);
+            $("#text_berhasil").text('Delete foto produk berhasil');
+              $("#berhasil").slideDown('slow').css('text-align','center');
+              setTimeout(function(){$("#berhasil").slideUp('slow', function(){
+                window.location.reload();
+            });},2000);
+          },
+          error:function(error){
+            $("#text_gagal").text('Delete foto produk gagal');
+              $("#gagal").slideDown('slow').css('text-align','center');
+              setTimeout(function(){$("#gagal").slideUp('slow', function(){
+            });},2000);
+          }
+        });
+      }else{
+
+      }
     }
   </script>
 </body>

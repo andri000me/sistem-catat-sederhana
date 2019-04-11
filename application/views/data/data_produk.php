@@ -18,7 +18,7 @@
                                 <hr>
                                     <div class="form-group">
                                         <div class="alert alert-success" id="berhasil"><i class="mdi mdi-check-circle"></i> <span id="text_berhasil"></span></div>
-                                    <div class="alert alert-danger" id="gagal"><i class="mdi mdi-close-circle"></i> <span id="text_gagal"></span></div>
+                                        <div class="alert alert-danger" id="gagal"><i class="mdi mdi-close-circle"></i> <span id="text_gagal"></span></div>
                                 </div>
                             <table id="tableData" class="table table-striped table-bordered" style="width:100%">
                                 <thead>

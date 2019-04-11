@@ -309,11 +309,11 @@ class Admin extends CI_Controller {
 			if(file_exists($file)){
 				unlink($file);
 				if($this->Admin_model->delete_foto_produk($id_detail_produk)){
-					$this->session->set_flashdata('berhasil', 'Foto berhasil dihapus!');
+					// $this->session->set_flashdata('berhasil', 'Foto berhasil dihapus!');
 					redirect('admin/tambah_foto_produk/'.$id_produk,'refresh');
 				}
 			}else{
-				$this->session->set_flashdata('gagal', 'File tidak ditemukan!');
+				// $this->session->set_flashdata('gagal', 'File tidak ditemukan!');
 				redirect('admin/tambah_foto_produk/'.$id_produk,'refresh');
 			}
 		}else{

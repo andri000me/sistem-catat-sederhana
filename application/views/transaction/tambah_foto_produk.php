@@ -25,9 +25,13 @@
 	                        			$berhasil = $this->session->flashdata('berhasil');
 
 	                        			if(!empty($berhasil)){
-	                        				echo '<div class="alert alert-success"><i class="mdi mdi-check-circle"></i>'.$berhasil.'</div>';
+	                        				echo '<div class="alert alert-success" id="berhasil_php"><i class="mdi mdi-check-circle"></i>'.$berhasil.'</div>';
 	                        			} 
 	                        		?>
+	                        		<div class="form-group">
+                                        <div class="alert alert-success" id="berhasil"><i class="mdi mdi-check-circle"></i><span id="text_berhasil"></span></div>
+                                        <div class="alert alert-danger" id="gagal"><i class="mdi mdi-close-circle"></i> <span id="text_gagal"></span></div>
+                                	</div>
 	                        		<form method="post" action="<?= base_url();?>admin/img_upload/<?= $this->uri->segment(3);?>" enctype="multipart/form-data">
 	                        			<div class="form-group">
 	                        				<label>Upload File : <span class="text-danger">*Dapat lebih dari 1 foto</span></label>
@@ -49,7 +53,7 @@
 	                        				foreach ($cek_foto as $data) {
 	                        					echo'<div class="col-md-4 col-sm-4 img-border">
 	                        							<img src="'.base_url().'uploads/'.$data->img_produk.'" style="width:100px;height:100px">
-	                        							<a href="'.base_url().'admin/delete_foto_produk/'.$data->id_detail_produk.'" class="btn btn-danger float-right" onclick="return confirm("Are you sure?");"><i class="mdi mdi-delete"></i></a>
+	                        							<a href="javascript:void(0);" id="btnDeleteFoto" onclick="delete_foto_produk('.$data->id_detail_produk.')" class="btn btn-danger float-right"><i class="mdi mdi-delete"></i></a>
 	                        						</div>';
 	                        				}
 	                        			}else{
@@ -67,4 +71,4 @@
                 </div>
             </div>
         </div>
-<?php $this->load->view('data/foot');
+<?php $this->load->view('data/foot'); ?>
