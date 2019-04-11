@@ -88,7 +88,7 @@
                                     </div>
                                     <div class="col-md-12 col-sm-12">
                                         <div class="form-group">
-                                          <input type="submit" name="submit" value="Simpan produk" class="btn btn-success btn-block mt-3">
+                                          <input type="submit" name="submit" value="Simpan produk" onclick="return confirm('Are you sure?');" class="btn btn-success btn-block mt-3">
                                         </div>
                                     </div>
                                 </div>

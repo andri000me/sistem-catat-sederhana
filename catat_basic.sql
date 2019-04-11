@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Apr 2019 pada 10.38
+-- Waktu pembuatan: 11 Apr 2019 pada 04.33
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.2.14
 
@@ -158,7 +158,7 @@ CREATE TABLE `ct_user` (
   `email` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
   `nama_user` varchar(200) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '0',
+  `status` int(11) NOT NULL DEFAULT '1',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `deleted` int(11) NOT NULL DEFAULT '0'
@@ -233,7 +233,7 @@ ALTER TABLE `ct_detail_penjualan`
 -- AUTO_INCREMENT untuk tabel `ct_detail_produks`
 --
 ALTER TABLE `ct_detail_produks`
-  MODIFY `id_detail_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_detail_produk` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_kategori_produk`
@@ -251,7 +251,7 @@ ALTER TABLE `ct_penjualan`
 -- AUTO_INCREMENT untuk tabel `ct_produk`
 --
 ALTER TABLE `ct_produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_user`

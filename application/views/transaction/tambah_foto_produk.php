@@ -34,7 +34,7 @@
 	                        				<input type="file" name="img_produk[]" multiple="" class="form-control" id="img_produk" required="">
 	                        			</div>
 										<div class="form-group">
-											<input type="submit" name="submit" class="btn btn-success" value="Tambahkan Gambar">
+											<input type="submit" name="submit" class="btn btn-success" onclick="return confirm('Are you sure?');" value="Tambahkan Gambar">
 										</div>
 									</form>
 	                        	</div>

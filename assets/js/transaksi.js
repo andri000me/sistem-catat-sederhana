@@ -69,36 +69,39 @@ function scan_data(){
 
     $("#btnSimpanPesanan").click(function(event){
         event.preventDefault();
-
+        var conf = confirm('Are you sure?');
         var form_data = $('form').serialize();
-
-        if($("#nama_pembeli").val() == ''){
-          alert('Nama Pembeli tidak boleh kosong');
-          $("#nama_pembeli").focus();
-        }else if($("#alamat_pembeli").val() == ''){
-          alert('Alamati tidak boleh kosong');
-          $("#alamat_pembeli").focus();
-        }else if($("#nomor_telepon").val() == ''){
-          alert('Nomor telepon tidak boleh kosong');
-          $("#nomor_telepon").focus();
-        }else if($("#kota_tujuan").val() == ''){
-          alert('Pilih kota tujuan terlebih dahulu');
-          $("#kota_tujuan").focus();
+        if(conf){
+          if($("#nama_pembeli").val() == ''){
+            alert('Nama Pembeli tidak boleh kosong');
+            $("#nama_pembeli").focus();
+          }else if($("#alamat_pembeli").val() == ''){
+            alert('Alamati tidak boleh kosong');
+            $("#alamat_pembeli").focus();
+          }else if($("#nomor_telepon").val() == ''){
+            alert('Nomor telepon tidak boleh kosong');
+            $("#nomor_telepon").focus();
+          }else if($("#kota_tujuan").val() == ''){
+            alert('Pilih kota tujuan terlebih dahulu');
+            $("#kota_tujuan").focus();
+          }else{
+            $.ajax({
+              type:"POST",
+              url : base_url+"transaction/add_pesanan",
+              dataType : "JSON",
+              data : form_data,
+              success:function(data){
+                alert('Pesanan berhasil ditambahkan!');
+                $('form').trigger('reset');
+                $("#pesanan").empty();
+              },
+              error:function(data){
+                alert('Pesanan gagal ditambahkan, terjadi kesalahan');
+              }
+            });
+          }
         }else{
-          $.ajax({
-            type:"POST",
-            url : base_url+"transaction/add_pesanan",
-            dataType : "JSON",
-            data : form_data,
-            success:function(data){
-              alert('Pesanan berhasil ditambahkan!');
-              $('form').trigger('reset');
-              $("#pesanan").empty();
-            },
-            error:function(data){
-              alert('Pesanan gagal ditambahkan, terjadi kesalahan');
-            }
-          });
+
         }
     });
 
