@@ -286,6 +286,54 @@ class Admin_model extends CI_Model {
 		}
 	}
 
+	public function add_kategori_produk()
+	{
+		$data = array('nama_kategori_produk' => $this->input->post('nama_kategori_produk'),
+					  'id_user' => $this->session->userdata('id_user'));
+		$this->db->insert('ct_kategori_produk', $data);
+
+		if($this->db->affected_rows()>0){
+			return TRUE;
+		}else{
+			return FALSE;
+		}
+	}
+
+	public function get_kategori_by_id($id_kategori_produk)
+	{
+		return $this->db->where('id_kategori_produk',$id_kategori_produk)
+						->get('ct_kategori_produk')
+						->result();
+	}
+
+	public function edit_kategori_produk($id_kategori_produk)
+	{
+		$data = array(
+			'nama_kategori_produk' => $this->input->post('edit_nama_kategori_produk'),
+			'id_user' => $this->session->userdata('id_user')
+		);
+
+		$this->db->where('id_kategori_produk',$id_kategori_produk)
+				 ->update('ct_kategori_produk',$data);
+
+		if($this->db->affected_rows()>0){
+			return TRUE;
+		}else{
+			return FALSE;
+		}
+	}
+
+	public function delete_kategori_produk($id_kategori_produk)
+	{
+		$this->db->update('ct_kategori_produk',array('deleted' => '1'),array('id_kategori_produk' => $id_kategori_produk));
+
+		if($this->db->affected_rows()>0){
+			return TRUE;
+		}else{
+			return FALSE;
+		}
+	}
+
 }
 
 /* End of file Admin_model.php */

@@ -39,7 +39,13 @@ function scan_data(){
             '<td><input type="text" name="nama_produk['+i+']" value="'+produk_nama+'" class="form-barang"></td>'+
             '<td><input type="text" name="harga_produk['+i+']" value="'+produk_harga+'" class="form-barang harga_produk"></td>'+
             '<td><input type="number" name="quantity['+i+']" value="'+quantity+'" id="qty'+produk_id+'" class="form-control quantity" onkeyup="update_qty();"></td>'+
-            '<td><input type="text" name="size['+i+']" value="" class="form-control" placeholder="Isikan Size"></td>'+
+            '<td><select name="size['+i+']" class="form-control">'+
+            '<option>S</option>'+
+            '<option>M</option>'+
+            '<option>L</option>'+
+            '<option>XL</option>'+
+            '<option>XXL</option>'+
+            '</select></td>'+
             '<td><input type="text" name="subtotal['+i+']" value="'+subtotal+'" id="sub'+produk_id+'" class="form-barang subtotal"></td>'+
             '<td><a href="javascript:void(0)" class="btn btn-danger" onclick="hapus_row(this)"><i class="mdi mdi-delete"></i></a></td>'+
           '</tr>'
@@ -91,11 +97,13 @@ function scan_data(){
               dataType : "JSON",
               data : form_data,
               success:function(data){
+                $("html, body").animate({scrollTop: 0}, 1000);
                 alert('Pesanan berhasil ditambahkan!');
                 $('form').trigger('reset');
                 $("#pesanan").empty();
               },
               error:function(data){
+                $("html, body").animate({scrollTop: 0}, 1000);
                 alert('Pesanan gagal ditambahkan, terjadi kesalahan');
               }
             });

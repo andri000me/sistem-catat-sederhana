@@ -37,7 +37,7 @@
                                                     <th>Nama Produk</th>
                                                     <th>Harga Produk</th>
                                                     <th>Quantity</th>
-                                                    <th>Size bisa > 1</th>
+                                                    <th>Size /item</th>
                                                     <th>Subtotal</th>
                                                     <th>Aksi</th>
                                                 </tr>

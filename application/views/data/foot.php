@@ -45,9 +45,11 @@
        get_location();
        data_produk();
        data_penjualan();
+       data_kategori_produk();
        $("#nama_produk").focus();
        $("#img_produk").focus();
        $("#search_data").focus();
+       $("#nama_kategori_produk").focus();
 
        $("#warna").change(function() {
          var current = $('#warna').val();
@@ -71,7 +73,7 @@
         setTimeout(function(){$("#berhasil_php").slideUp('slow', function(){
           });},1000);
 
-        setTimeout(function(){$("#gagal").slideUp('slow', function(){
+        setTimeout(function(){$("#gagal_php").slideUp('slow', function(){
           });},1000);
     });
 
@@ -267,6 +269,153 @@
       }else{
 
       }
+    }
+
+    $("#btnSimpanKategori").click(function(event){
+      event.preventDefault();
+      var nama_kategori_produk = $("#nama_kategori_produk").val();
+      var conf = confirm('Are you sure?');
+      if(conf){
+        if($("#nama_kategori_produk").val() == ''){
+          alert('Nama Kategori tidak boleh kosong');
+          $("#nama_kategori_produk").focus();
+        }else{
+            $.ajax({
+            type:"POST",
+            url : "<?php echo base_url();?>admin/add_kategori_produk",
+            dataType : "json",
+            data : {
+              nama_kategori_produk : nama_kategori_produk
+            },
+            success:function(data){
+              $("html, body").animate({scrollTop: 0}, 1000);
+              $("#text_berhasil").text('Kategori produk berhasil disimpan');
+                $("#berhasil").slideDown('slow').css('text-align','center');
+                setTimeout(function(){$("#berhasil").slideUp('slow', function(){
+                  data_kategori_produk();
+                  $("#myModal").hide()
+              });},2000);
+            },
+            error:function(error){
+              $("#text_gagal").text('Kategori produk gagal disimpan');
+                $("#gagal").slideDown('slow').css('text-align','center');
+                setTimeout(function(){$("#gagal").slideUp('slow', function(){
+              });},2000);
+            }
+          });
+        }
+      }else{
+
+      }
+    });
+
+    function data_kategori_produk() {
+      $.ajax({
+        type:"POST",
+        url : "<?php echo base_url();?>admin/get_kategori_produk",
+        dataType : "json",
+        success:function(data){
+          html = '';
+          var i = 0;
+          for(i=0;i<data.length;i++){
+            html += '<tr>'+
+                        '<td>'+data[i].nama_kategori_produk+'</td>'+
+                        '<td>'+
+                          '<div class="row">'+
+                              '<div class="col-md-3 col-sm-3">'+
+                                  '<div class="dropdown show">'+
+                                      '<a class="btn btn-primary btn-sm dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>'+
+                                        '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">'+
+                                        '<a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#myModalEdit" onclick="get_kategori('+data[i].id_kategori_produk+');">Edit Kategori</a>'+
+                                        '<a class="dropdown-item text-danger" href="javascript:void(0);" onclick="delete_kategori('+data[i].id_kategori_produk+');">Delete</a>'+
+                                       
+                                      '</div>'+
+                                  '</div>'+
+                                '</div>'+
+                            '</div>'+
+                        '</td>'+
+                    '</tr>';
+                  }
+          $("#data_kategori_produk").html(html);
+        }
+      });
+    }
+
+    function get_kategori(id_kategori_produk) {
+      $.ajax({
+        type : "POST",
+        url : "<?php echo base_url();?>admin/get_kategori_produk_by_id/"+id_kategori_produk,
+        dataType : "json",
+        success:function(data){
+          $("#edit_nama_kategori_produk").val(data[0].nama_kategori_produk);
+          $("#id_edit_kategori_produk").val(data[0].id_kategori_produk);
+        },
+        error:function(error){
+          $("#edit_nama_kategori_produk").val('Not Found');
+        }
+      });
+    }
+
+    $("#btnEditKategori").click(function(event){
+       event.preventDefault();
+       var edit_nama_kategori_produk = $("#edit_nama_kategori_produk").val();
+       var id_kategori_produk = $("#id_edit_kategori_produk").val();
+       var conf = confirm('Are you sure?');
+
+       if(conf){
+        $.ajax({
+          type : "POST",
+          url : "<?php echo base_url();?>admin/edit_kategori_produk/"+id_kategori_produk,
+          dataType : "json",
+          data : {
+            edit_nama_kategori_produk : edit_nama_kategori_produk
+          },
+           success:function(data){
+                $("html, body").animate({scrollTop: 0}, 1000);
+                $("#text_berhasil_edit").text('Kategori produk berhasil diperbaharui');
+                  $("#berhasil_edit").slideDown('slow').css('text-align','center');
+                  setTimeout(function(){$("#berhasil_edit").slideUp('slow', function(){
+                    data_kategori_produk();
+                    $("#myModal").hide()
+                });},2000);
+              },
+              error:function(error){
+                $("#text_gagal_edit").text('Kategori produk gagal diperbaharui');
+                  $("#gagal_edit").slideDown('slow').css('text-align','center');
+                  setTimeout(function(){$("#gagal_edit").slideUp('slow', function(){
+                });},2000);
+              }
+        })
+       }else{
+
+       }
+    });
+
+    function delete_kategori(id_kategori_produk){
+     var conf = confirm('Are you sure?');
+     if(conf){
+        $.ajax({
+          type : "POST",
+          url : "<?php echo base_url();?>admin/delete_kategori_produk/"+id_kategori_produk,
+          dataType : "json",
+          success:function(data){
+                $("html, body").animate({scrollTop: 0}, 1000);
+                $("#text_berhasil_dlt").text('Kategori produk berhasil dihapus');
+                  $("#berhasil_dlt").slideDown('slow').css('text-align','center');
+                  setTimeout(function(){$("#berhasil_dlt").slideUp('slow', function(){
+                    data_kategori_produk();
+                });},2000);
+              },
+              error:function(error){
+                $("#text_gagal_dlt").text('Kategori produk gagal diperbaharui');
+                  $("#gagal_dlt").slideDown('slow').css('text-align','center');
+                  setTimeout(function(){$("#gagal_dlt").slideUp('slow', function(){
+                });},2000);
+            }
+        })
+     }else{
+
+     }
     }
   </script>
 </body>

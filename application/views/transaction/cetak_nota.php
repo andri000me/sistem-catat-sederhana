@@ -66,7 +66,7 @@
                                                     <th>Nama Produk</th>
                                                     <th>Harga Produk</th>
                                                     <th>Quantity</th>
-                                                    <th>Size bisa > 1</th>
+                                                    <th>Size</th>
                                                     <th>Subtotal</th>
                                                 </tr>
                                             </thead>

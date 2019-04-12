@@ -26,7 +26,7 @@
     .verticalLine {
       border-right: thin solid lightgrey;
     }
-    #berhasil,#gagal{
+    #berhasil,#gagal,#berhasil_edit,#gagal_edit,#berhasil_dlt,#gagal_dlt{
       display: none;
     }
     .scroll-transaction{
@@ -286,6 +286,9 @@
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url('admin/data_kategori_produk');?>">Data Kategori Produk</a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url('admin/data_produk');?>">Data Produk</a>
                 </li>

@@ -168,6 +168,69 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function get_kategori_produk()
+	{
+		if($this->session->userdata('logged')){
+			$data = $this->Admin_model->get_all('ct_kategori_produk');
+			if($data){
+				echo json_encode($data);
+			}else{
+				return FALSE;
+			}
+		}else{
+			redirect('admin','refresh');
+		}
+	}
+
+	public function get_kategori_produk_by_id($id_kategori_produk)
+	{
+		if($this->session->userdata('logged')){
+			$data = $this->Admin_model->get_kategori_by_id($id_kategori_produk);
+			if($data){
+				echo json_encode($data);
+			}else{
+				return FALSE;
+			}
+		}else{
+			redirect('admin','refresh');
+		}
+	}
+
+	public function edit_kategori_produk($id_kategori_produk)
+	{
+		if($this->session->userdata('logged')){
+			$data = $this->Admin_model->edit_kategori_produk($id_kategori_produk);
+			if($data){
+				echo json_encode($data);
+			}else{
+				return FALSE;
+			}
+		}else{
+			redirect('admin','refresh');
+		}
+	}
+
+	public function delete_kategori_produk($id_kategori_produk)
+	{
+		if($this->session->userdata('logged')){
+			$data = $this->Admin_model->delete_kategori_produk($id_kategori_produk);
+			if($data){
+				echo json_encode($data);
+			}else{
+				return FALSE;
+			}
+		}else{
+			redirect('admin','refresh');
+		}
+	}
+
+	public function data_kategori_produk()
+	{
+		$data['title'] = 'Data Kategori Produk';
+		$data['kategori'] = $this->Admin_model->get_all('ct_kategori_produk');
+		$this->load->view('data/data_kategori_produk', $data);
+	}
+
 	public function penjualan()
 	{
 		if ($this->session->userdata('logged')) {
@@ -320,6 +383,20 @@ class Admin extends CI_Controller {
 			redirect('admin','refresh');
 		}
 		
+	}
+
+	public function add_kategori_produk()
+	{
+		if($this->session->userdata('logged')){
+			$data = $this->Admin_model->add_kategori_produk();
+			if($data){
+				echo json_encode($data);
+			}else{
+				return FALSE;
+			}
+		}else{
+			redirect('admin','refresh');
+		}
 	}
 
 }
