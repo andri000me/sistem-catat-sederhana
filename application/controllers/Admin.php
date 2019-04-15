@@ -168,6 +168,20 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function add_kategori_produk()
+	{
+		if($this->session->userdata('logged')){
+			$data = $this->Admin_model->add_kategori_produk();
+			if($data){
+				echo json_encode($data);
+			}else{
+				return FALSE;
+			}
+		}else{
+			redirect('admin','refresh');
+		}
+	}
+
 	public function get_kategori_produk()
 	{
 		if($this->session->userdata('logged')){
@@ -385,15 +399,12 @@ class Admin extends CI_Controller {
 		
 	}
 
-	public function add_kategori_produk()
+	public function data_omset_user()
 	{
 		if($this->session->userdata('logged')){
-			$data = $this->Admin_model->add_kategori_produk();
-			if($data){
-				echo json_encode($data);
-			}else{
-				return FALSE;
-			}
+			$data['title'] = 'Data Omset User';
+			$data['omset'] = $this->Admin_model->data_omset_user();
+			$this->load->view('data/data_omset_user', $data);
 		}else{
 			redirect('admin','refresh');
 		}

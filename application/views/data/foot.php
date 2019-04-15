@@ -288,12 +288,11 @@
               nama_kategori_produk : nama_kategori_produk
             },
             success:function(data){
+              data_kategori_produk();
               $("html, body").animate({scrollTop: 0}, 1000);
               $("#text_berhasil").text('Kategori produk berhasil disimpan');
                 $("#berhasil").slideDown('slow').css('text-align','center');
                 setTimeout(function(){$("#berhasil").slideUp('slow', function(){
-                  data_kategori_produk();
-                  $("#myModal").hide()
               });},2000);
             },
             error:function(error){

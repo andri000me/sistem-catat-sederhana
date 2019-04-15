@@ -288,8 +288,11 @@ class Admin_model extends CI_Model {
 
 	public function add_kategori_produk()
 	{
-		$data = array('nama_kategori_produk' => $this->input->post('nama_kategori_produk'),
-					  'id_user' => $this->session->userdata('id_user'));
+		$nama_kategori_produk = $this->input->post('nama_kategori_produk');
+		$data = array(
+			'nama_kategori_produk' => $nama_kategori_produk,
+			'id_user' => $this->session->userdata('id_user')
+		);
 		$this->db->insert('ct_kategori_produk', $data);
 
 		if($this->db->affected_rows()>0){
@@ -332,6 +335,13 @@ class Admin_model extends CI_Model {
 		}else{
 			return FALSE;
 		}
+	}
+
+	public function data_omset_user()
+	{
+		$query = $this->db->query("SELECT ct_user.*, count(ct_penjualan.id_user) as jumlah_penjualan, sum(ct_penjualan.total) as omset from ct_user left join ct_penjualan on (ct_user.id_user = ct_penjualan.id_user) group by ct_user.id_user order by count(ct_penjualan.id_user) DESC")->result();
+
+        return $query;
 	}
 
 }

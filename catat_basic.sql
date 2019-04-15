@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Apr 2019 pada 05.50
+-- Waktu pembuatan: 12 Apr 2019 pada 11.22
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.2.14
 
@@ -48,7 +48,11 @@ CREATE TABLE `ct_detail_penjualan` (
 --
 
 INSERT INTO `ct_detail_penjualan` (`id_detail_penjualan`, `id_produk`, `kode_produk`, `nama_produk`, `harga_produk`, `quantity`, `size`, `subtotal`, `id_penjualan`, `created`, `updated`, `deleted`) VALUES
-(13, 18, 'BSC-00001', 'Hallucination', 190000, 4, 'L', 760000, 21, '2019-04-10 14:56:14', '2019-04-10 14:56:14', 0);
+(13, 18, 'BSC-00001', 'Hallucination', 190000, 4, 'L', 760000, 21, '2019-04-10 14:56:14', '2019-04-10 14:56:14', 0),
+(14, 18, 'BSC-00001', 'Hallucination', 190000, 4, 'L', 760000, 22, '2019-04-11 14:51:19', '2019-04-11 14:51:19', 0),
+(15, 18, 'BSC-00001', 'Hallucination', 190000, 3, 'XL', 570000, 22, '2019-04-11 14:51:19', '2019-04-11 14:51:19', 0),
+(16, 19, 'BSC-00002', 'Angel Of Death', 100000, 2, 'XL', 200000, 23, '2019-04-11 14:53:33', '2019-04-11 14:53:33', 0),
+(17, 19, 'BSC-00002', 'Angel Of Death', 100000, 1, 'L', 100000, 23, '2019-04-11 14:53:33', '2019-04-11 14:53:33', 0);
 
 -- --------------------------------------------------------
 
@@ -71,8 +75,7 @@ CREATE TABLE `ct_detail_produks` (
 
 INSERT INTO `ct_detail_produks` (`id_detail_produk`, `img_produk`, `id_produk`, `created`, `updated`, `deleted`) VALUES
 (5, 'SeeYa3.PNG', 19, '2019-04-11 10:36:19', '2019-04-11 10:43:49', 1),
-(6, 'SeeYa12.PNG', 19, '2019-04-11 10:36:19', '2019-04-11 10:43:49', 1),
-(7, 'Freedom-Front.png', 18, '2019-04-11 10:49:45', '2019-04-11 10:49:45', 0);
+(6, 'SeeYa12.PNG', 19, '2019-04-11 10:36:19', '2019-04-11 10:43:49', 1);
 
 -- --------------------------------------------------------
 
@@ -94,8 +97,15 @@ CREATE TABLE `ct_kategori_produk` (
 --
 
 INSERT INTO `ct_kategori_produk` (`id_kategori_produk`, `nama_kategori_produk`, `id_user`, `created`, `updated`, `deleted`) VALUES
-(1, 'Kaos', 1, '2019-04-02 11:23:16', '2019-04-02 11:23:16', 0),
-(2, 'Jaket', 1, '2019-04-02 11:23:16', '2019-04-02 11:23:16', 0);
+(1, 'T-shirt', 0, '2019-04-02 11:23:16', '2019-04-12 10:17:13', 0),
+(2, 'Jacket', 0, '2019-04-02 11:23:16', '2019-04-12 10:14:12', 0),
+(3, 'Pullover Hoodie', 0, '2019-04-11 21:37:04', '2019-04-12 10:15:22', 0),
+(4, 'Caps', 0, '2019-04-11 21:37:40', '2019-04-11 21:37:40', 0),
+(5, 'Parka Jacket', 0, '2019-04-11 22:01:19', '2019-04-11 22:01:19', 0),
+(6, 'Bikers Jacket', 0, '2019-04-11 22:03:14', '2019-04-12 10:26:28', 1),
+(7, 'Snapback', 0, '2019-04-11 22:04:07', '2019-04-11 22:04:07', 0),
+(13, 'Printing Shirt', 1, '2019-04-12 14:59:57', '2019-04-12 15:02:12', 0),
+(14, 'Bomber Jacket', 1, '2019-04-12 15:01:37', '2019-04-12 15:01:37', 0);
 
 -- --------------------------------------------------------
 
@@ -125,7 +135,9 @@ CREATE TABLE `ct_penjualan` (
 --
 
 INSERT INTO `ct_penjualan` (`id_penjualan`, `kode_penjualan`, `tanggal_penjualan`, `nama_pembeli`, `alamat_pembeli`, `id_user`, `nomor_telepon`, `kota_tujuan`, `status`, `ongkos_kirim`, `total`, `created`, `updated`, `deleted`) VALUES
-(21, 'PJ-00001', '2019-04-10 09:56:14', 'Dogi Degina', 'Jl.Jatisari Permai B1A Pepelegi, Waru, Sidoarjo', 1, '0897762373734', '409', 'Belum Terbayar', 10000, 770000, '2019-04-10 14:56:14', '2019-04-10 14:56:15', 0);
+(21, 'PJ-00001', '2019-04-10 09:56:14', 'Dogi Degina', 'Jl.Jatisari Permai B1A Pepelegi, Waru, Sidoarjo', 1, '0897762373734', '409', 'Belum Terbayar', 10000, 770000, '2019-04-10 14:56:14', '2019-04-10 14:56:15', 0),
+(22, 'PJ-00002', '2019-04-11 09:51:18', 'Raja Kone', 'Jl.Kaliurang KM 65 Yogyakarta', 1, '0837378298309', '501', 'Belum Terbayar', 15000, 1345000, '2019-04-11 14:51:18', '2019-04-11 14:51:19', 0),
+(23, 'PJ-00003', '2019-04-11 09:53:33', 'Joni Maimunah', 'Jl. Anjay Jayapura', 1, '08483498349', '158', 'Belum Terbayar', 115000, 415000, '2019-04-11 14:53:33', '2019-04-12 10:29:05', 1);
 
 -- --------------------------------------------------------
 
@@ -155,7 +167,11 @@ CREATE TABLE `ct_produk` (
 
 INSERT INTO `ct_produk` (`id_produk`, `kode_produk`, `nama_produk`, `size_produk`, `harga_produksi`, `harga_jual`, `warna`, `id_kategori_produk`, `stok`, `id_user`, `created`, `updated`, `deleted`) VALUES
 (18, 'BSC-00001', 'Hallucination', '', 140000, 190000, 'Navy', 2, 10, 1, '2019-04-10 14:16:53', '2019-04-10 14:16:53', 0),
-(19, 'BSC-00002', 'Angel Of Death', '', 75000, 100000, 'White', 1, 10, 1, '2019-04-11 10:36:00', '2019-04-11 10:43:49', 1);
+(19, 'BSC-00002', 'Angel Of Death', '', 75000, 100000, 'White', 1, 10, 1, '2019-04-11 10:36:00', '2019-04-11 10:43:49', 1),
+(20, 'BSC-00003', 'Basic Beach', '', 75000, 100000, 'White', 1, 10, 1, '2019-04-12 10:22:52', '2019-04-12 10:22:59', 1),
+(21, 'BSC-00004', 'Point Black', '', 75000, 100000, 'Black', 2, 10, 1, '2019-04-12 10:24:01', '2019-04-12 10:24:01', 0),
+(22, 'BSC-00005', 'Strong', '', 75000, 100000, 'Forest Green', 1, 10, 1, '2019-04-12 10:24:24', '2019-04-12 10:24:37', 1),
+(23, 'BSC-00006', 'Chill Beach', '', 75000, 100000, 'White', 1, 10, 1, '2019-04-12 15:26:10', '2019-04-12 15:26:10', 0);
 
 -- --------------------------------------------------------
 
@@ -237,31 +253,31 @@ ALTER TABLE `ct_user`
 -- AUTO_INCREMENT untuk tabel `ct_detail_penjualan`
 --
 ALTER TABLE `ct_detail_penjualan`
-  MODIFY `id_detail_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_detail_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_detail_produks`
 --
 ALTER TABLE `ct_detail_produks`
-  MODIFY `id_detail_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_detail_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_kategori_produk`
 --
 ALTER TABLE `ct_kategori_produk`
-  MODIFY `id_kategori_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_kategori_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_penjualan`
 --
 ALTER TABLE `ct_penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_produk`
 --
 ALTER TABLE `ct_produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_user`
@@ -284,12 +300,6 @@ ALTER TABLE `ct_detail_penjualan`
 --
 ALTER TABLE `ct_detail_produks`
   ADD CONSTRAINT `ct_detail_produks_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `ct_produk` (`id_produk`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `ct_kategori_produk`
---
-ALTER TABLE `ct_kategori_produk`
-  ADD CONSTRAINT `ct_kategori_produk_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `ct_user` (`id_user`);
 
 --
 -- Ketidakleluasaan untuk tabel `ct_penjualan`

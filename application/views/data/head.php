@@ -71,6 +71,24 @@
       margin: 0px auto;
       display: block;
     }
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+    }
+     
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #888; 
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555; 
+    }
   </style>
 </head>
 
@@ -296,7 +314,7 @@
                   <a class="nav-link" href="<?php echo base_url('admin/data_penjualan');?>"> Data Pesanan</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="pages/samples/register.html"> Omset User </a>
+                  <a class="nav-link" href="<?php echo base_url('admin/data_omset_user');?>"> Omset User </a>
                 </li>
               </ul>
             </div>
