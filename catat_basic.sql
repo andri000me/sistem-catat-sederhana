@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Apr 2019 pada 11.22
+-- Waktu pembuatan: 15 Apr 2019 pada 10.35
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.2.14
 
@@ -52,7 +52,23 @@ INSERT INTO `ct_detail_penjualan` (`id_detail_penjualan`, `id_produk`, `kode_pro
 (14, 18, 'BSC-00001', 'Hallucination', 190000, 4, 'L', 760000, 22, '2019-04-11 14:51:19', '2019-04-11 14:51:19', 0),
 (15, 18, 'BSC-00001', 'Hallucination', 190000, 3, 'XL', 570000, 22, '2019-04-11 14:51:19', '2019-04-11 14:51:19', 0),
 (16, 19, 'BSC-00002', 'Angel Of Death', 100000, 2, 'XL', 200000, 23, '2019-04-11 14:53:33', '2019-04-11 14:53:33', 0),
-(17, 19, 'BSC-00002', 'Angel Of Death', 100000, 1, 'L', 100000, 23, '2019-04-11 14:53:33', '2019-04-11 14:53:33', 0);
+(17, 19, 'BSC-00002', 'Angel Of Death', 100000, 1, 'L', 100000, 23, '2019-04-11 14:53:33', '2019-04-11 14:53:33', 0),
+(18, 23, 'BSC-00006', 'Chill Beach', 100000, 1, 'L', 100000, 24, '2019-04-15 14:28:27', '2019-04-15 14:28:27', 0),
+(19, 23, 'BSC-00006', 'Chill Beach', 100000, 1, 'XL', 100000, 24, '2019-04-15 14:28:27', '2019-04-15 14:28:27', 0),
+(20, 23, 'BSC-00006', 'Chill Beach', 100000, 1, 'S', 100000, 25, '2019-04-15 14:29:53', '2019-04-15 14:29:53', 0),
+(21, 21, 'BSC-00004', 'Point Black', 100000, 1, 'S', 100000, 26, '2019-04-15 14:35:48', '2019-04-15 14:35:48', 0),
+(22, 23, 'BSC-00006', 'Chill Beach', 100000, 2, 'L', 200000, 26, '2019-04-15 14:35:48', '2019-04-15 14:35:48', 0),
+(23, 21, 'BSC-00004', 'Point Black', 100000, 1, 'S', 100000, 27, '2019-04-15 14:36:01', '2019-04-15 14:36:01', 0),
+(24, 23, 'BSC-00006', 'Chill Beach', 100000, 2, 'L', 200000, 27, '2019-04-15 14:36:01', '2019-04-15 14:36:01', 0),
+(25, 23, 'BSC-00006', 'Chill Beach', 100000, 1, 'L', 100000, 28, '2019-04-15 14:37:56', '2019-04-15 14:37:56', 0),
+(26, 21, 'BSC-00004', 'Point Black', 100000, 1, 'L', 100000, 28, '2019-04-15 14:37:56', '2019-04-15 14:37:56', 0),
+(27, 21, 'BSC-00004', 'Point Black', 100000, 1, 'S', 100000, 29, '2019-04-15 14:50:29', '2019-04-15 14:50:29', 0),
+(28, 23, 'BSC-00006', 'Chill Beach', 100000, 1, 'S', 100000, 29, '2019-04-15 14:50:29', '2019-04-15 14:50:29', 0),
+(29, 21, 'BSC-00004', 'Point Black', 100000, 1, 'S', 100000, 30, '2019-04-15 14:50:47', '2019-04-15 14:50:47', 0),
+(30, 23, 'BSC-00006', 'Chill Beach', 100000, 1, 'S', 100000, 30, '2019-04-15 14:50:47', '2019-04-15 14:50:47', 0),
+(31, 18, 'BSC-00001', 'Hallucination', 190000, 1, 'S', 190000, 31, '2019-04-15 14:53:01', '2019-04-15 14:53:01', 0),
+(32, 23, 'BSC-00006', 'Chill Beach', 100000, 1, 'S', 100000, 32, '2019-04-15 14:56:09', '2019-04-15 14:56:09', 0),
+(33, 21, 'BSC-00004', 'Point Black', 100000, 1, 'S', 100000, 33, '2019-04-15 14:58:58', '2019-04-15 14:58:58', 0);
 
 -- --------------------------------------------------------
 
@@ -105,7 +121,8 @@ INSERT INTO `ct_kategori_produk` (`id_kategori_produk`, `nama_kategori_produk`, 
 (6, 'Bikers Jacket', 0, '2019-04-11 22:03:14', '2019-04-12 10:26:28', 1),
 (7, 'Snapback', 0, '2019-04-11 22:04:07', '2019-04-11 22:04:07', 0),
 (13, 'Printing Shirt', 1, '2019-04-12 14:59:57', '2019-04-12 15:02:12', 0),
-(14, 'Bomber Jacket', 1, '2019-04-12 15:01:37', '2019-04-12 15:01:37', 0);
+(14, 'Bomber Jacket', 1, '2019-04-12 15:01:37', '2019-04-12 15:01:37', 0),
+(15, '5-Panel Caps', 1, '2019-04-15 11:57:23', '2019-04-15 11:57:23', 0);
 
 -- --------------------------------------------------------
 
@@ -121,7 +138,9 @@ CREATE TABLE `ct_penjualan` (
   `alamat_pembeli` varchar(200) NOT NULL,
   `id_user` int(11) NOT NULL,
   `nomor_telepon` varchar(200) NOT NULL,
-  `kota_tujuan` varchar(200) NOT NULL,
+  `id_tujuan` varchar(200) NOT NULL,
+  `type_tujuan` varchar(200) NOT NULL,
+  `tujuan` varchar(200) NOT NULL,
   `status` enum('Belum Terbayar','Lunas') NOT NULL,
   `ongkos_kirim` double NOT NULL,
   `total` double NOT NULL,
@@ -134,10 +153,20 @@ CREATE TABLE `ct_penjualan` (
 -- Dumping data untuk tabel `ct_penjualan`
 --
 
-INSERT INTO `ct_penjualan` (`id_penjualan`, `kode_penjualan`, `tanggal_penjualan`, `nama_pembeli`, `alamat_pembeli`, `id_user`, `nomor_telepon`, `kota_tujuan`, `status`, `ongkos_kirim`, `total`, `created`, `updated`, `deleted`) VALUES
-(21, 'PJ-00001', '2019-04-10 09:56:14', 'Dogi Degina', 'Jl.Jatisari Permai B1A Pepelegi, Waru, Sidoarjo', 1, '0897762373734', '409', 'Belum Terbayar', 10000, 770000, '2019-04-10 14:56:14', '2019-04-10 14:56:15', 0),
-(22, 'PJ-00002', '2019-04-11 09:51:18', 'Raja Kone', 'Jl.Kaliurang KM 65 Yogyakarta', 1, '0837378298309', '501', 'Belum Terbayar', 15000, 1345000, '2019-04-11 14:51:18', '2019-04-11 14:51:19', 0),
-(23, 'PJ-00003', '2019-04-11 09:53:33', 'Joni Maimunah', 'Jl. Anjay Jayapura', 1, '08483498349', '158', 'Belum Terbayar', 115000, 415000, '2019-04-11 14:53:33', '2019-04-12 10:29:05', 1);
+INSERT INTO `ct_penjualan` (`id_penjualan`, `kode_penjualan`, `tanggal_penjualan`, `nama_pembeli`, `alamat_pembeli`, `id_user`, `nomor_telepon`, `id_tujuan`, `type_tujuan`, `tujuan`, `status`, `ongkos_kirim`, `total`, `created`, `updated`, `deleted`) VALUES
+(21, 'PJ-00001', '2019-04-10 09:56:14', 'Dogi Degina', 'Jl.Jatisari Permai B1A Pepelegi, Waru, Sidoarjo', 1, '0897762373734', '409', '', '', 'Belum Terbayar', 10000, 770000, '2019-04-10 14:56:14', '2019-04-10 14:56:15', 0),
+(22, 'PJ-00002', '2019-04-11 09:51:18', 'Raja Kone', 'Jl.Kaliurang KM 65 Yogyakarta', 1, '0837378298309', '501', '', '', 'Belum Terbayar', 15000, 1345000, '2019-04-11 14:51:18', '2019-04-11 14:51:19', 0),
+(23, 'PJ-00003', '2019-04-11 09:53:33', 'Joni Maimunah', 'Jl. Anjay Jayapura', 1, '08483498349', '158', '', '', 'Belum Terbayar', 115000, 415000, '2019-04-11 14:53:33', '2019-04-12 10:29:05', 1),
+(24, 'PJ-00004', '2019-04-15 09:28:27', 'Dono Sumargi', 'Jl.Jambangan no 42 Bandung', 1, '0893478347834', '22', '', '', 'Belum Terbayar', 20000, 220000, '2019-04-15 14:28:27', '2019-04-15 14:28:28', 0),
+(25, 'PJ-00005', '2019-04-15 09:29:53', 'sdssd', 'Bandung', 1, '0895364791632', '23', '', 'Bandung', 'Belum Terbayar', 20000, 120000, '2019-04-15 14:29:53', '2019-04-15 14:29:54', 0),
+(26, 'PJ-00006', '2019-04-15 09:35:48', 'Doni', 'jl. A. H. Nasution no 21 Kabupaten Madiun', 1, '90834983940', '247', '', 'Madiun', 'Belum Terbayar', 8000, 308000, '2019-04-15 14:35:48', '2019-04-15 14:35:50', 0),
+(27, 'PJ-00007', '2019-04-15 09:36:01', 'Doni', 'jl. A. H. Nasution no 21 Kabupaten Madiun', 1, '90834983940', '247', '', 'Madiun', 'Belum Terbayar', 8000, 308000, '2019-04-15 14:36:01', '2019-04-15 14:36:08', 0),
+(28, 'PJ-00008', '2019-04-15 09:37:56', 'Kaito', 'Jl.Wisma Permai Regency B1A Kabupaten Sidoarjo', 1, '08928237239', '409', 'Kabupaten', 'Sidoarjo', 'Belum Terbayar', 10000, 210000, '2019-04-15 14:37:56', '2019-04-15 14:37:57', 0),
+(29, 'PJ-00009', '2019-04-15 09:50:29', 'Sarno', 'Malang', 1, '0895364791632', '255', 'Kabupaten', 'Malang', 'Belum Terbayar', 8000, 208000, '2019-04-15 14:50:29', '2019-04-15 14:50:30', 0),
+(30, 'PJ-00010', '2019-04-15 09:50:47', 'Sarno', 'Malang', 1, '0895364791632', '255', 'Kabupaten', 'Malang', 'Belum Terbayar', 8000, 208000, '2019-04-15 14:50:47', '2019-04-15 14:50:48', 0),
+(31, 'PJ-00011', '2019-04-15 09:53:01', 'Sarno', 'Jombang', 1, '0895364791632', '164', 'Kabupaten', 'Jombang', 'Belum Terbayar', 8000, 198000, '2019-04-15 14:53:01', '2019-04-15 14:53:01', 0),
+(32, 'PJ-00012', '2019-04-15 09:56:09', 'Dongek', 'Karangasem', 1, '0895364791632', '170', 'Kabupaten', 'Karangasem', 'Belum Terbayar', 26000, 126000, '2019-04-15 14:56:09', '2019-04-15 14:56:11', 0),
+(33, 'PJ-00013', '2019-04-15 09:58:58', 'I Gede Nyoman', 'Kota Denpasar', 1, '0895364791632', '114', 'Kota', 'Denpasar', 'Belum Terbayar', 20000, 120000, '2019-04-15 14:58:58', '2019-04-15 14:58:59', 0);
 
 -- --------------------------------------------------------
 
@@ -253,7 +282,7 @@ ALTER TABLE `ct_user`
 -- AUTO_INCREMENT untuk tabel `ct_detail_penjualan`
 --
 ALTER TABLE `ct_detail_penjualan`
-  MODIFY `id_detail_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_detail_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_detail_produks`
@@ -265,13 +294,13 @@ ALTER TABLE `ct_detail_produks`
 -- AUTO_INCREMENT untuk tabel `ct_kategori_produk`
 --
 ALTER TABLE `ct_kategori_produk`
-  MODIFY `id_kategori_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_kategori_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_penjualan`
 --
 ALTER TABLE `ct_penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_produk`
