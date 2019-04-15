@@ -71,7 +71,7 @@
                                             <option value=""> - Kota / Kabupaten -</option>
                                             <?php
                                                 foreach ($city['rajaongkir']['results'] as $data) {
-                                                    echo '<option value="'.$data['city_id'].'">'.$data['city_name'].'</div>';
+                                                    echo '<option value="'.$data['city_id'].'">'.$data['type'].' '.$data['city_name'].'</div>';
                                                 }
                                             ?>
                                         </select>

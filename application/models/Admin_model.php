@@ -168,7 +168,7 @@ class Admin_model extends CI_Model {
 			'alamat_pembeli' => $alamat_pembeli,
 			'id_user' => $this->session->userdata('id_user'),
 			'nomor_telepon' => $nomor_telepon,
-			'kota_tujuan' => $kota_tujuan,
+			'id_tujuan' => $kota_tujuan,
 			'status' => 'Belum Terbayar',
 			'total' => $total
 		);
@@ -246,8 +246,44 @@ class Admin_model extends CI_Model {
 		  $total = $get_total->total;
 		  $new_total  = $total + $ongkir;
 		  $this->db->update('ct_penjualan', array('total' => $new_total),array('id_penjualan'=>$id_penjualan));
+		  $this->get_city_name_by_id($kota_tujuan,$id_penjualan);
 		}
 
+	}
+
+	public function get_city_name_by_id($id,$id_penjualan)
+	{
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+		  CURLOPT_URL => "https://api.rajaongkir.com/starter/city?id=$id",
+		  CURLOPT_RETURNTRANSFER => true,
+		  CURLOPT_ENCODING => "",
+		  CURLOPT_MAXREDIRS => 10,
+		  CURLOPT_TIMEOUT => 30,
+		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		  CURLOPT_CUSTOMREQUEST => "GET",
+		  CURLOPT_HTTPHEADER => array(
+		    "key:3275a8000010695a45f9ea333d0145f9"
+		  ),
+		));
+
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+
+		curl_close($curl);
+
+		if ($err) {
+		  echo "cURL Error #:" . $err;
+		} else {
+		  $hasil = json_decode($response,true);
+		  $kota =  $hasil['rajaongkir']['results']['city_name'];
+		  $type =  $hasil['rajaongkir']['results']['type'];
+		  $tujuan = array(
+		  	'type_tujuan' => $type,
+		  	'tujuan' => $kota
+		  	 );
+		  $this->db->update('ct_penjualan',$tujuan,array('id_penjualan'=>$id_penjualan));
+		}
 	}
 
 	public function detail_penjualan($id_penjualan)

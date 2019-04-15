@@ -310,6 +310,8 @@ class Admin extends CI_Controller {
 
 					if(!empty($result)){
 						foreach ($result as $row) {
+							if($row->deleted == 0){
+
 							echo '<li>
 					               <a class="list" style="display:block;cursor:pointer" data-produkid="'.$row->id_produk.'" data-produkkode="'.$row->kode_produk.'" data-produknama="'.$row->nama_produk.'" data-produkharga="'.$row->harga_jual.'" onclick="add_barang(this);">
 								        <div class="row">
@@ -323,9 +325,10 @@ class Admin extends CI_Controller {
 					                </a>
 					            </li>';
 						}
-					}else{
-						echo '<li><i class="mdi mdi-close-circle text-danger"></i> Produk tidak ditemukan </li>';
 					}
+				}else{
+					echo '<li><i class="mdi mdi-close-circle text-danger"></i> Produk tidak ditemukan </li>';
+				}
 		}else{
 			redirect('admin','refresh');
 		}
@@ -447,7 +450,8 @@ class Admin extends CI_Controller {
 		if(!empty($results)){
 
 			foreach ($results as $data) {
-				$output .= '<tbody id="laporan_penjualan">
+				if($data->deleted == 0){
+					$output .= '<tbody id="laporan_penjualan">
 								<tr>
 									<td>'.++$no.'</td>
 									<td>'.$data->kode_penjualan.'</td>
@@ -457,6 +461,7 @@ class Admin extends CI_Controller {
 								</tr>
 							</tbody>';
 							$total += $data->total;
+				}
 			}
 			$output .= '<tr>
 							<td colspan="4" style="text-align: right;padding:5px"><b>Grand Total</b></td>

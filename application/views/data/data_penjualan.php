@@ -30,6 +30,7 @@
                                                 <th>Nomor Telepon</th>
                                                 <th>Ongkos Kirim</th>
                                                 <th>Total</th>
+                                                <th>Status</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -43,6 +44,7 @@
                                                             <td>'.$data->nomor_telepon.'</td>
                                                             <td>Rp '.number_format($data->ongkos_kirim).'</td>
                                                             <td>Rp '.number_format($data->total).'</td>
+                                                            <td>'.$data->status.'</td>
                                                             <td>
                                                                 <div class="row">
                                                                     <div class="col-md-3 col-sm-3">

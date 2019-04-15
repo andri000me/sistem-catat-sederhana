@@ -203,6 +203,7 @@
                         '<td>'+data[i].nomor_telepon+'</td>'+
                         '<td>Rp '+data[i].ongkos_kirim.toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")+'</td>'+
                         '<td>Rp '+data[i].total.toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")+'</td>'+
+                        '<td>'+data[i].status+'</td>'+
                         '<td>'+
                           '<div class="row">'+
                               '<div class="col-md-3 col-sm-3">'+
