@@ -21,6 +21,9 @@
     <!-- page-body-wrapper ends -->
   </div>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
   <!-- inject:js -->
@@ -41,6 +44,7 @@
         get_location();
         get_day();
        },200000);
+       $(".datepicker").datepicker({dateFormat: 'yy-mm-dd'});
        get_day();
        get_location();
        data_produk();
@@ -416,6 +420,49 @@
 
      }
     }
+
+    function printData()
+    {
+       var divToPrint=document.getElementById("printTable");
+       newWin= window.open("");
+       newWin.document.write(divToPrint.outerHTML);
+       newWin.print();
+       newWin.close();
+    }
+
+    $('#btnPrint').on('click',function(){
+    printData();
+    });
+
+    $(document).ready(function(){  
+           $('#btn-search').click(function(){  
+                var from_date = $('#from_date').val();  
+                var to_date = $('#to_date').val();
+                  
+                if(from_date != '' && to_date != '')  
+                {  
+                     $.ajax({  
+                          url:"<?php echo base_url();?>admin/cari_laporan",  
+                          method:"POST",  
+                          data:{from_date:from_date, to_date:to_date},  
+                          success:function(data)  
+                          {  
+                            $('#detail_laporan').html(data);
+                          }  
+                     });  
+                }  
+                else  
+                {  
+                    alert("Please Select Date");  
+                    $("#from_date").focus();
+                }  
+           });
+
+           $("#btn-refresh").click(function(){
+              $('#detail_laporan').empty();
+              $('.datepicker').val("");
+           });  
+      });
   </script>
 </body>
 

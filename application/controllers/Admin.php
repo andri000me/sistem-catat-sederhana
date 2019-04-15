@@ -410,6 +410,72 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function laporan_penjualan()
+	{
+		$data['title'] = 'Laporan Penjualan';
+		$this->load->view('transaction/laporan_penjualan', $data);
+	}
+
+	public function cari_laporan()
+	{
+		if($this->session->userdata('logged')){
+		$from_date = $this->input->post('from_date');
+		$to_date = $this->input->post('to_date');
+		$output = '';
+		$no = 0;
+		$total = 0;
+
+		$results = $this->Admin_model->cari_laporan($from_date,$to_date);
+			$output .= '<br>
+		      	<div style="width:100%">
+		      		<h3 style="text-align:center">LAPORAN PENJUALAN</h3>
+		      		<h4 style="text-align:center">Periode</h4>
+		      		<h4 style="text-align:center">'.date('d F Y',strtotime($_POST["from_date"])).' s/d. '.date('d F Y',strtotime($_POST["to_date"])).'</h4>
+		      	</div>
+		      	<br>
+		      	<table class="table table-bordered" border="1" cellpadding="3" style="width:100%;border-collapse:collapse" id="mytable">
+		      	<thead>
+		           <tr>
+		            <th>No</th>
+		            <th>Nomor Penjualan</th>
+		            <th>Tanggal Penjualan</th>
+		            <th>Pelanggan</th>
+		            <th>Total</th>
+		           </tr>
+		         </thead>
+		      ';
+		if(!empty($results)){
+
+			foreach ($results as $data) {
+				$output .= '<tbody id="laporan_penjualan">
+								<tr>
+									<td>'.++$no.'</td>
+									<td>'.$data->kode_penjualan.'</td>
+									<td>'.date('d F Y',strtotime($data->tanggal_penjualan)).'</td>
+									<td>'.$data->nama_pembeli.'</td>
+									<td>Rp '.number_format($data->total).'</td>
+								</tr>
+							</tbody>';
+							$total += $data->total;
+			}
+			$output .= '<tr>
+							<td colspan="4" style="text-align: right;padding:5px"><b>Grand Total</b></td>
+							<td>Rp '.number_format($total).'</td>
+						</tr>';
+		}else{
+			$output .= '<tr>
+							<td><i class="mdi mdi-close-circle text-danger"></i> Penjualan tidak ditemukan</td>
+						</tr>';
+		}
+		$output .= '
+		      </tbody>
+		      </table>';
+		      echo $output;
+		}else{
+			redirect('admin','refresh');
+		}
+	}
+
 }
 
 /* End of file Admin.php */

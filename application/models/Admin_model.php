@@ -344,6 +344,13 @@ class Admin_model extends CI_Model {
         return $query;
 	}
 
+	public function cari_laporan($from_date,$to_date)
+	{
+		$query = $this->db->query("SELECT * FROM ct_penjualan WHERE tanggal_penjualan BETWEEN '".$from_date."' AND '".$to_date."' ORDER BY id_penjualan")->result();
+		
+		return $query;
+	}
+
 }
 
 /* End of file Admin_model.php */

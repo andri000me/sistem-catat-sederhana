@@ -89,6 +89,11 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #555; 
     }
+    .scroll-laporan{
+      height: 400px;
+      overflow-y: scroll;
+      margin: 10px 0 10px 0;
+    }
   </style>
 </head>
 
@@ -320,7 +325,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url();?>">
+            <a class="nav-link" href="<?php echo base_url('admin/laporan_penjualan');?>">
               <i class="menu-icon mdi mdi-file-document"></i>
               <span class="menu-title">Laporan Penjualan</span>
             </a>
