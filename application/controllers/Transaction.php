@@ -48,6 +48,49 @@ class Transaction extends CI_Controller {
 		}
 	}
 
+	public function edit_penjualan($id_penjualan)
+	{
+		if($this->session->userdata('logged')){
+			$query = $this->Admin_model->detail_penjualan($id_penjualan);
+			$nomor_penjualan = $query->kode_penjualan;
+			$data['title'] = 'Detail Penjualan '.$nomor_penjualan;
+			$data['detail'] = $this->Admin_model->detail_penjualan($id_penjualan);
+			$data['detail_produk'] = $this->Admin_model->detail_produk_penjualan($id_penjualan);
+			$data['city'] = $this->Admin_model->get_city();
+			$this->load->view('transaction/edit_penjualan', $data);
+		}else{
+			redirect('admin','refresh');
+		}
+	}
+
+	public function get_produk_list($id_detail_penjualan)
+	{
+		if($this->session->userdata('logged')){
+			$data = $this->Admin_model->get_produk_list($id_detail_penjualan);
+			if($data){
+				echo json_encode($data);
+			}else{
+				return FALSE;
+			}
+		}else{
+			redirect('admin','refresh');
+		}
+	}
+
+	public function edit_detail_penjualan()
+	{
+		if($this->session->userdata('logged')){
+			$data = $this->Admin_model->edit_detail_penjualan();
+			if($data){
+				echo json_encode($data);
+			}else{
+				return FALSE;
+			}
+		}else{
+			redirect('admin','refresh');
+		}
+	}
+
 }
 
 /* End of file Transaction.php */

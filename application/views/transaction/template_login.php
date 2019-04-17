@@ -16,7 +16,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="<?php echo base_url()?>assets/images/favicon1.png" />
+  <link rel="shortcut icon" href="<?php echo base_url()?>assets/images/favicon2.png" />
   <style type="text/css">
     #berhasil,#gagal{
       display: none;

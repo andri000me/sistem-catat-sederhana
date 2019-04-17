@@ -30,7 +30,16 @@
   <script src="<?php echo base_url();?>assets/js/off-canvas.js"></script>
   <script src="<?php echo base_url();?>assets/js/misc.js"></script>
   <script src="<?php echo base_url();?>assets/js/dashboard.js"></script>
+  <script src="<?php echo base_url();?>assets/js/upup.min.js"></script>
+
   <script type="text/javascript">
+    UpUp.start({
+      'cache-version' : 'v2',
+      'content-url' :'<?= site_url($this->uri->segment(1));?>',
+      'content' : 'Cannot reach site. Please check your internet connection.',
+      'service-worker-url':'<?php echo base_url();?>assets/js/upup.sw.min.js'
+    });
+    
     var day = "<?php date_default_timezone_set("Asia/Jakarta"); echo date('l');?>";
     var date= "<?php date_default_timezone_set("Asia/Jakarta"); echo date('d F Y');?>";
     var base_url = "<?php echo base_url();?>";
@@ -212,7 +221,7 @@
                                         '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">'+
                                         '<a class="dropdown-item" href="'+base_url+'admin/cetak_nota/'+data[i].id_penjualan+'">Cetak Nota</a>'+
                                         '<a class="dropdown-item" href="'+base_url+'transaction/detail_penjualan/'+data[i].id_penjualan+'">Detail Penjualan</a>'+
-                                        '<a class="dropdown-item" href="#">Edit Penjualan</a>'+
+                                        '<a class="dropdown-item" href="'+base_url+'transaction/edit_penjualan/'+data[i].id_penjualan+'">Edit Penjualan</a>'+
                                         '<a class="dropdown-item text-danger" href="#" onclick="delete_penjualan('+data[i].id_penjualan+')">Delete</a>'+
                                       '</div>'+
                                   '</div>'+
@@ -464,6 +473,65 @@
               $('.datepicker').val("");
            });  
       });
+
+    function edit_detail(id_detail_penjualan) {
+      $.ajax({
+        type:"POST",
+        url : "<?php echo base_url();?>transaction/get_produk_list/"+id_detail_penjualan,
+        dataType : "json",
+        success:function(data){
+          $("#quantity_edit").val(data.quantity);
+          $("#size_edit").val(data.size).text(data.size);
+          $("#id_penjualan_edit").val(data.id_penjualan);
+          $("#id_detail_penjualan_edit").val(data.id_detail_penjualan);
+          $("#harga_edit").val(data.harga_produk);
+        },
+        error:function(error){
+          $("#quantity_edit").val('Not Found');
+          console.log(error);
+        }
+      });
+    }
+
+    $("#btnEditDetailProduk").click(function(event){
+      event.preventDefault();
+      var id_detail_penjualan_edit = $("#id_detail_penjualan_edit").val();
+      var id_penjualan_edit = $("#id_penjualan_edit").val();
+      var harga_edit = $("#harga_edit").val();
+      var quantity_edit = $("#quantity_edit").val();
+      var size_edit = $("#size_edit").val();
+      var conf = confirm('Are you sure?');
+
+      if(conf){
+        $.ajax({
+          type:"POST",
+          url : "<?php echo base_url();?>transaction/edit_detail_penjualan",
+          data : {
+            id_detail_penjualan_edit : id_detail_penjualan_edit,
+            id_penjualan_edit : id_penjualan_edit,
+            harga_edit : harga_edit,
+            quantity_edit : quantity_edit,
+            size_edit : size_edit
+          },
+          dataType:"json",
+          success:function(data){
+             $("#text_berhasil_edit_detail").text('Produk penjualan berhasil diperbarui');
+                  $("#berhasil_edit_detail").slideDown('slow').css('text-align','center');
+                  setTimeout(function(){$("#berhasil_edit_detail").slideUp('slow', function(){
+                    window.location.reload();
+            });},2000);
+          },
+          error:function(error){
+             $("#text_gagal_edit_detail").text('Produk penjualan gagal diperbarui');
+                  $("#gagal_edit_detail").slideDown('slow').css('text-align','center');
+                  setTimeout(function(){$("#gagal_edit_detail").slideUp('slow', function(){
+            });},2000);
+          }
+        });
+      }else{
+
+      }
+    });
   </script>
 </body>
 

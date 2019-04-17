@@ -53,7 +53,7 @@
                                                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                                                 <a class="dropdown-item" href="'.base_url().'admin/cetak_nota/'.$data->id_penjualan.'">Cetak Nota</a>
                                                                                 <a class="dropdown-item" href="'.base_url().'transaction/detail_penjualan/'.$data->id_penjualan.'">Detail Penjualan</a>
-                                                                                <a class="dropdown-item" href="#">Edit Penjualan</a>
+                                                                                <a class="dropdown-item" href="'.base_url().'transaction/edit_penjualan/'.$data->id_penjualan.'">Edit Penjualan</a>
                                                                                 <a class="dropdown-item text-danger" href="#" onclick="delete_penjualan('.$data->id_penjualan.')">Delete</a>
                                                                             </div>
                                                                         </div>

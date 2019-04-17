@@ -387,6 +387,76 @@ class Admin_model extends CI_Model {
 		return $query;
 	}
 
+	public function get_city()
+	{
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+		  CURLOPT_URL => "https://api.rajaongkir.com/starter/city",
+		  CURLOPT_RETURNTRANSFER => true,
+		  CURLOPT_ENCODING => "",
+		  CURLOPT_MAXREDIRS => 10,
+		  CURLOPT_TIMEOUT => 30,
+		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		  CURLOPT_CUSTOMREQUEST => "GET",
+		  CURLOPT_HTTPHEADER => array(
+		    "key:3275a8000010695a45f9ea333d0145f9"
+		  ),
+		));
+
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+
+		curl_close($curl);
+
+		if ($err) {
+		  return "cURL Error #:" . $err;
+		}else {
+		  return json_decode($response,true);
+		}
+	}
+
+	public function get_produk_list($id_detail_penjualan)
+	{
+		return $this->db->where('id_detail_penjualan',$id_detail_penjualan)
+						->get('ct_detail_penjualan')
+						->row();
+	}
+
+	public function edit_detail_penjualan()
+	{
+		$id_detail_penjualan_edit = $this->input->post('id_detail_penjualan_edit');
+		$id_penjualan_edit = $this->input->post('id_penjualan_edit');
+		$quantity_edit = $this->input->post('quantity_edit');
+		$size_edit = $this->input->post('size_edit');
+		$harga_edit = $this->input->post('harga_edit');
+		$new_subtotal = $quantity_edit*$harga_edit;
+
+		$edit_detail = array(
+			'quantity' => $quantity_edit,
+			'size' => $size_edit,
+			'subtotal' => $new_subtotal
+		);
+
+		$this->db->where('id_detail_penjualan',$id_detail_penjualan_edit)
+				->update('ct_detail_penjualan', $edit_detail);
+
+		$query = $this->db->query("SELECT SUM(subtotal) as total FROM ct_detail_penjualan WHERE id_penjualan=$id_penjualan_edit")->row();
+		$query2 = $this->db->query("SELECT ongkos_kirim FROM ct_penjualan WHERE id_penjualan=$id_penjualan_edit")->row();
+
+		$new_total = $query->total;
+		$ongkir = $query2->ongkos_kirim;
+
+		$all_total = $new_total+$ongkir;
+
+		$this->db->update('ct_penjualan',array('total' => $all_total),array('id_penjualan' => $id_penjualan_edit));
+
+		if($this->db->affected_rows()>0){
+			return TRUE;
+		}else{
+			return FALSE;
+		}
+
+	}
 }
 
 /* End of file Admin_model.php */

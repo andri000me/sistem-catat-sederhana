@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="<?php echo base_url();?>assets/vendors/css/vendor.bundle.addons.css">
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="<?php echo base_url();?>assets/images/favicon1.png" />
+  <link rel="shortcut icon" href="<?php echo base_url();?>assets/images/favicon2.png" />
   <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> -->
   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -26,7 +26,7 @@
     .verticalLine {
       border-right: thin solid lightgrey;
     }
-    #berhasil,#gagal,#berhasil_edit,#gagal_edit,#berhasil_dlt,#gagal_dlt{
+    #berhasil,#gagal,#berhasil_edit,#gagal_edit,#berhasil_dlt,#gagal_dlt,#berhasil_edit_detail,#gagal_edit_detail{
       display: none;
     }
     .scroll-transaction{
@@ -104,10 +104,10 @@
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <a class="navbar-brand brand-logo" href="<?php echo base_url();?>">
           <!-- <img src="<?php echo base_url();?>assets/images/logos.png" alt="logo" /> -->
-          <h2 class="mt-2 text-black">BASICCLASS</h2>
+          <h2 class="mt-2 text-black">BASICCO</h2>
         </a>
         <a class="navbar-brand brand-logo-mini" href="<?php echo base_url();?>">
-          <img src="<?php echo base_url();?>assets/images/logo-small.png" alt="logo" />
+          <img src="<?php echo base_url();?>assets/images/favicon2.png" alt="logo" />
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
@@ -136,7 +136,7 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <img src="<?php echo base_url();?>assets/images/profile-pic" alt="image" class="profile-pic">
+                  <img src="<?php echo base_url();?>assets/images/profile-pic.png" alt="image" class="profile-pic">
                 </div>
                 <div class="preview-item-content flex-grow">
                   <h6 class="preview-subject ellipsis font-weight-medium text-dark">David Grey
@@ -290,9 +290,7 @@
                   </div>
                 </div>
               </div>
-              <a href="<?= base_url();?>admin/penjualan" class="btn btn-success btn-block"><i class="mdi mdi-plus-box"></i> Add Pesanan
-                
-              </a>
+              <a href="" class="btn btn-primary btn-block">Basicclass.co &copy; 2 0 1 8</a>
             </div>
           </li>
           <li class="nav-item">
