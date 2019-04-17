@@ -26,7 +26,7 @@
     .verticalLine {
       border-right: thin solid lightgrey;
     }
-    #berhasil,#gagal,#berhasil_edit,#gagal_edit,#berhasil_dlt,#gagal_dlt,#berhasil_edit_detail,#gagal_edit_detail{
+    #berhasil,#gagal,#berhasil_edit,#gagal_edit,#berhasil_dlt,#gagal_dlt,#berhasil_edit_detail,#gagal_edit_detail,#berhasil_edit_pembeli,#gagal_edit_pembeli{
       display: none;
     }
     .scroll-transaction{

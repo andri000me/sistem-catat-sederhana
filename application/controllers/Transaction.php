@@ -91,6 +91,20 @@ class Transaction extends CI_Controller {
 		}
 	}
 
+	public function edit_pembeli()
+	{
+		if($this->session->userdata('logged')){
+			$data = $this->Admin_model->edit_pembeli();
+			if($data){
+				echo json_encode($data);
+			}else{
+				return FALSE;
+			}
+		}else{
+			redirect('admin','refresh');
+		}
+	}
+
 }
 
 /* End of file Transaction.php */

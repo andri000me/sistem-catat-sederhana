@@ -70,22 +70,27 @@
                                     <form method="post">
                                         <div class="form-group">
                                             <h4>Data Pembeli <span class="text-danger"> *required</span></h4>
+                                            <input type="hidden" name="id_penjualan_pembeli" value="<?= $this->uri->segment(3);?>" id="id_penjualan_pembeli">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="alert alert-success" id="berhasil_edit_pembeli"><i class="mdi mdi-check-circle"></i> <span id="text_berhasil_edit_pembeli"></span></div>
+                                            <div class="alert alert-danger" id="gagal_edit_pembeli"><i class="mdi mdi-close-circle"></i> <span id="text_gagal_edit_pembeli"></span></div>
                                         </div>
                                         <div class="form-group">
                                             <label>Nama Pembeli</label>
-                                            <input type="text" name="nama_pembeli" id="nama_pembeli" class="form-control" placeholder="Nama Pembeli" value="<?= $detail->nama_pembeli;?>">
+                                            <input type="text" name="nama_pembeli_edit" id="nama_pembeli_edit" class="form-control" placeholder="Nama Pembeli" value="<?= $detail->nama_pembeli;?>">
                                         </div>
                                         <div class="form-group">
                                             <label>No.Telepon</label>
-                                            <input type="text" name="nomor_telepon" id="nomor_telepon" class="form-control" placeholder="Nomor Telepon" value="<?= $detail->nomor_telepon;?>">
+                                            <input type="text" name="nomor_telepon_edit" id="nomor_telepon_edit" class="form-control" placeholder="Nomor Telepon" value="<?= $detail->nomor_telepon;?>">
                                         </div>
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control" name="alamat_pembeli" id="alamat_pembeli" placeholder="Alamat Lengkap"><?= $detail->alamat_pembeli;?></textarea>
+                                            <textarea class="form-control" name="alamat_pembeli_edit" id="alamat_pembeli_edit" placeholder="Alamat Lengkap"><?= $detail->alamat_pembeli;?></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Kota/Kabupaten</label>
-                                            <select name="kota_tujuan" class="form-control" id="kota_tujuan">
+                                            <select name="kota_tujuan_edit" class="form-control" id="kota_tujuan_edit">
                                                 <option value="<?= $detail->id_tujuan;?>"> <?= $detail->type_tujuan.' '.$detail->tujuan;?></option>
                                                 <?php
                                                     foreach ($city['rajaongkir']['results'] as $data) {

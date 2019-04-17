@@ -457,6 +457,34 @@ class Admin_model extends CI_Model {
 		}
 
 	}
+
+	public function edit_pembeli()
+	{
+		$id_penjualan = $this->input->post('id_penjualan_pembeli');
+		$nama_pembeli = $this->input->post('nama_pembeli_edit');
+		$alamat_pembeli = $this->input->post('alamat_pembeli_edit');
+		$nomor_telepon = $this->input->post('nomor_telepon_edit');
+		$kota_tujuan = $this->input->post('kota_tujuan_edit');
+
+		$data = array(
+			'nama_pembeli' => $nama_pembeli,
+			'nomor_telepon' => $nomor_telepon,
+			'alamat_pembeli' => $alamat_pembeli,
+			'id_tujuan' => $kota_tujuan
+		);
+
+		$this->get_city_name_by_id($kota_tujuan,$id_penjualan);
+		
+		$this->db->where('id_penjualan', $id_penjualan)
+				 ->update('ct_penjualan',$data);
+
+		if($this->db->affected_rows()>0){
+			return TRUE;
+		}else{
+			return FALSE;
+		}
+
+	}
 }
 
 /* End of file Admin_model.php */

@@ -532,6 +532,49 @@
 
       }
     });
+
+    $("#btnEditPembeli").click(function(event){
+      event.preventDefault();
+
+      var id_penjualan_pembeli = $("#id_penjualan_pembeli").val();
+      var nama_pembeli_edit = $("#nama_pembeli_edit").val();
+      var nomor_telepon_edit = $("#nomor_telepon_edit").val();
+      var alamat_pembeli_edit = $("#alamat_pembeli_edit").val();
+      var kota_tujuan_edit = $("#kota_tujuan_edit").val();
+      var conf = confirm('Are you sure?');
+
+      if(conf){
+        $.ajax({
+          type : "POST",
+          url : "<?php echo base_url();?>transaction/edit_pembeli",
+          data : {
+            id_penjualan_pembeli : id_penjualan_pembeli,
+            nama_pembeli_edit : nama_pembeli_edit,
+            nomor_telepon_edit : nomor_telepon_edit,
+            alamat_pembeli_edit : alamat_pembeli_edit,
+            kota_tujuan_edit : kota_tujuan_edit
+          },
+          dataType : "json",
+          success:function(data){
+            $("html, body").animate({scrollTop: 0}, 1000);
+             $("#text_berhasil_edit_pembeli").text('Sukses Edit Pembeli');
+                  $("#berhasil_edit_pembeli").slideDown('slow').css('text-align','center');
+                  setTimeout(function(){$("#berhasil_edit_pembeli").slideUp('slow', function(){
+                    window.location.reload();
+            });},2000);
+          },
+          error:function(error){
+            $("html, body").animate({scrollTop: 0}, 1000);
+            $("#text_gagal_edit_pembeli").text('Gagal Edit Pembeli');
+                  $("#gagal_edit_pembeli").slideDown('slow').css('text-align','center');
+                  setTimeout(function(){$("#gagal_edit_pembeli").slideUp('slow', function(){
+            });},2000);
+          }
+        });
+      }else{
+
+      }
+    });
   </script>
 </body>
 
