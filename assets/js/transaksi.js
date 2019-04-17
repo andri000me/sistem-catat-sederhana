@@ -101,7 +101,6 @@ function scan_data(){
                 alert('Pesanan berhasil ditambahkan!');
                 $('form').trigger('reset');
                 $("#pesanan").empty();
-                window.location = base_url+'transaction/detail_penjualan/'+data.last_id;
               },
               error:function(data){
                 $("html, body").animate({scrollTop: 0}, 1000);

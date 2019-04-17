@@ -63,7 +63,7 @@ class Admin_model extends CI_Model {
 		$harga_produksi = $this->input->post('harga_produksi');
 		$harga_jual = $this->input->post('harga_jual');
 		$warna = $this->input->post('warna');
-		$size_produk =$this->input->post('size_produk');
+		$size_produk = $this->input->post('size_produk');
 		$stok = $this->input->post('stok');
 		$id_user = $this->input->post('id_user');
 
@@ -474,7 +474,8 @@ class Admin_model extends CI_Model {
 		);
 
 		$this->get_city_name_by_id($kota_tujuan,$id_penjualan);
-		
+		$this->get_cost($id_penjualan,$kota_tujuan);
+
 		$this->db->where('id_penjualan', $id_penjualan)
 				 ->update('ct_penjualan',$data);
 
@@ -484,6 +485,50 @@ class Admin_model extends CI_Model {
 			return FALSE;
 		}
 
+	}
+
+	public function detail_produk($id_produk)
+	{
+		return $this->db->select('ct_produk.*,ct_kategori_produk.nama_kategori_produk,ct_user.nama_user')
+						->from('ct_produk')
+						->join('ct_kategori_produk','ct_kategori_produk.id_kategori_produk=ct_produk.id_kategori_produk')
+						->join('ct_user','ct_user.id_user=ct_produk.id_user')
+						->where('ct_produk.id_produk',$id_produk)
+						->get()
+						->row();
+	}
+
+	public function edit_produk($id_produk)
+	{
+		$nama_produk = $this->input->post('nama_produk_edit');
+		$id_kategori_produk = $this->input->post('id_kategori_produk_edit');
+		$harga_produksi = $this->input->post('harga_produksi_edit');
+		$harga_jual = $this->input->post('harga_jual_edit');
+		$warna = $this->input->post('warna_edit');
+		$size_produk =$this->input->post('size_produk_edit');
+		$stok = $this->input->post('stok_edit');
+		$id_user = $this->input->post('id_user_edit');
+
+		$data = array(
+			'kode_produk' => $kode_produk,
+			'nama_produk' => $nama_produk,
+			'id_kategori_produk' => $id_kategori_produk,
+			'harga_produksi' => $harga_produksi,
+			'harga_jual' => $harga_jual,
+			'warna' => $warna,
+			'size_produk' => $size_produk,
+			'stok' => $stok,
+			'id_user' => $id_user 
+		);
+
+		$this->db->where('id_produk', $id_produk)
+                 ->update('ct_produk',$data);
+
+		if($this->db->affected_rows()>0){
+			return TRUE;
+		}else{
+			return FALSE;
+		}
 	}
 }
 

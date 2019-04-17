@@ -180,7 +180,7 @@
                                       '<a class="btn btn-primary btn-sm dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>'+
                                         '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">'+
                                             '<a class="dropdown-item" href="'+base_url+'admin/tambah_foto_produk/'+data[i].id_produk+'">Tambah Foto Produk</a>'+
-                                        '<a class="dropdown-item" href="#">Detail Produk</a>'+
+                                        '<a class="dropdown-item" href="'+base_url+'admin/detail_produk/'+data[i].id_produk+'">Detail Produk</a>'+
                                         '<a class="dropdown-item" href="#">Edit produk</a>'+
                                         '<a class="dropdown-item text-danger" href="#" onclick="delete_produk('+data[i].id_produk+')">Delete</a>'+
                                       '</div>'+
@@ -210,7 +210,6 @@
                         '<td>'+data[i].tanggal_penjualan+'</td>'+
                         '<td>'+data[i].nama_pembeli+'</td>'+
                         '<td>'+data[i].nomor_telepon+'</td>'+
-                        '<td>Rp '+data[i].ongkos_kirim.toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")+'</td>'+
                         '<td>Rp '+data[i].total.toString().replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")+'</td>'+
                         '<td>'+data[i].status+'</td>'+
                         '<td>'+

@@ -28,7 +28,6 @@
                                                 <th>Tanggal Pesanan</th>
                                                 <th>Pembeli</th>
                                                 <th>Nomor Telepon</th>
-                                                <th>Ongkos Kirim</th>
                                                 <th>Total</th>
                                                 <th>Status</th>
                                                 <th>Aksi</th>
@@ -42,7 +41,6 @@
                                                             <td>'.$data->tanggal_penjualan.'</td>
                                                             <td>'.$data->nama_pembeli.'</td>
                                                             <td>'.$data->nomor_telepon.'</td>
-                                                            <td>Rp '.number_format($data->ongkos_kirim).'</td>
                                                             <td>Rp '.number_format($data->total).'</td>
                                                             <td>'.$data->status.'</td>
                                                             <td>

@@ -453,6 +453,19 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function detail_produk($id_produk)
+	{
+		if($this->session->userdata('logged')){
+			$query = $this->db->query('SELECT * FROM ct_produk WHERE id_produk='.$id_produk)->row();
+			$nomor_produk = $query->kode_produk;
+			$data['title'] = 'Detail Produk '.$nomor_produk;
+			$data['detail'] = $this->Admin_model->detail_produk($id_produk);
+			$this->load->view('transaction/edit_produk', $data); 
+		}else{
+			redirect('admin','refresh');
+		}
+	}
+
 }
 
 /* End of file Admin.php */

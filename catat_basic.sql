@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Apr 2019 pada 06.22
+-- Waktu pembuatan: 17 Apr 2019 pada 16.28
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.2.14
 
@@ -48,27 +48,10 @@ CREATE TABLE `ct_detail_penjualan` (
 --
 
 INSERT INTO `ct_detail_penjualan` (`id_detail_penjualan`, `id_produk`, `kode_produk`, `nama_produk`, `harga_produk`, `quantity`, `size`, `subtotal`, `id_penjualan`, `created`, `updated`, `deleted`) VALUES
-(13, 18, 'BSC-00001', 'Hallucination', 190000, 4, 'L', 760000, 21, '2019-04-10 14:56:14', '2019-04-10 14:56:14', 0),
-(14, 18, 'BSC-00001', 'Hallucination', 190000, 4, 'L', 760000, 22, '2019-04-11 14:51:19', '2019-04-11 14:51:19', 0),
-(15, 18, 'BSC-00001', 'Hallucination', 190000, 3, 'XL', 570000, 22, '2019-04-11 14:51:19', '2019-04-11 14:51:19', 0),
-(16, 19, 'BSC-00002', 'Angel Of Death', 100000, 2, 'XL', 200000, 23, '2019-04-11 14:53:33', '2019-04-11 14:53:33', 0),
-(17, 19, 'BSC-00002', 'Angel Of Death', 100000, 1, 'L', 100000, 23, '2019-04-11 14:53:33', '2019-04-11 14:53:33', 0),
-(18, 23, 'BSC-00006', 'Chill Beach', 100000, 1, 'L', 100000, 24, '2019-04-15 14:28:27', '2019-04-15 14:28:27', 0),
-(19, 23, 'BSC-00006', 'Chill Beach', 100000, 2, 'XL', 200000, 24, '2019-04-15 14:28:27', '2019-04-17 11:22:29', 0),
-(20, 23, 'BSC-00006', 'Chill Beach', 100000, 1, 'S', 100000, 25, '2019-04-15 14:29:53', '2019-04-15 14:29:53', 0),
-(21, 21, 'BSC-00004', 'Point Black', 100000, 1, 'S', 100000, 26, '2019-04-15 14:35:48', '2019-04-15 14:35:48', 0),
-(22, 23, 'BSC-00006', 'Chill Beach', 100000, 2, 'L', 200000, 26, '2019-04-15 14:35:48', '2019-04-15 14:35:48', 0),
-(23, 21, 'BSC-00004', 'Point Black', 100000, 1, 'S', 100000, 27, '2019-04-15 14:36:01', '2019-04-15 14:36:01', 0),
-(24, 23, 'BSC-00006', 'Chill Beach', 100000, 2, 'L', 200000, 27, '2019-04-15 14:36:01', '2019-04-15 14:36:01', 0),
-(25, 23, 'BSC-00006', 'Chill Beach', 100000, 1, 'L', 100000, 28, '2019-04-15 14:37:56', '2019-04-15 14:37:56', 0),
-(26, 21, 'BSC-00004', 'Point Black', 100000, 1, 'L', 100000, 28, '2019-04-15 14:37:56', '2019-04-15 14:37:56', 0),
-(27, 21, 'BSC-00004', 'Point Black', 100000, 1, 'S', 100000, 29, '2019-04-15 14:50:29', '2019-04-15 14:50:29', 0),
-(28, 23, 'BSC-00006', 'Chill Beach', 100000, 1, 'S', 100000, 29, '2019-04-15 14:50:29', '2019-04-15 14:50:29', 0),
-(29, 21, 'BSC-00004', 'Point Black', 100000, 1, 'S', 100000, 30, '2019-04-15 14:50:47', '2019-04-15 14:50:47', 0),
-(30, 23, 'BSC-00006', 'Chill Beach', 100000, 1, 'S', 100000, 30, '2019-04-15 14:50:47', '2019-04-15 14:50:47', 0),
-(31, 18, 'BSC-00001', 'Hallucination', 190000, 4, 'M', 760000, 31, '2019-04-15 14:53:01', '2019-04-17 11:20:19', 0),
-(32, 23, 'BSC-00006', 'Chill Beach', 100000, 1, 'S', 100000, 32, '2019-04-15 14:56:09', '2019-04-15 14:56:09', 0),
-(33, 21, 'BSC-00004', 'Point Black', 100000, 1, 'S', 100000, 33, '2019-04-15 14:58:58', '2019-04-15 14:58:58', 0);
+(34, 27, 'BSC-00004', 'FreeDoom Futsal (Custom)', 80000, 10, 'M', 800000, 34, '2019-04-17 20:09:07', '2019-04-17 20:09:07', 0),
+(35, 27, 'BSC-00004', 'FreeDoom Futsal (Custom)', 80000, 22, 'L', 1760000, 34, '2019-04-17 20:09:07', '2019-04-17 20:09:07', 0),
+(36, 27, 'BSC-00004', 'FreeDoom Futsal (Custom)', 80000, 9, 'XL', 720000, 34, '2019-04-17 20:09:07', '2019-04-17 20:09:07', 0),
+(37, 27, 'BSC-00004', 'FreeDoom Futsal (Custom)', 80000, 2, 'XXL', 160000, 34, '2019-04-17 20:09:07', '2019-04-17 20:09:07', 0);
 
 -- --------------------------------------------------------
 
@@ -84,14 +67,6 @@ CREATE TABLE `ct_detail_produks` (
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `deleted` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `ct_detail_produks`
---
-
-INSERT INTO `ct_detail_produks` (`id_detail_produk`, `img_produk`, `id_produk`, `created`, `updated`, `deleted`) VALUES
-(5, 'SeeYa3.PNG', 19, '2019-04-11 10:36:19', '2019-04-11 10:43:49', 1),
-(6, 'SeeYa12.PNG', 19, '2019-04-11 10:36:19', '2019-04-11 10:43:49', 1);
 
 -- --------------------------------------------------------
 
@@ -154,19 +129,7 @@ CREATE TABLE `ct_penjualan` (
 --
 
 INSERT INTO `ct_penjualan` (`id_penjualan`, `kode_penjualan`, `tanggal_penjualan`, `nama_pembeli`, `alamat_pembeli`, `id_user`, `nomor_telepon`, `id_tujuan`, `type_tujuan`, `tujuan`, `status`, `ongkos_kirim`, `total`, `created`, `updated`, `deleted`) VALUES
-(21, 'PJ-00001', '2019-04-10 09:56:14', 'Dogi Degina', 'Jl.Jatisari Permai B1A Pepelegi, Waru, Sidoarjo', 1, '0897762373734', '409', '', '', 'Belum Terbayar', 10000, 770000, '2019-04-10 14:56:14', '2019-04-10 14:56:15', 0),
-(22, 'PJ-00002', '2019-04-11 09:51:18', 'Raja Kone', 'Jl.Kaliurang KM 65 Yogyakarta', 1, '0837378298309', '501', '', '', 'Belum Terbayar', 15000, 1345000, '2019-04-11 14:51:18', '2019-04-11 14:51:19', 0),
-(23, 'PJ-00003', '2019-04-11 09:53:33', 'Joni Maimunah', 'Jl. Anjay Jayapura', 1, '08483498349', '158', '', '', 'Belum Terbayar', 115000, 415000, '2019-04-11 14:53:33', '2019-04-12 10:29:05', 1),
-(24, 'PJ-00004', '2019-04-15 09:28:27', 'Dono Sumargi', 'Jl.Jambangan no 42 Bandung', 1, '0893478347834', '22', '', '', 'Belum Terbayar', 20000, 320000, '2019-04-15 14:28:27', '2019-04-17 11:22:29', 0),
-(25, 'PJ-00005', '2019-04-15 09:29:53', 'sdssd', 'Bandung', 1, '0895364791632', '23', '', 'Bandung', 'Belum Terbayar', 20000, 120000, '2019-04-15 14:29:53', '2019-04-15 14:29:54', 0),
-(26, 'PJ-00006', '2019-04-15 09:35:48', 'Doni', 'jl. A. H. Nasution no 21 Kabupaten Madiun', 1, '90834983940', '247', '', 'Madiun', 'Belum Terbayar', 8000, 308000, '2019-04-15 14:35:48', '2019-04-15 14:35:50', 0),
-(27, 'PJ-00007', '2019-04-15 09:36:01', 'Doni', 'jl. A. H. Nasution no 21 Kabupaten Madiun', 1, '90834983940', '247', '', 'Madiun', 'Belum Terbayar', 8000, 308000, '2019-04-15 14:36:01', '2019-04-15 14:36:08', 0),
-(28, 'PJ-00008', '2019-04-15 09:37:56', 'Kaito', 'Jl.Wisma Permai Regency B1A Kabupaten Sidoarjo', 1, '08928237239', '409', 'Kabupaten', 'Sidoarjo', 'Belum Terbayar', 10000, 210000, '2019-04-15 14:37:56', '2019-04-15 14:37:57', 0),
-(29, 'PJ-00009', '2019-04-15 09:50:29', 'Sarno', 'Malang', 1, '0895364791632', '255', 'Kabupaten', 'Malang', 'Belum Terbayar', 8000, 208000, '2019-04-15 14:50:29', '2019-04-15 14:50:30', 0),
-(30, 'PJ-00010', '2019-04-15 09:50:47', 'Sarno', 'Malang', 1, '0895364791632', '255', 'Kabupaten', 'Malang', 'Belum Terbayar', 8000, 208000, '2019-04-15 14:50:47', '2019-04-15 14:50:48', 0),
-(31, 'PJ-00011', '2019-04-15 09:53:01', 'Sarno', 'Jombang', 1, '0895364791632', '164', 'Kabupaten', 'Jombang', 'Belum Terbayar', 8000, 768000, '2019-04-15 14:53:01', '2019-04-17 11:20:05', 0),
-(32, 'PJ-00012', '2019-04-15 09:56:09', 'Dongek', 'Karangasem', 1, '0895364791632', '170', 'Kabupaten', 'Karangasem', 'Belum Terbayar', 26000, 126000, '2019-04-15 14:56:09', '2019-04-15 14:56:11', 0),
-(33, 'PJ-00013', '2019-04-15 09:58:58', 'I Gede Nyoman', 'Kota Denpasar', 1, '0895364791632', '114', 'Kota', 'Denpasar', 'Belum Terbayar', 20000, 120000, '2019-04-15 14:58:58', '2019-04-15 14:58:59', 0);
+(34, 'PJ-00001', '2019-04-17 15:09:07', 'FreeDoom Futsal', 'Jl. Kamuning Pare, Kediri', 1, '085748598630', '178', 'Kabupaten', 'Kediri', 'Belum Terbayar', 8000, 3448000, '2019-04-17 20:09:07', '2019-04-17 20:09:08', 0);
 
 -- --------------------------------------------------------
 
@@ -178,7 +141,7 @@ CREATE TABLE `ct_produk` (
   `id_produk` int(11) NOT NULL,
   `kode_produk` varchar(200) NOT NULL,
   `nama_produk` varchar(200) NOT NULL,
-  `size_produk` enum('S','M','L','L','XXL','All') NOT NULL,
+  `size_produk` varchar(200) NOT NULL,
   `harga_produksi` double NOT NULL,
   `harga_jual` double NOT NULL,
   `warna` varchar(200) NOT NULL,
@@ -195,12 +158,10 @@ CREATE TABLE `ct_produk` (
 --
 
 INSERT INTO `ct_produk` (`id_produk`, `kode_produk`, `nama_produk`, `size_produk`, `harga_produksi`, `harga_jual`, `warna`, `id_kategori_produk`, `stok`, `id_user`, `created`, `updated`, `deleted`) VALUES
-(18, 'BSC-00001', 'Hallucination', '', 140000, 190000, 'Navy', 2, 10, 1, '2019-04-10 14:16:53', '2019-04-10 14:16:53', 0),
-(19, 'BSC-00002', 'Angel Of Death', '', 75000, 100000, 'White', 1, 10, 1, '2019-04-11 10:36:00', '2019-04-11 10:43:49', 1),
-(20, 'BSC-00003', 'Basic Beach', '', 75000, 100000, 'White', 1, 10, 1, '2019-04-12 10:22:52', '2019-04-12 10:22:59', 1),
-(21, 'BSC-00004', 'Point Black', '', 75000, 100000, 'Black', 2, 10, 1, '2019-04-12 10:24:01', '2019-04-12 10:24:01', 0),
-(22, 'BSC-00005', 'Strong', '', 75000, 100000, 'Forest Green', 1, 10, 1, '2019-04-12 10:24:24', '2019-04-12 10:24:37', 1),
-(23, 'BSC-00006', 'Chill Beach', '', 75000, 100000, 'White', 1, 10, 1, '2019-04-12 15:26:10', '2019-04-12 15:26:10', 0);
+(24, 'BSC-00001', 'Angel Of Death', '', 75000, 90000, 'White', 1, 10, 1, '2019-04-17 19:58:31', '2019-04-17 19:58:31', 0),
+(25, 'BSC-00002', 'Ndsomespace', '', 75000, 90000, 'Black', 1, 10, 1, '2019-04-17 19:59:11', '2019-04-17 19:59:11', 0),
+(26, 'BSC-00003', 'Hallugination', '', 75000, 190000, 'Navy', 3, 10, 1, '2019-04-17 19:59:37', '2019-04-17 19:59:37', 0),
+(27, 'BSC-00004', 'FreeDoom Futsal (Custom)', '', 74000, 80000, 'Navy', 1, 10, 1, '2019-04-17 20:00:50', '2019-04-17 20:00:50', 0);
 
 -- --------------------------------------------------------
 
@@ -282,7 +243,7 @@ ALTER TABLE `ct_user`
 -- AUTO_INCREMENT untuk tabel `ct_detail_penjualan`
 --
 ALTER TABLE `ct_detail_penjualan`
-  MODIFY `id_detail_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_detail_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_detail_produks`
@@ -300,13 +261,13 @@ ALTER TABLE `ct_kategori_produk`
 -- AUTO_INCREMENT untuk tabel `ct_penjualan`
 --
 ALTER TABLE `ct_penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_produk`
 --
 ALTER TABLE `ct_produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `ct_user`
