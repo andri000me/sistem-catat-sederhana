@@ -460,6 +460,7 @@ class Admin extends CI_Controller {
 			$nomor_produk = $query->kode_produk;
 			$data['title'] = 'Detail Produk '.$nomor_produk;
 			$data['detail'] = $this->Admin_model->detail_produk($id_produk);
+			$data['kategori'] = $this->Admin_model->get_all('ct_kategori_produk');
 			$this->load->view('transaction/edit_produk', $data); 
 		}else{
 			redirect('admin','refresh');

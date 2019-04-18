@@ -62,6 +62,7 @@ class Admin_model extends CI_Model {
 		$id_kategori_produk = $this->input->post('id_kategori_produk');
 		$harga_produksi = $this->input->post('harga_produksi');
 		$harga_jual = $this->input->post('harga_jual');
+		$profit = $harga_jual-$harga_produksi;
 		$warna = $this->input->post('warna');
 		$size_produk = $this->input->post('size_produk');
 		$stok = $this->input->post('stok');
@@ -73,6 +74,7 @@ class Admin_model extends CI_Model {
 			'id_kategori_produk' => $id_kategori_produk,
 			'harga_produksi' => $harga_produksi,
 			'harga_jual' => $harga_jual,
+			'profit' => $profit,
 			'warna' => $warna,
 			'size_produk' => $size_produk,
 			'stok' => $stok,
@@ -500,14 +502,15 @@ class Admin_model extends CI_Model {
 
 	public function edit_produk($id_produk)
 	{
-		$nama_produk = $this->input->post('nama_produk_edit');
-		$id_kategori_produk = $this->input->post('id_kategori_produk_edit');
-		$harga_produksi = $this->input->post('harga_produksi_edit');
-		$harga_jual = $this->input->post('harga_jual_edit');
-		$warna = $this->input->post('warna_edit');
-		$size_produk =$this->input->post('size_produk_edit');
-		$stok = $this->input->post('stok_edit');
-		$id_user = $this->input->post('id_user_edit');
+		$kode_produk = $this->input->post('kode_produk');
+		$nama_produk = $this->input->post('nama_produk');
+		$id_kategori_produk = $this->input->post('id_kategori_produk');
+		$harga_produksi = $this->input->post('harga_produksi');
+		$harga_jual = $this->input->post('harga_jual');
+		$warna = $this->input->post('warna');
+		$size_produk =$this->input->post('size_produk');
+		$stok = $this->input->post('stok');
+		$id_user = $this->input->post('id_user');
 
 		$data = array(
 			'kode_produk' => $kode_produk,

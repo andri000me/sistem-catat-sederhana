@@ -22,6 +22,19 @@ class Transaction extends CI_Controller {
 		}
 	}
 
+	public function edit_produk($id_produk)
+	{
+		if($this->session->userdata('logged')){
+			if($this->Admin_model->edit_produk($id_produk)){
+				$this->session->set_flashdata('berhasil', 'Produk berhasil diperbarui');
+				redirect('admin/detail_produk/'.$this->uri->segment(3));
+			}else{
+				$this->session->set_flashdata('gagal', 'Produk gagal diperbarui');
+				redirect('admin/detail_produk/'.$this->uri->segment(3));
+			}
+		}
+	}
+
 	public function add_pesanan()
 	{
 		if($this->session->userdata('logged')){

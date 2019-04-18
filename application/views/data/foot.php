@@ -181,7 +181,7 @@
                                         '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">'+
                                             '<a class="dropdown-item" href="'+base_url+'admin/tambah_foto_produk/'+data[i].id_produk+'">Tambah Foto Produk</a>'+
                                         '<a class="dropdown-item" href="'+base_url+'admin/detail_produk/'+data[i].id_produk+'">Detail Produk</a>'+
-                                        '<a class="dropdown-item" href="#">Edit produk</a>'+
+                                        '<a class="dropdown-item" href="'+base_url+'admin/detail_produk/'+data[i].id_produk+'">Edit produk</a>'+
                                         '<a class="dropdown-item text-danger" href="#" onclick="delete_produk('+data[i].id_produk+')">Delete</a>'+
                                       '</div>'+
                                   '</div>'+

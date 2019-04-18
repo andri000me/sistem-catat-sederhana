@@ -30,11 +30,12 @@
                                         ?>
                                         <div class="form-group">
                                           <label>Nama Produk</label>
-                                          <input type="text" name="nama_produk" id="nama_produk" class="form-control" placeholder="Nama Produk" value="<?= $detail->nama_produk;?>" required="">
+                                          <input type="text" name="nama_produk" id="nama_produk" class="form-control" placeholder="Nama Produk" value="<?= $detail->nama_produk;?>">
+                                          <input type="hidden" name="kode_produk" id="kode_produk" value="<?= $detail->kode_produk;?>">
                                         </div>
                                         <div class="form-group">
                                           <label>Kategori Produk</label>
-                                          <select name="id_kategori_produk" class="form-control" required="">
+                                          <select name="id_kategori_produk" class="form-control">
                                               <option value="<?= $detail->id_kategori_produk;?>"> <?= $detail->nama_kategori_produk;?></option>
                                               <?php
                                                 foreach ($kategori as $data) {
@@ -45,15 +46,15 @@
                                         </div>
                                         <div class="form-group">
                                           <label>Size Produk<span class="text-danger"> *pisahkan dengan (,) koma</span></label>
-                                          <input type="text" name="size_produk" class="form-control" placeholder="Size" value="<?= $detail->size_produk;?>" required="">
+                                          <input type="text" name="size_produk" class="form-control" placeholder="Size" value="<?= $detail->size_produk;?>">
                                         </div>
                                         <div class="form-group">
                                           <label>Harga Produksi  <span class="text-danger"> *optional</span></label>
-                                          <input type="text" name="harga_produksi" class="form-control" placeholder="Harga Produksi" value="<?= $detail->harga_produksi;?>" required="">
+                                          <input type="text" name="harga_produksi" class="form-control" placeholder="Harga Produksi" value="<?= $detail->harga_produksi;?>">
                                         </div>
                                         <div class="form-group">
                                           <label>Harga Jual</label>
-                                          <input type="text" name="harga_jual" class="form-control" placeholder="Harga Jual" value="<?= $detail->harga_jual;?>" required="">
+                                          <input type="text" name="harga_jual" class="form-control" placeholder="Harga Jual" value="<?= $detail->harga_jual;?>">
                                         </div>
                                         <div class="form-group">
                                           <div class="row">
@@ -64,7 +65,7 @@
                                               <div style="height: 10px;width: 10px;background-color: black;border: 1px solid black" id="color_show"></div>
                                             </div>
                                           </div>
-                                          <select name="warna" class="form-control" id="warna" required="">
+                                          <select name="warna" class="form-control" id="warna">
                                             <option value="<?= $detail->warna;?>"> <?= $detail->warna;?></option>
                                             <option value="Black">Black</option>
                                             <option value="White">White</option>
