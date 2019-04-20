@@ -91,6 +91,15 @@
                         <hr>
                             <div style="float: right;margin-top: 20px;">
                                 <table width="50%" id="total">
+                                        <tr>
+                                            <td style="text-align: right;"><b>BERAT</b></td>
+                                            <td>:</td>
+                                            <td><?php
+                                            $weight = $detail->weight;
+                                            $berat = $weight/1000;
+                                            echo number_format($berat).' Kg';
+                                            ?></td>
+                                        </tr>
                                        <tr>
                                             <td style="text-align: right;"><b>ONGKIR</b></td>
                                             <td>:</td>

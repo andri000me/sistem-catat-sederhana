@@ -117,7 +117,7 @@
               <i class="mdi mdi-elevation-rise"></i>Reports</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= base_url();?>admin/todo_list" class="nav-link">
               <i class="mdi mdi-format-list-bulleted"></i>ToDoList</a>
           </li>
         </ul>

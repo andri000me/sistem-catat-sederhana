@@ -27,6 +27,7 @@ function scan_data(){
       var produk_kode = $(e).data("produkkode");
       var produk_id = $(e).data("produkid");
       var produk_harga = $(e).data("produkharga");
+      var profit = $(e).data('produkprofit');
       var produk_nama = $(e).data("produknama");
       var qtyItem = $("#qty"+produk_id);
       var quantity = 1;
@@ -37,7 +38,7 @@ function scan_data(){
             '<td><input type="hidden" name="id_produk['+i+']" value="'+produk_id+'"><input type="text" name="kode_produk['+i+']" value="'+produk_kode+'" class="form-barang">'+
             '</td>'+
             '<td><input type="text" name="nama_produk['+i+']" value="'+produk_nama+'" class="form-barang"></td>'+
-            '<td><input type="text" name="harga_produk['+i+']" value="'+produk_harga+'" class="form-barang harga_produk"></td>'+
+            '<td><input type="text" name="harga_produk['+i+']" value="'+produk_harga+'" class="form-barang harga_produk"><input type="hidden" name="profit['+i+']" value="'+profit+'"></td>'+
             '<td><input type="number" name="quantity['+i+']" value="'+quantity+'" id="qty'+produk_id+'" class="form-control quantity" onkeyup="update_qty();"></td>'+
             '<td><select name="size['+i+']" class="form-control">'+
             '<option>S</option>'+

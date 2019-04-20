@@ -17,6 +17,7 @@ class Admin extends CI_Controller {
 			$data['count_penjualan'] = $this->Admin_model->count_all('ct_penjualan');
 			$data['count_produk_terjual'] = $this->Admin_model->count_produk_terjual();
 			$data['sum_omset'] = $this->Admin_model->omset();
+			$data['sum_profit'] = $this->Admin_model->profit();
 			$this->load->view('data/dashboard', $data);
 		}else{
 			$data['title'] = 'Login User';
@@ -313,7 +314,7 @@ class Admin extends CI_Controller {
 							if($row->deleted == 0){
 
 							echo '<li>
-					               <a class="list" style="display:block;cursor:pointer" data-produkid="'.$row->id_produk.'" data-produkkode="'.$row->kode_produk.'" data-produknama="'.$row->nama_produk.'" data-produkharga="'.$row->harga_jual.'" onclick="add_barang(this);">
+					               <a class="list" style="display:block;cursor:pointer" data-produkid="'.$row->id_produk.'" data-produkkode="'.$row->kode_produk.'" data-produknama="'.$row->nama_produk.'" data-produkharga="'.$row->harga_jual.'" data-produkprofit="'.$row->profit.'" onclick="add_barang(this);">
 								        <div class="row">
 									        <div class="col-sm-6">
 									               ' . $row->nama_produk. '
@@ -465,6 +466,12 @@ class Admin extends CI_Controller {
 		}else{
 			redirect('admin','refresh');
 		}
+	}
+
+	public function todo_list()
+	{
+		$data['title'] = 'To Do List';
+		$this->load->view('transaction/todo_list', $data);
 	}
 
 }

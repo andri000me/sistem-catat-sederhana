@@ -102,6 +102,15 @@
                       <small class="text-muted">All Time</small>
                     </div>
                   </div>
+                  <div class="wrapper d-flex justify-content-between">
+                    <div class="side-left">
+                      <p class="mb-2">Profit Bersih</p>
+                      <p class="display-3 mb-4 font-weight-light"><?= 'Rp '.number_format($sum_profit);?></p>
+                    </div>
+                    <div class="side-right">
+                      <small class="text-muted">All Time</small>
+                    </div>
+                  </div>
                   <!-- <div class="wrapper d-flex justify-content-between">
                     <div class="side-left">
                       <p class="mb-2">Worst performance</p>

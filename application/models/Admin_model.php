@@ -36,6 +36,16 @@ class Admin_model extends CI_Model {
 		return $omset;
 	}
 
+	public function profit()
+	{
+		$query = $this->db->query("SELECT sum(profit) as profit_clean FROM ct_detail_penjualan")->result();
+		foreach ($query as $data) {
+			$profit = $data->profit_clean;
+		}
+
+		return $profit;
+	}
+
 	public function kode_produk()
     {
         $this->db->select('RIGHT(ct_produk.kode_produk,5) as kode_produk', FALSE);
@@ -161,6 +171,7 @@ class Admin_model extends CI_Model {
 		$nomor_telepon = $this->input->post('nomor_telepon');
 		$alamat_pembeli = $this->input->post('alamat_pembeli');
 		$kota_tujuan = $this->input->post('kota_tujuan');
+		$weight = $this->input->post('weight');
 		$total  = $this->input->post('total');
 
 		$data = array(
@@ -171,6 +182,7 @@ class Admin_model extends CI_Model {
 			'id_user' => $this->session->userdata('id_user'),
 			'nomor_telepon' => $nomor_telepon,
 			'id_tujuan' => $kota_tujuan,
+			'weight' => $weight,
 			'status' => 'Belum Terbayar',
 			'total' => $total
 		);
@@ -184,15 +196,18 @@ class Admin_model extends CI_Model {
 		$nama_produk = $this->input->post('nama_produk');
 		$harga_produk = $this->input->post('harga_produk');
 		$quantity = $this->input->post('quantity');
+		$profit = $this->input->post('profit');
 		$size = $this->input->post('size');
 		$subtotal = $this->input->post('subtotal');
 
 		foreach ($id_produk as $i => $item) {
+			$profit_clean[$i] = $quantity[$i] * $profit[$i];
 			$detail[] = array(
 				'id_produk' => $id_produk[$i],
 				'kode_produk'=> $kode_produk[$i],
 				'nama_produk' => $nama_produk[$i],
 				'harga_produk' => $harga_produk[$i],
+				'profit' => $profit_clean[$i],
 				'quantity' => $quantity[$i],
 				'size' => $size[$i],
 				'subtotal' => $subtotal[$i],
@@ -202,7 +217,7 @@ class Admin_model extends CI_Model {
 
 		$this->db->insert_batch('ct_detail_penjualan', $detail, $id);
 
-		$this->get_cost($id,$kota_tujuan);
+		$this->get_cost($id,$kota_tujuan,$weight);
 
 		if($this->db->affected_rows()>0){
 			return TRUE;
@@ -211,7 +226,7 @@ class Admin_model extends CI_Model {
 		}
 	}
 
-	public function get_cost($id_penjualan,$kota_tujuan)
+	public function get_cost($id_penjualan,$kota_tujuan,$weight)
 	{
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
@@ -222,7 +237,7 @@ class Admin_model extends CI_Model {
 		  CURLOPT_TIMEOUT => 30,
 		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 		  CURLOPT_CUSTOMREQUEST => "POST",
-		  CURLOPT_POSTFIELDS => "origin=444&destination=$kota_tujuan&weight=1000&courier=jne",
+		  CURLOPT_POSTFIELDS => "origin=444&destination=$kota_tujuan&weight=$weight&courier=jne",
 		  CURLOPT_HTTPHEADER => array(
 		  	"content-type: application/x-www-form-urlencoded",
 		    "key:3275a8000010695a45f9ea333d0145f9"
@@ -507,6 +522,7 @@ class Admin_model extends CI_Model {
 		$id_kategori_produk = $this->input->post('id_kategori_produk');
 		$harga_produksi = $this->input->post('harga_produksi');
 		$harga_jual = $this->input->post('harga_jual');
+		$profit = $harga_jual-$harga_produksi;
 		$warna = $this->input->post('warna');
 		$size_produk =$this->input->post('size_produk');
 		$stok = $this->input->post('stok');
@@ -518,6 +534,7 @@ class Admin_model extends CI_Model {
 			'id_kategori_produk' => $id_kategori_produk,
 			'harga_produksi' => $harga_produksi,
 			'harga_jual' => $harga_jual,
+			'profit' => $profit,
 			'warna' => $warna,
 			'size_produk' => $size_produk,
 			'stok' => $stok,
@@ -526,6 +543,18 @@ class Admin_model extends CI_Model {
 
 		$this->db->where('id_produk', $id_produk)
                  ->update('ct_produk',$data);
+
+        $query = $this->db->query('SELECT * FROM ct_detail_penjualan WHERE id_produk='.$id_produk)->result();
+
+        foreach ($query as $data) {
+        	$id_detail = $data->id_detail_penjualan;
+        	$quantity = $data->quantity;
+
+        	$profit_new = $profit*$quantity;
+        	$this->db->update('ct_detail_penjualan',array('profit'=>$profit_new),array('id_produk'=>$id_produk));
+        }
+
+        
 
 		if($this->db->affected_rows()>0){
 			return TRUE;

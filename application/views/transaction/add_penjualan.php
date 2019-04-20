@@ -81,7 +81,9 @@
                                         <h4>Admin</h4>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="nama_user" class="form-control" value="<?= $this->session->userdata('nama_user');?>" readonly>
+                                        <label>Weight <span class="text-danger">*Dalam satuan Gram (g)</span></label>
+                                        <input type="text" name="weight" class="form-control" placeholder="Weight dalam Gram">
+                                        <input type="hidden" name="nama_user" class="form-control" value="<?= $this->session->userdata('nama_user');?>" readonly>
                                     </div>
                                     <hr>
                                     <div class="form-group">
