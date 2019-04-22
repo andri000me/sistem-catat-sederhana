@@ -27,16 +27,53 @@
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
   <!-- inject:js -->
-  <script src="<?php echo base_url();?>assets/js/off-canvas.js"></script>
-  <script src="<?php echo base_url();?>assets/js/misc.js"></script>
-  <script src="<?php echo base_url();?>assets/js/dashboard.js"></script>
-  <script src="<?php echo base_url();?>assets/js/upup.min.js"></script>
   <script type="text/javascript">
     var day = "<?php date_default_timezone_set("Asia/Jakarta"); echo date('l');?>";
     var date= "<?php date_default_timezone_set("Asia/Jakarta"); echo date('d F Y');?>";
     var base_url = "<?php echo base_url();?>";
   </script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/custom.js"></script>
+  <script src="<?php echo base_url();?>assets/js/off-canvas.js"></script>
+  <script src="<?php echo base_url();?>assets/js/misc.js"></script>
+  <script src="<?php echo base_url();?>assets/js/dashboard.js"></script>
+  <script src="<?php echo base_url();?>assets/js/upup.min.js"></script>
+  <?php
+    foreach ($stats as $data) {
+      $jumlah[] = $data->m;
+      $nama[] = date('F Y',strtotime($data->d));
+    }
+  ?>
+  <script src="<?php echo base_url();?>assets/js/Chart.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+          var ctx = document.getElementById("canvasjual").getContext("2d");
+
+          var myChart = new Chart(ctx, {
+              type: 'line',
+                data: {
+                labels: <?php echo json_encode($nama);?>,
+                datasets: [{
+                            label: 'Data Statistik Penjualan /bulan',
+                            data: <?php echo json_encode($jumlah);?>,
+                            backgroundColor : "lightblue",
+                            borderColor : "lightblue",
+                            fill : false,
+                            lineTension : 0,
+                            pointRadius : 5
+                          }]
+                        },
+              options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                                }
+                              }]
+                          }
+                       }
+                  });
+            });
+  </script>
 </body>
 
 </html>

@@ -38,7 +38,7 @@ class Admin_model extends CI_Model {
 
 	public function profit()
 	{
-		$query = $this->db->query("SELECT sum(profit) as profit_clean FROM ct_detail_penjualan")->result();
+		$query = $this->db->query("SELECT sum(profit) as profit_clean FROM ct_detail_penjualan WHERE deleted=0")->result();
 		foreach ($query as $data) {
 			$profit = $data->profit_clean;
 		}
@@ -133,7 +133,19 @@ class Admin_model extends CI_Model {
 
 	public function delete_penjualan($id_penjualan)
 	{
-		return $this->db->update('ct_penjualan',array('deleted'=>'1'),array('id_penjualan'=>$id_penjualan));
+		$this->db->update('ct_penjualan',array('deleted'=>'1'),array('id_penjualan'=>$id_penjualan));
+		$this->delete_detail_penjualan($id_penjualan);
+
+		if($this->db->affected_rows()>0){
+			return TRUE;
+		}else{
+			return FALSE;
+		}
+	}
+
+	public function delete_detail_penjualan($id_penjualan)
+	{
+		return $this->db->update('ct_detail_penjualan',array('deleted'=>'1'),array('id_penjualan'=>$id_penjualan));
 	}
 
 	public function scan_data($scan_data)
@@ -547,19 +559,29 @@ class Admin_model extends CI_Model {
         $query = $this->db->query('SELECT * FROM ct_detail_penjualan WHERE id_produk='.$id_produk)->result();
 
         foreach ($query as $data) {
-        	$id_detail = $data->id_detail_penjualan;
         	$quantity = $data->quantity;
 
         	$profit_new = $profit*$quantity;
         	$this->db->update('ct_detail_penjualan',array('profit'=>$profit_new),array('id_produk'=>$id_produk));
         }
 
-        
-
 		if($this->db->affected_rows()>0){
 			return TRUE;
 		}else{
 			return FALSE;
+		}
+	}
+
+	public function get_penjualan_stats()
+	{
+		$query = $this->db->query("SELECT count(kode_penjualan) as m, DATE_FORMAT(tanggal_penjualan,'%Y-%m')as d FROM ct_penjualan GROUP BY DATE_FORMAT(tanggal_penjualan,'%Y-%m')");
+
+		if($query->num_rows() > 0){
+			foreach ($query->result() as $data) {
+				$hasil[] = $data;
+			}
+			
+			return $hasil;
 		}
 	}
 }

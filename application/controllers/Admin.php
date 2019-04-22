@@ -18,6 +18,7 @@ class Admin extends CI_Controller {
 			$data['count_produk_terjual'] = $this->Admin_model->count_produk_terjual();
 			$data['sum_omset'] = $this->Admin_model->omset();
 			$data['sum_profit'] = $this->Admin_model->profit();
+			$data['stats'] = $this->Admin_model->get_penjualan_stats();
 			$this->load->view('data/dashboard', $data);
 		}else{
 			$data['title'] = 'Login User';
