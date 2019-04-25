@@ -317,7 +317,7 @@
                   <a class="nav-link" href="<?php echo base_url('penjualan');?>"> Data Pesanan</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('admin/data_omset_user');?>"> Omset User </a>
+                  <a class="nav-link" href="<?php echo base_url('omset');?>"> Omset User </a>
                 </li>
               </ul>
             </div>

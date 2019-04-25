@@ -58,9 +58,12 @@ $route['add_produk'] = 'admin/produk';
 $route['edit_produk/(:any)'] = 'admin/detail_produk/$1';
 //Penjualan
 $route['penjualan'] = 'admin/data_penjualan';
+$route['add_penjualan'] = 'admin/penjualan';
 $route['detail_penjualan/(:any)'] = 'transaction/detail_penjualan/$1';
 $route['edit_penjualan/(:any)'] = 'transaction/edit_penjualan/$1';
 $route['cetak/(:any)'] = 'admin/cetak_nota/$1';
 //Kategori
 $route['kategori_produk'] = 'admin/data_kategori_produk';
+//Omset
+$route['omset'] = 'admin/data_omset_user';
 $route['translate_uri_dashes'] = FALSE;

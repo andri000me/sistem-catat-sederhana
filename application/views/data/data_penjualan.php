@@ -9,7 +9,7 @@
                                 <hr>
                                     <div class="row">
                                         <div class="col-md-6 col-sm-12">
-                                            <a href="<?= base_url();?>admin/penjualan" class="btn btn-success"><i class="mdi mdi-plus-box"></i> Add Pesanan</a>
+                                            <a href="<?= base_url();?>add_penjualan" class="btn btn-success"><i class="mdi mdi-plus-box"></i> Add Pesanan</a>
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <a href="#" class="btn btn-info float-right"><i class="mdi mdi-printer"></i> Print</a>
