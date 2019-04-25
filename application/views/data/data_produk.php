@@ -9,7 +9,7 @@
                                 <hr>
                                     <div class="row">
                                         <div class="col-md-6 col-sm-12">
-                                            <a href="<?= base_url();?>admin/produk" class="btn btn-success"><i class="mdi mdi-plus-box"></i> Add Produk</a>
+                                            <a href="<?= base_url();?>add_produk" class="btn btn-success"><i class="mdi mdi-plus-box"></i> Add Produk</a>
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <a href="<?= base_url();?>admin/produk" class="btn btn-info float-right"><i class="mdi mdi-printer"></i> Print</a>
@@ -48,9 +48,8 @@
                                                           <div class="dropdown show">
                                                               <a class="btn btn-primary btn-sm dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>
                                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                                    <a class="dropdown-item" href="'.base_url().'admin/tambah_foto_produk/'.$data->id_produk.'">Tambah Foto Produk</a>
-                                                                <a class="dropdown-item" href="'.base_url().'admin/detail_produk/'.$data->id_produk.'">Detail Produk</a>
-                                                                <a class="dropdown-item" href="'.base_url().'admin/detail_produk/'.$data->id_produk.'">Edit produk</a>
+                                                                    <a class="dropdown-item" href="'.base_url().'add_foto_produk/'.$data->id_produk.'">Tambah Foto Produk</a>
+                                                                <a class="dropdown-item" href="'.base_url().'edit_produk/'.$data->id_produk.'">Edit produk</a>
                                                                 <a class="dropdown-item text-danger" href="#" onclick="delete_produk('.$data->id_produk.')">Delete</a>
                                                               </div>
                                                           </div>

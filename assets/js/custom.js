@@ -89,27 +89,32 @@
     }
 
     function delete_produk(id_produk) {
-      $.ajax({
-        type:"POST",
-        url: base_url+"admin/delete_produk/"+id_produk,
-        dataType:"json",
-        success:function(data){
-          data_produk();
-          $("html, body").animate({scrollTop: 0}, 1000);
-          $("#text_berhasil").text('Delete produk berhasil');
-            $("#berhasil").slideDown('slow').css('text-align','center');
-            setTimeout(function(){$("#berhasil").slideUp('slow', function(){
-              data_produk();
-          });},2000);
-        },
-        error:function(error){
-          data_produk();
-          $("#text_gagal").text('Delete produk gagal');
-            $("#gagal").slideDown('slow').css('text-align','center');
-            setTimeout(function(){$("#gagal").slideUp('slow', function(){
-          });},2000);
-        }
-      });
+      var conf = confirm('Are you sure?');
+      if(conf){
+        $.ajax({
+          type:"POST",
+          url: base_url+"admin/delete_produk/"+id_produk,
+          dataType:"json",
+          success:function(data){
+            data_produk();
+            $("html, body").animate({scrollTop: 0}, 1000);
+            $("#text_berhasil").text('Delete produk berhasil');
+              $("#berhasil").slideDown('slow').css('text-align','center');
+              setTimeout(function(){$("#berhasil").slideUp('slow', function(){
+                data_produk();
+            });},2000);
+          },
+          error:function(error){
+            data_produk();
+            $("#text_gagal").text('Delete produk gagal');
+              $("#gagal").slideDown('slow').css('text-align','center');
+              setTimeout(function(){$("#gagal").slideUp('slow', function(){
+            });},2000);
+          }
+        });
+      }else{
+
+      }
     }
 
     function data_produk() {
@@ -134,9 +139,8 @@
                                   '<div class="dropdown show">'+
                                       '<a class="btn btn-primary btn-sm dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>'+
                                         '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">'+
-                                            '<a class="dropdown-item" href="'+base_url+'admin/tambah_foto_produk/'+data[i].id_produk+'">Tambah Foto Produk</a>'+
-                                        '<a class="dropdown-item" href="'+base_url+'admin/detail_produk/'+data[i].id_produk+'">Detail Produk</a>'+
-                                        '<a class="dropdown-item" href="'+base_url+'admin/detail_produk/'+data[i].id_produk+'">Edit produk</a>'+
+                                            '<a class="dropdown-item" href="'+base_url+'add_foto_produk/'+data[i].id_produk+'">Tambah Foto Produk</a>'+
+                                        '<a class="dropdown-item" href="'+base_url+'edit_produk/'+data[i].id_produk+'">Edit produk</a>'+
                                         '<a class="dropdown-item text-danger" href="#" onclick="delete_produk('+data[i].id_produk+')">Delete</a>'+
                                       '</div>'+
                                   '</div>'+
@@ -173,9 +177,9 @@
                                   '<div class="dropdown show">'+
                                       '<a class="btn btn-primary btn-sm dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>'+
                                         '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">'+
-                                        '<a class="dropdown-item" href="'+base_url+'admin/cetak_nota/'+data[i].id_penjualan+'" target="_blank">Cetak Nota</a>'+
-                                        '<a class="dropdown-item" href="'+base_url+'transaction/detail_penjualan/'+data[i].id_penjualan+'">Detail Penjualan</a>'+
-                                        '<a class="dropdown-item" href="'+base_url+'transaction/edit_penjualan/'+data[i].id_penjualan+'">Edit Penjualan</a>'+
+                                        '<a class="dropdown-item" href="'+base_url+'cetak/'+data[i].id_penjualan+'" target="_blank">Cetak Nota</a>'+
+                                        '<a class="dropdown-item" href="'+base_url+'detail_penjualan/'+data[i].id_penjualan+'">Detail Penjualan</a>'+
+                                        '<a class="dropdown-item" href="'+base_url+'edit_penjualan/'+data[i].id_penjualan+'">Edit Penjualan</a>'+
                                         '<a class="dropdown-item text-danger" href="#" onclick="delete_penjualan('+data[i].id_penjualan+')">Delete</a>'+
                                       '</div>'+
                                   '</div>'+
@@ -190,27 +194,32 @@
     }
 
     function delete_penjualan(id_penjualan) {
-      $.ajax({
-        type:"POST",
-        url:base_url+"admin/delete_penjualan/"+id_penjualan,
-        dataType:"json",
-        success:function(data){
-          data_penjualan();
-          $("html, body").animate({scrollTop: 0}, 1000);
-          $("#text_berhasil").text('Delete penjualan berhasil');
-            $("#berhasil").slideDown('slow').css('text-align','center');
-            setTimeout(function(){$("#berhasil").slideUp('slow', function(){
-              data_penjualan();
-          });},2000);
-        },
-        error:function(error){
-          $("html, body").animate({scrollTop: 0}, 1000);
-          $("#text_gagal").text('Delete penjualan gagal');
-            $("#gagal").slideDown('slow').css('text-align','center');
-            setTimeout(function(){$("#gagal").slideUp('slow', function(){
-          });},2000);
-        }
-      });
+      var conf = confirm('Are you sure?');
+      if(conf){
+        $.ajax({
+          type:"POST",
+          url:base_url+"admin/delete_penjualan/"+id_penjualan,
+          dataType:"json",
+          success:function(data){
+            data_penjualan();
+            $("html, body").animate({scrollTop: 0}, 1000);
+            $("#text_berhasil").text('Delete penjualan berhasil');
+              $("#berhasil").slideDown('slow').css('text-align','center');
+              setTimeout(function(){$("#berhasil").slideUp('slow', function(){
+                data_penjualan();
+            });},2000);
+          },
+          error:function(error){
+            $("html, body").animate({scrollTop: 0}, 1000);
+            $("#text_gagal").text('Delete penjualan gagal');
+              $("#gagal").slideDown('slow').css('text-align','center');
+              setTimeout(function(){$("#gagal").slideUp('slow', function(){
+            });},2000);
+          }
+        });
+      }else{
+
+      }
     }
 
     function delete_foto_produk(id_detail_produk) {
@@ -439,6 +448,7 @@
           $("#id_penjualan_edit").val(data.id_penjualan);
           $("#id_detail_penjualan_edit").val(data.id_detail_penjualan);
           $("#harga_edit").val(data.harga_produk);
+          $("#id_produk_edit").val(data.id_produk);
         },
         error:function(error){
           $("#quantity_edit").val('Not Found');
@@ -454,6 +464,7 @@
       var harga_edit = $("#harga_edit").val();
       var quantity_edit = $("#quantity_edit").val();
       var size_edit = $("#size_edit").val();
+      var id_produk_edit = $("#id_produk_edit").val();
       var conf = confirm('Are you sure?');
 
       if(conf){
@@ -465,7 +476,8 @@
             id_penjualan_edit : id_penjualan_edit,
             harga_edit : harga_edit,
             quantity_edit : quantity_edit,
-            size_edit : size_edit
+            size_edit : size_edit,
+            id_produk_edit : id_produk_edit
           },
           dataType:"json",
           success:function(data){

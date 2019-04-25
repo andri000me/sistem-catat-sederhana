@@ -458,6 +458,7 @@ class Admin_model extends CI_Model {
 		$quantity_edit = $this->input->post('quantity_edit');
 		$size_edit = $this->input->post('size_edit');
 		$harga_edit = $this->input->post('harga_edit');
+		$id_produk_edit = $this->input->post('id_produk_edit');
 		$new_subtotal = $quantity_edit*$harga_edit;
 
 		$edit_detail = array(
@@ -471,13 +472,18 @@ class Admin_model extends CI_Model {
 
 		$query = $this->db->query("SELECT SUM(subtotal) as total FROM ct_detail_penjualan WHERE id_penjualan=$id_penjualan_edit")->row();
 		$query2 = $this->db->query("SELECT ongkos_kirim FROM ct_penjualan WHERE id_penjualan=$id_penjualan_edit")->row();
+		$query3 = $this->db->query("SELECT profit FROM ct_produk WHERE id_produk=$id_produk_edit")->row();
 
+		$profit = $query3->profit;
 		$new_total = $query->total;
 		$ongkir = $query2->ongkos_kirim;
 
+		//Siap Store
 		$all_total = $new_total+$ongkir;
+		$new_profit = $profit*$quantity_edit;
 
 		$this->db->update('ct_penjualan',array('total' => $all_total),array('id_penjualan' => $id_penjualan_edit));
+		$this->db->update('ct_detail_penjualan', array('profit'=>$new_profit),array('id_detail_penjualan'=>$id_detail_penjualan_edit));
 
 		if($this->db->affected_rows()>0){
 			return TRUE;
@@ -574,7 +580,7 @@ class Admin_model extends CI_Model {
 
 	public function get_penjualan_stats()
 	{
-		$query = $this->db->query("SELECT count(kode_penjualan) as m, DATE_FORMAT(tanggal_penjualan,'%Y-%m')as d FROM ct_penjualan GROUP BY DATE_FORMAT(tanggal_penjualan,'%Y-%m')");
+		$query = $this->db->query("SELECT count(kode_penjualan) as m, DATE_FORMAT(tanggal_penjualan,'%Y-%m')as d FROM ct_penjualan WHERE deleted=0 GROUP BY DATE_FORMAT(tanggal_penjualan,'%Y-%m')");
 
 		if($query->num_rows() > 0){
 			foreach ($query->result() as $data) {

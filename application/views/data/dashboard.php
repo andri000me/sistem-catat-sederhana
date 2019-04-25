@@ -154,7 +154,48 @@
                                 </div>
                             </div>
                         <hr>
+                        <?php
+                            foreach ($stats as $data) {
+                              $jumlah[] = $data->m;
+                              $nama[] = date('F Y',strtotime($data->d));
+                            }
+                          ?>
                         <canvas id="canvasjual" width="1000" height="280"></canvas>
+                          <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+                          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+                          <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+                          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                          <script src="<?php echo base_url();?>assets/js/Chart.min.js"></script>
+                            <script type="text/javascript">
+                                $(document).ready(function () {
+                                  var ctx = document.getElementById("canvasjual").getContext("2d");
+
+                                  var myChart = new Chart(ctx, {
+                                      type: 'bar',
+                                        data: {
+                                        labels: <?php echo json_encode($nama);?>,
+                                        datasets: [{
+                                                    label: 'Data Statistik Penjualan /bulan',
+                                                    data: <?php echo json_encode($jumlah);?>,
+                                                    backgroundColor : "lightblue",
+                                                    borderColor : "lightblue",
+                                                    fill : false,
+                                                    lineTension : 0,
+                                                    pointRadius : 5
+                                                  }]
+                                                },
+                                      options: {
+                                            scales: {
+                                                yAxes: [{
+                                                    ticks: {
+                                                        beginAtZero: true
+                                                        }
+                                                      }]
+                                                  }
+                                               }
+                                          });
+                                    });
+                          </script>
                                 </div>
                             </div>
                         </div>

@@ -10,7 +10,7 @@
                                         <h2><?= $title;?></h2>
                                     </div>
                                     <div class="col-md-6 col-sm-6">
-                                        <a href="<?php echo base_url();?>admin/data_penjualan" class="btn btn-danger text-white float-right"><i class="mdi mdi-arrow-left-bold-circle"></i> Kembali</a>
+                                        <a href="<?php echo base_url();?>penjualan" class="btn btn-danger text-white float-right"><i class="mdi mdi-arrow-left-bold-circle"></i> Kembali</a>
                                     </div>
                                 </div>
                             <hr>
@@ -160,6 +160,7 @@
                         <input type="hidden" name="id_penjualan_edit" id="id_penjualan_edit">
                         <input type="hidden" name="id_detail_penjualan_edit" id="id_detail_penjualan_edit">
                         <input type="hidden" name="harga_edit" id="harga_edit">
+                        <input type="hidden" name="id_produk_edit" id="id_produk_edit">
                     </div>
                     <div class="form-group">
                         <label>Quantity</label>

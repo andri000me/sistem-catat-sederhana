@@ -10,7 +10,7 @@
                                     <h2><?= $title;?></h2>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
-                                    <a href="<?= base_url();?>admin/data_produk" class="btn btn-danger text-white float-right"><i class="mdi mdi-arrow-left-bold-circle"></i> Kembali</a>
+                                    <a href="<?= base_url();?>produk" class="btn btn-danger text-white float-right"><i class="mdi mdi-arrow-left-bold-circle"></i> Kembali</a>
                                 </div>
                             </div>
                         <hr>

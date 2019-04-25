@@ -242,9 +242,14 @@ class Admin extends CI_Controller {
 
 	public function data_kategori_produk()
 	{
-		$data['title'] = 'Data Kategori Produk';
-		$data['kategori'] = $this->Admin_model->get_all('ct_kategori_produk');
-		$this->load->view('data/data_kategori_produk', $data);
+		if($this->session->userdata('logged')){
+			$data['title'] = 'Data Kategori Produk';
+			$data['kategori'] = $this->Admin_model->get_all('ct_kategori_produk');
+			$this->load->view('data/data_kategori_produk', $data);
+		}else{
+			redirect('admin','refresh');
+		}
+		
 	}
 
 	public function penjualan()
@@ -338,19 +343,24 @@ class Admin extends CI_Controller {
 
 	public function cetak_nota($id_penjualan)
 	{
-		$query = $this->Admin_model->detail_penjualan($id_penjualan);
-		$nomor_penjualan = $query->kode_penjualan;
-		$data['title'] = 'Nota '.$nomor_penjualan;
-		$data['detail'] = $this->Admin_model->detail_penjualan($id_penjualan);
-		$data['detail_produk'] = $this->Admin_model->detail_produk_penjualan($id_penjualan);
-		$this->load->view('transaction/cetak_nota',$data);
-		$html = $this->output->get_output();
-		$this->load->library('pdf');
-		$this->dompdf->setPaper('A4','portrait');
-		$this->dompdf->set_option('isHtml5ParserEnabled', true);
-		$this->dompdf->loadHtml($html);
-		$this->dompdf->render();
-		$this->dompdf->stream('Detail pesanan - '.$nomor_penjualan.'.pdf',array('Attachment'=>0));
+		if($this->session->userdata('logged')){
+			$query = $this->Admin_model->detail_penjualan($id_penjualan);
+			$nomor_penjualan = $query->kode_penjualan;
+			$data['title'] = 'Nota '.$nomor_penjualan;
+			$data['detail'] = $this->Admin_model->detail_penjualan($id_penjualan);
+			$data['detail_produk'] = $this->Admin_model->detail_produk_penjualan($id_penjualan);
+			$this->load->view('transaction/cetak_nota',$data);
+			$html = $this->output->get_output();
+			$this->load->library('pdf');
+			$this->dompdf->setPaper('A4','portrait');
+			$this->dompdf->set_option('isHtml5ParserEnabled', true);
+			$this->dompdf->loadHtml($html);
+			$this->dompdf->render();
+			$this->dompdf->stream('Detail pesanan - '.$nomor_penjualan.'.pdf',array('Attachment'=>0));
+		}else{
+			redirect('admin','refresh');
+		}
+		
 	}
 
 	public function delete_foto_produk($id_detail_produk)
@@ -389,13 +399,18 @@ class Admin extends CI_Controller {
 
 	public function laporan_penjualan()
 	{
-		$data['title'] = 'Laporan Penjualan';
-		$this->load->view('transaction/laporan_penjualan', $data);
+		if($this->session->userdata('logged')){
+			$data['title'] = 'Laporan Penjualan';
+			$this->load->view('transaction/laporan_penjualan', $data);
+		}else{
+			redirect('admin','refresh');
+		}
 	}
 
 	public function cari_laporan()
 	{
 		if($this->session->userdata('logged')){
+
 		$from_date = $this->input->post('from_date');
 		$to_date = $this->input->post('to_date');
 		$output = '';
@@ -471,8 +486,13 @@ class Admin extends CI_Controller {
 
 	public function todo_list()
 	{
+		if($this->session->userdata('logged')){
 		$data['title'] = 'To Do List';
 		$this->load->view('transaction/todo_list', $data);
+		}else{
+			redirect('admin','refresh');
+		}
+		
 	}
 
 }

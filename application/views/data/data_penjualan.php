@@ -49,9 +49,9 @@
                                                                         <div class="dropdown show">
                                                                             <a class="btn btn-primary btn-sm dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>
                                                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                                                <a class="dropdown-item" href="'.base_url().'admin/cetak_nota/'.$data->id_penjualan.'" target="_blank">Cetak Nota</a>
-                                                                                <a class="dropdown-item" href="'.base_url().'transaction/detail_penjualan/'.$data->id_penjualan.'">Detail Penjualan</a>
-                                                                                <a class="dropdown-item" href="'.base_url().'transaction/edit_penjualan/'.$data->id_penjualan.'">Edit Penjualan</a>
+                                                                                <a class="dropdown-item" href="'.base_url().'cetak/'.$data->id_penjualan.'" target="_blank">Cetak Nota</a>
+                                                                                <a class="dropdown-item" href="'.base_url().'detail_penjualan/'.$data->id_penjualan.'">Detail Penjualan</a>
+                                                                                <a class="dropdown-item" href="'.base_url().'edit_penjualan/'.$data->id_penjualan.'">Edit Penjualan</a>
                                                                                 <a class="dropdown-item text-danger" href="#" onclick="delete_penjualan('.$data->id_penjualan.')">Delete</a>
                                                                             </div>
                                                                         </div>
