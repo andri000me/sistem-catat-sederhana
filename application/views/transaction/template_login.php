@@ -159,21 +159,22 @@
         dataType:"json",
         data :{email:email,password:password},
         success:function(data){
-          if(data > 0){
+          if(data.valid == true){
             $('form').trigger('reset');
-            $("#text_berhasil").text('Login Berhasil');
+            $("#text_berhasil").text(data.msg);
             $("#berhasil").slideDown('slow').css('text-align','center');
             setTimeout(function(){$("#berhasil").slideUp('slow', function(){
                 window.location = url;
             });},2000);
           }else{
-            $("#gagal").slideDown('slow').text('Login gagal');
+            $("#text_gagal").text(data.msg);
+            $("#gagal").slideDown('slow').css('text-align','center');
             setTimeout(function(){$("#gagal").slideUp('slow', function(){
             });},2000);
           }
         },
-        error:function(error){ 
-          $("#text_gagal").text('Login Gagal');
+        error:function(data){ 
+          $("#text_gagal").text(data.msg);
           $("#gagal").slideDown('slow').css('text-align','center');
             setTimeout(function(){$("#gagal").slideUp('slow', function(){
           });},2000);

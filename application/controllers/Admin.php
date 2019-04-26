@@ -29,12 +29,31 @@ class Admin extends CI_Controller {
 
 	public function login()
 	{
-		$data = $this->User_model->login();
-		if($data){
-			echo json_encode($data);
-		}else{
-			return FALSE;
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+
+		$this->form_validation->set_rules('email', 'Email', 'trim|required');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required');
+
+
+		if ($this->form_validation->run() == TRUE) {
+			if($this->User_model->login($email,$password)){
+				$data = array(
+					'msg' => 'Login berhasil, tunggu sebentar...',
+					'valid' => true,
+				);
+			}else{
+				$data = array(
+					'msg' => 'Login gagal, kombinasi email dan password salah!',
+					'valid' => false
+				);
+			}	
+		} else {
+			$data = array(
+				'msg' => validation_errors(), );
 		}
+
+		echo json_encode($data);
 	}
 
 	public function logout()
@@ -46,6 +65,7 @@ class Admin extends CI_Controller {
 
 		$this->session->sess_destroy();
 		redirect('admin','refresh');
+		exit;
 	}
 
 	public function register()

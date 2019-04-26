@@ -3,11 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_model extends CI_Model {
 
-    public function login()
+    public function login($email,$password)
 	{
-		$email = $this->input->post('email');
-		$password = $this->input->post('password');
-
 		$get = $this->db->where('email', $email)
 						->where('password',sha1($password))
 						->where('status',1)

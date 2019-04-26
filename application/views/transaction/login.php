@@ -2,9 +2,15 @@
     <div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
       <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
         <div class="row w-100">
-          <div class="col-lg-4 mx-auto">
+          <div class="col-lg-8">
+            <img src="<?= base_url();?>assets/images/auth/hard.png" style="width: 600px;height: auto" class="mt-4 ml-5">
+          </div>
+          <div class="col-lg-4">
             <div class="auto-form-wrapper">
               <form method="post">
+                <div class="form-group">
+                  <!-- <img src="<?= base_url();?>assets/images/favicon2.png" style="width: 100px;height: auto;margin: 0px auto;display: block"> -->
+                </div>
                 <div class="form-group">
                   <div class="alert alert-success" id="berhasil"><i class="mdi mdi-check-circle"></i> <span id="text_berhasil"></span></div>
                   <div class="alert alert-danger" id="gagal"><i class="mdi mdi-close-circle"></i> <span id="text_gagal"></span></div>
