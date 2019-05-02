@@ -308,16 +308,16 @@
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('kategori_produk');?>">Data Kategori Produk</a>
+                  <a class="nav-link" href="<?php echo base_url('admin/data_kategori_produk');?>">Data Kategori Produk</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('produk');?>">Data Produk</a>
+                  <a class="nav-link" href="<?php echo base_url('admin/data_produk');?>">Data Produk</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('penjualan');?>"> Data Pesanan</a>
+                  <a class="nav-link" href="<?php echo base_url('admin/data_penjualan');?>"> Data Pesanan</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('omset');?>"> Omset User </a>
+                  <a class="nav-link" href="<?php echo base_url('admin/data_omset_user');?>"> Omset User </a>
                 </li>
               </ul>
             </div>

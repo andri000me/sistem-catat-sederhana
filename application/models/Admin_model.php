@@ -351,9 +351,8 @@ class Admin_model extends CI_Model {
 		}
 	}
 
-	public function add_kategori_produk()
+	public function add_kategori_produk($nama_kategori_produk)
 	{
-		$nama_kategori_produk = $this->input->post('nama_kategori_produk');
 		$data = array(
 			'nama_kategori_produk' => $nama_kategori_produk,
 			'id_user' => $this->session->userdata('id_user')

@@ -27,7 +27,7 @@
   </style>
 </head>
 
-<body style="background: black">
+<body id="gambar">
   <?php $this->load->view($main_view);?>
   <!-- container-scroller -->
   <!-- plugins:js -->

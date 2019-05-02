@@ -139,8 +139,8 @@
                                   '<div class="dropdown show">'+
                                       '<a class="btn btn-primary btn-sm dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>'+
                                         '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">'+
-                                            '<a class="dropdown-item" href="'+base_url+'add_foto_produk/'+data[i].id_produk+'">Tambah Foto Produk</a>'+
-                                        '<a class="dropdown-item" href="'+base_url+'edit_produk/'+data[i].id_produk+'">Edit produk</a>'+
+                                            '<a class="dropdown-item" href="'+base_url+'admin/tambah_foto_produk/'+data[i].id_produk+'">Tambah Foto Produk</a>'+
+                                        '<a class="dropdown-item" href="'+base_url+'admin/detail_produk/'+data[i].id_produk+'">Edit produk</a>'+
                                         '<a class="dropdown-item text-danger" href="#" onclick="delete_produk('+data[i].id_produk+')">Delete</a>'+
                                       '</div>'+
                                   '</div>'+
@@ -177,9 +177,9 @@
                                   '<div class="dropdown show">'+
                                       '<a class="btn btn-primary btn-sm dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</a>'+
                                         '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">'+
-                                        '<a class="dropdown-item" href="'+base_url+'cetak/'+data[i].id_penjualan+'" target="_blank">Cetak Nota</a>'+
-                                        '<a class="dropdown-item" href="'+base_url+'detail_penjualan/'+data[i].id_penjualan+'">Detail Penjualan</a>'+
-                                        '<a class="dropdown-item" href="'+base_url+'edit_penjualan/'+data[i].id_penjualan+'">Edit Penjualan</a>'+
+                                        '<a class="dropdown-item" href="'+base_url+'admin/cetak_nota/'+data[i].id_penjualan+'" target="_blank">Cetak Nota</a>'+
+                                        '<a class="dropdown-item" href="'+base_url+'transaction/detail_penjualan/'+data[i].id_penjualan+'">Detail Penjualan</a>'+
+                                        '<a class="dropdown-item" href="'+base_url+'transaction/edit_penjualan/'+data[i].id_penjualan+'">Edit Penjualan</a>'+
                                         '<a class="dropdown-item text-danger" href="#" onclick="delete_penjualan('+data[i].id_penjualan+')">Delete</a>'+
                                       '</div>'+
                                   '</div>'+
@@ -253,10 +253,6 @@
       var nama_kategori_produk = $("#nama_kategori_produk").val();
       var conf = confirm('Are you sure?');
       if(conf){
-        if($("#nama_kategori_produk").val() == ''){
-          alert('Nama Kategori tidak boleh kosong');
-          $("#nama_kategori_produk").focus();
-        }else{
             $.ajax({
             type:"POST",
             url : base_url+"admin/add_kategori_produk",
@@ -265,21 +261,29 @@
               nama_kategori_produk : nama_kategori_produk
             },
             success:function(data){
-              data_kategori_produk();
-              $("html, body").animate({scrollTop: 0}, 1000);
-              $("#text_berhasil").text('Kategori produk berhasil disimpan');
-                $("#berhasil").slideDown('slow').css('text-align','center');
-                setTimeout(function(){$("#berhasil").slideUp('slow', function(){
-              });},2000);
-            },
-            error:function(error){
-              $("#text_gagal").text('Kategori produk gagal disimpan');
-                $("#gagal").slideDown('slow').css('text-align','center');
-                setTimeout(function(){$("#gagal").slideUp('slow', function(){
-              });},2000);
+              if(data.valid == true){
+                data_kategori_produk();
+                $("html, body").animate({scrollTop: 0}, 1000);
+                $("#text_berhasil").text(data.msg);
+                  $("#berhasil").slideDown('slow').css('text-align','center');
+                  setTimeout(function(){$("#berhasil").slideUp('slow', function(){
+                });},2000);
+                }else{
+                  $("#text_gagal").text(data.msg);
+                  $("#gagal").slideDown('slow').css('text-align','center');
+                  setTimeout(function(){$("#gagal").slideUp('slow', function(){
+                  });},2000);
+                }
+              },
+            error:function(data){
+                if(data.valid == false){
+                  $("#text_gagal").text(data.msg);
+                  $("#gagal").slideDown('slow').css('text-align','center');
+                  setTimeout(function(){$("#gagal").slideUp('slow', function(){
+                });},2000);
+              }
             }
           });
-        }
       }else{
 
       }
@@ -347,13 +351,20 @@
             edit_nama_kategori_produk : edit_nama_kategori_produk
           },
            success:function(data){
-                $("html, body").animate({scrollTop: 0}, 1000);
-                $("#text_berhasil_edit").text('Kategori produk berhasil diperbaharui');
-                  $("#berhasil_edit").slideDown('slow').css('text-align','center');
-                  setTimeout(function(){$("#berhasil_edit").slideUp('slow', function(){
-                    data_kategori_produk();
-                    $("#myModal").hide()
-                });},2000);
+                if(data.valid == true){
+                  $("html, body").animate({scrollTop: 0}, 1000);
+                    $("#text_berhasil_edit").text(data.msg);
+                      $("#berhasil_edit").slideDown('slow').css('text-align','center');
+                      setTimeout(function(){$("#berhasil_edit").slideUp('slow', function(){
+                        data_kategori_produk();
+                        $("#myModal").hide()
+                    });},2000);
+                }else{
+                    $("#text_gagal_edit").text(data.msg);
+                    $("#gagal_edit").slideDown('slow').css('text-align','center');
+                    setTimeout(function(){$("#gagal_edit").slideUp('slow', function(){
+                  });},2000);
+                }     
               },
               error:function(error){
                 $("#text_gagal_edit").text('Kategori produk gagal diperbaharui');

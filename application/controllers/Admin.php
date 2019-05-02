@@ -7,6 +7,7 @@ class Admin extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model(array('User_model','Admin_model'));
+		$this->form_validation->set_error_delimiters('','');
 	}
 
 	public function index()
@@ -35,18 +36,16 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('email', 'Email', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
 
-
 		if ($this->form_validation->run() == TRUE) {
 			if($this->User_model->login($email,$password)){
 				$data = array(
 					'msg' => 'Login berhasil, tunggu sebentar...',
 					'valid' => true,
-				);
+					 );
 			}else{
 				$data = array(
 					'msg' => 'Login gagal, kombinasi email dan password salah!',
-					'valid' => false
-				);
+					'valid' =>false);
 			}	
 		} else {
 			$data = array(
@@ -64,8 +63,7 @@ class Admin extends CI_Controller {
 			);
 
 		$this->session->sess_destroy();
-		redirect('admin','refresh');
-		exit;
+		redirect('/','refresh');
 	}
 
 	public function register()
@@ -193,12 +191,29 @@ class Admin extends CI_Controller {
 	public function add_kategori_produk()
 	{
 		if($this->session->userdata('logged')){
-			$data = $this->Admin_model->add_kategori_produk();
-			if($data){
-				echo json_encode($data);
-			}else{
-				return FALSE;
+			$nama_kategori_produk = $this->input->post('nama_kategori_produk');
+
+			$this->form_validation->set_rules('nama_kategori_produk', 'Nama Kategori', 'trim|required');
+
+			if ($this->form_validation->run() == TRUE) {
+				if($this->Admin_model->add_kategori_produk($nama_kategori_produk)){
+					$data = array(
+						'msg' => 'Kategori baru berhasil disimpan',
+						'valid' => true 
+					);
+				}else{
+					$data = array(
+						'msg' => 'Kategori baru gagal disimpan',
+						'valid' => false 
+					);
+				}
+			} else {
+				$data = array(
+						'msg' => validation_errors(),
+						'valid' => false 
+					);
 			}
+			echo json_encode($data);
 		}else{
 			redirect('admin','refresh');
 		}
@@ -235,12 +250,27 @@ class Admin extends CI_Controller {
 	public function edit_kategori_produk($id_kategori_produk)
 	{
 		if($this->session->userdata('logged')){
-			$data = $this->Admin_model->edit_kategori_produk($id_kategori_produk);
-			if($data){
-				echo json_encode($data);
-			}else{
-				return FALSE;
+			$this->form_validation->set_rules('edit_nama_kategori_produk', 'Nama Kategori', 'trim|required');
+
+			if ($this->form_validation->run() == TRUE) {
+				if($this->Admin_model->edit_kategori_produk($id_kategori_produk)){
+					$data = array(
+						'msg' => 'Kategori berhasil diperbarui',
+						'valid' => true 
+					);
+				}else{
+					$data = array(
+						'msg' => 'Kategori gagal diperbarui',
+						'valid' => false 
+					);
+				}
+			} else {
+				$data = array(
+					'msg' => validation_errors(),
+					'valid' => false 
+				);
 			}
+		 echo json_encode($data);
 		}else{
 			redirect('admin','refresh');
 		}

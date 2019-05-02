@@ -2,10 +2,10 @@
     <div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
       <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
         <div class="row w-100">
-          <div class="col-lg-8">
-            <img src="<?= base_url();?>assets/images/auth/hard.png" style="width: 600px;height: auto" class="mt-4 ml-5">
+          <div class="col-lg-7 pl-5">
+            <img src="<?= base_url();?>assets/images/auth/hard.png" style="width: 600px;height: auto" class="mt-4 ml-5 img-responsive">
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-5 pr-5">
             <div class="auto-form-wrapper">
               <form method="post">
                 <div class="form-group">

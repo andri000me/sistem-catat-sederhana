@@ -51,11 +51,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'admin';
 $route['404_override'] = '';
-//Produk
-$route['produk'] = 'admin/data_produk';
-$route['add_foto_produk/(:any)'] = 'admin/tambah_foto_produk/$1';
-$route['add_produk'] = 'admin/produk';
-$route['edit_produk/(:any)'] = 'admin/detail_produk/$1';
 //Penjualan
 $route['penjualan'] = 'admin/data_penjualan';
 $route['add_penjualan'] = 'admin/penjualan';
