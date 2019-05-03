@@ -150,6 +150,9 @@ class Admin extends CI_Controller {
 
 			$this->session->set_flashdata('berhasil', 'Foto berhasil ditambahkan');
 			redirect('admin/tambah_foto_produk/'.$this->uri->segment(3),'refresh');
+		}else{
+			$this->session->set_flashdata('gagal', 'Foto tidak boleh kosong');
+			redirect('admin/tambah_foto_produk/'.$this->uri->segment(3),'refresh');
 		}
 	}
 
