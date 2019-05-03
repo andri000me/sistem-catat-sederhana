@@ -28,7 +28,7 @@ class Admin_model extends CI_Model {
 
 	public function omset()
 	{
-		$query = $this->db->query("SELECT sum(ct_penjualan.total) as omset FROM ct_penjualan")->result();
+		$query = $this->db->query("SELECT sum(ct_penjualan.total) as omset FROM ct_penjualan WHERE deleted=0")->result();
 		foreach ($query as $data) {
 			$omset = $data->omset;
 		}

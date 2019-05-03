@@ -53,11 +53,11 @@
     function get_location(){
         $.ajax({
           type:"GET",
-          url : "https://ipapi.co/json/",
+          url : "https://api.ipgeolocation.io/ipgeo?apiKey=aa0ac61c65f94974a9e3208d156ed3c5",
           dataType:"json",
           success:function(data){
             $("#city").text(data['city']);
-            $("#country").text(data['country']);
+            $("#country").text(data['country_name']);
             var lat = data['latitude'];
             var lon = data['longitude'];
             get_weather(lat,lon);
